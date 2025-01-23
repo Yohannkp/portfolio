@@ -180,8 +180,8 @@
             <img src="images/dot-texture.png" alt="pattern img" class="dot-pattern">
             <span class="about-img1 animate-me"></span>
             <div class="about-content">
-                <h2 class="animate-me">A propos de moi</h2>
-                <h5 class="animate-me">Je suis un développeur Fullstack junior passionné par le code et les nouvelles technologies. Mon objectif est de transformer des idées complexes en applications performantes et intuitives.Avec une solide base en développement web, je maîtrise les technologies frontend comme HTML, CSS, JavaScript et des frameworks modernes tels que ymfony, Vue.js et Angular. Côté backend, je suis à l’aise avec des langages et outils comme Node.js, Python (Django), et les bases de données comme MySQL, MongoDB.</h5>
+                <h2 class="animate-me" style="margin-left: auto;margin-right: auto;">A propos de moi</h2>
+                <h5 class="animate-me" style="margin-left: auto;margin-right: auto;">Je suis un développeur Fullstack junior passionné par le code et les nouvelles technologies. Mon objectif est de transformer des idées complexes en applications performantes et intuitives.Avec une solide base en développement web, je maîtrise les technologies frontend comme HTML, CSS, JavaScript et des frameworks modernes tels que ymfony, Vue.js et Angular. Côté backend, je suis à l’aise avec des langages et outils comme Node.js, Python (Django), et les bases de données comme MySQL, MongoDB.</h5>
             </div>
             <span class="about-img2 animate-me"></span>
         </div>
@@ -200,29 +200,29 @@
         <h2 class="section-title">Mes PROJETS</h2>
         <div class="container">
             <div class="portfolio-wrapper"> 
-                <div class="portfolio-img">
+                <div class="portfolio-img" id="mobile">
 
                     
 
                     <div class="img-area">
-                        <img src="images/recommandation film.png" alt="portfolio img" sizes="10">
+                        <img src="images/recommandation film.png" id="recommandation" alt="portfolio img" sizes="10">
                      </div>
 
                      <div class="img-area">
-                        <img src="images/transcorre.jpg" alt="portfolio img" style="height: 450px; width: auto; margin-left: auto; " >
+                        <img src="images/transcorre.jpg" alt="portfolio img" id="transcorre" style="height: 700px; width: auto; margin-left: auto;margin-right: auto; " >
                      </div>
 
                     <div class="img-area">
-                        <img src="images/chili1 (4).png" alt="portfolio img" sizes="10">
+                        <img src="images/chili1 (4).png" alt="portfolio img" id="chili1" sizes="10" style="height: 900px; width: auto;margin-bottom: auto;margin-top: -200px; margin-left: auto;margin-right: auto; ">
                      </div>
                      <div class="img-area">
-                        <img src="images/Rectangle.png" alt="portfolio img" sizes="10">
+                        <img src="images/Rectangle.png" alt="portfolio img" id="rectengle" sizes="10" style="height: 700px; width: auto; margin-left: auto;margin-right: auto; ">
                      </div>
                      <div class="img-area">
-                        <img src="images/Rectangle_noraf.png" alt="portfolio img" style="height: 450px; width: auto; margin-left: auto; ">
+                        <img src="images/Rectangle_noraf.png" alt="portfolio img" id="Rectangle_noraf" style="height: 700px; width: auto; margin-left: auto;margin-right: auto; ">
                      </div>
                      <div class="img-area">
-                        <img src="images/sos1.png" alt="portfolio img" sizes="10">
+                        <img src="images/sos1.png" id="sos1" style="height: 700px; width: auto; margin-left: auto;margin-right: auto; " alt="portfolio img" sizes="10">
                      </div>
 
                      
@@ -755,6 +755,100 @@
     <!-- all jQuary activation code here and always it will be bottom of all script tag -->
     <script src="js/main-2.js"></script>
 
+    <script>
+        // Fonction pour vérifier si on est sur un écran mobile
+function isMobileScreen() {
+  return window.innerWidth <= 768; // Généralement, 768px est utilisé comme limite pour les écrans mobiles
+}
+
+// Fonction pour ajuster la taille de l'image
+function adjustImageSize() {
+  const image = document.getElementById("mobile"); // Remplacez "responsive-image" par l'ID de votre image
+  
+  if (image) {
+    if (isMobileScreen()) {
+        
+      image.style.width = "100%"; // Ajuste la largeur à 100% de l'écran
+      image.style.height = "auto"; // Garde le ratio d'aspect
+    } else {
+      image.style.width = "500px"; // Largeur par défaut pour les écrans non mobiles
+      image.style.height = "auto"; // Garde le ratio d'aspect
+    }
+  }
+}
+
+
+// Fonction pour ajuster la taille de la div
+function adjustDivSize() {
+    const recommandation = document.getElementById("recommandation"); // Remplacez "responsive-div" par l'ID de votre div
+  const transcorre = document.getElementById("transcorre"); // Remplacez "responsive-div" par l'ID de votre div
+  const chili1 = document.getElementById("chili1"); // Remplacez "responsive-div" par l'ID de votre div
+  const rectengle = document.getElementById("rectengle"); // Remplacez "responsive-div" par l'ID de votre div
+  const Rectangle_noraf = document.getElementById("Rectangle_noraf"); // Remplacez "responsive-div" par l'ID de votre div
+  const sos1 = document.getElementById("sos1"); // Remplacez "responsive-div" par l'ID de votre div
+  
+  if (transcorre) {
+    if (isMobileScreen()) {
+        transcorre.style.width = "80%"; // Ajuste la largeur à 100% de l'écran
+        transcorre.style.height = "400px"; // Ajuste la hauteur automatiquement
+    } else {
+        transcorre.style.height="700px";
+        transcorre.style.marginLeft="auto";
+        transcorre.style.marginRight="auto";
+        }
+  }
+
+  if (chili1) {
+    if (isMobileScreen()) {
+        chili1.style.width = "80%"; // Ajuste la largeur à 100% de l'écran
+        chili1.style.height = "400px"; 
+        chili1.style.marginTop = "0px"// Ajuste la hauteur automatiquement
+    } else {
+        }
+  }
+
+
+  if (rectengle) {
+    if (isMobileScreen()) {
+        rectengle.style.width = "80%"; // Ajuste la largeur à 100% de l'écran
+        rectengle.style.height = "400px"; // Ajuste la hauteur automatiquement
+    } else {
+        // Hauteur par défaut pour les écrans non mobiles
+    }
+  }
+
+
+  if (Rectangle_noraf) {
+    if (isMobileScreen()) {
+        Rectangle_noraf.style.width = "80%"; // Ajuste la largeur à 100% de l'écran
+        Rectangle_noraf.style.height = "400px"; // Ajuste la hauteur automatiquement
+    } else {
+        // Hauteur par défaut pour les écrans non mobiles
+    }
+  }
+
+  if (sos1) {
+    if (isMobileScreen()) {
+        sos1.style.width = "80%"; // Ajuste la largeur à 100% de l'écran
+        sos1.style.height = "400px"; // Ajuste la hauteur automatiquement
+    } else {
+        // Hauteur par défaut pour les écrans non mobiles
+    }
+  }
+
+
+}
+
+// Écouteur pour ajuster la taille lors du chargement de la page ou du redimensionnement
+window.addEventListener("load", adjustDivSize);
+window.addEventListener("resize", adjustDivSize);
+
+
+
+
+
+
+    </script>
 </body>
 
 </html>
