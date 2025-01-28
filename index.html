@@ -58,7 +58,7 @@
         <div class="quick-link">
             <div class="email">
                 <span>Want to talk?</span>
-                <a href="/cdn-cgi/l/email-protection#334a5c46411e5e525a5f73545e525a5f1d505c5e"><span class="__cf_email__" data-cfemail="95ecfae0e7b8f8f4fcf9d5f2f8f4fcf9bbf6faf8">[email&#160;protected]</span></a>
+                <a href="#"><span class="__cf_email__" data-cfemail="95ecfae0e7b8f8f4fcf9d5f2f8f4fcf9bbf6faf8">yendiyohann@gmail.com</span></a>
             </div>
             <div class="follow-me">
                 <span>Follow me :</span>
@@ -641,10 +641,10 @@
                     </div>
 
                     <div class="contact-form">
-                        <form action="#">
+                        <form id="contactForm">
                             <div class="input-group name animate-me">
                                 <label for="name">Nom *</label>
-                                <input type="text" name="name" id="name" placeholder="Votre Nom">
+                                <input type="text" name="name" id="nom" placeholder="Votre Nom">
                             </div>
 
                             <div class="input-group email animate-me">
@@ -658,7 +658,7 @@
                             </div>
 
                             <div class="input-group submit animate-me">
-                                <button type="submit">Envoyer</button>
+                                <button type="button" id="button_contact" onclick="envoyerForm()">Envoyer</button>
                             </div>
                         </form>
                     </div>
@@ -759,6 +759,23 @@ function adjustImageSize() {
   }
 }
 
+function envoyerForm() {
+    document.getElementById("button_contact").addEventListener("click", function(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+
+            const recipient = "yendiyohann@gmail.com"
+            const nom = document.getElementById("nom").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+            const subjet = "Prise de contact"
+            // Encodez les valeurs pour éviter des problèmes avec les caractères spéciaux
+            const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subjet)}&body=${encodeURIComponent(message)}`;
+
+            // Ouvrir le client de messagerie par défaut de l'utilisateur
+            window.location.href = mailtoLink;
+        });
+}
+
 
 // Fonction pour ajuster la taille de la div
 function adjustDivSize() {
@@ -846,6 +863,9 @@ function adjustDivSize() {
         // Hauteur par défaut pour les écrans non mobiles
     }
   }
+
+
+ 
 
 
 }
