@@ -308,7 +308,7 @@ header.header.sticky {
     height: 100%;
     display: block;
     z-index: 2;
-    background: url(images/ma_photo.JPG) no-repeat center right/cover;
+    background: url(images/ma_photo.jpg) no-repeat center right/cover;
 }
 .hero-section .hero-image:before {
     content: "";
@@ -497,7 +497,7 @@ header.header.sticky {
     right: 5px;
     width: 320px;
     display: block;
-    background: url(images/moi3.jpg) no-repeat left top / cover;
+    background: url(images/vertical-logo.png) no-repeat left top / cover;
 }
 .about-section .about-img1:before {
     content: "";
