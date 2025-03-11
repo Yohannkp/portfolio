@@ -308,7 +308,7 @@ header.header.sticky {
     height: 100%;
     display: block;
     z-index: 2;
-    background: url(images/ma_photo.jpg) no-repeat center right/cover;
+    background: url(images/ma_photo.JPG) no-repeat center right/cover;
 }
 .hero-section .hero-image:before {
     content: "";
