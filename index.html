@@ -1,724 +1,1324 @@
 <!DOCTYPE html>
-<html lang="en-US" class="no-js">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>Yohann</title>
-
-    <!--favicon icon-->
-    <link rel="icon" href="images/miniature.jpg">
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
-
-    <!-- slick css -->
-    <link rel="stylesheet" href="css/slick.css">
-
-    <!-- fullpage css -->
-    <link rel="stylesheet" href="css/fullpage.min.css">
-
-    <!-- global style css -->
-    <link rel="stylesheet" href="css/global-style.css">
-
-    <!-- style css -->
-    <link rel="stylesheet" href="style-2.css">
-
-    <!--responsive css-->
-    <link rel="stylesheet" href="css/responsive-2.css">
-
-</head>
-
-<body>
-    <!-- ======================================= 
-        ==Start Header section==  
-    =======================================-->
-    <header class="header">
-        <a href="#" class="logo"><img src="images/logo.png" alt="logo"></a>
-        <div class="humbarger">
-            <span></span>
-            <span></span>
-            <span></span>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yohann Yendi - Développeur Fullstack & Mobile</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#2196F3", secondary: "#121212" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      }
+      .text-gradient {
+      background: linear-gradient(90deg, #2196F3, #03a9f4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      }
+      .card {
+      background: rgba(30, 30, 30, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      }
+      .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(33, 150, 243, 0.3);
+      }
+      .progress-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      }
+      .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #2196F3, #03a9f4);
+      border-radius: 3px;
+      transition: width 1s ease-in-out;
+      }
+      .slide-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .slide-in.active {
+      opacity: 1;
+      transform: translateY(0);
+      }
+      .timeline-item {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 20px;
+      }
+      .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #2196F3;
+      }
+      .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 20px;
+      width: 2px;
+      height: calc(100% + 10px);
+      background: rgba(33, 150, 243, 0.3);
+      }
+      .timeline-item:last-child::after {
+      display: none;
+      }
+      .project-card {
+      background: rgba(30, 30, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+      }
+      .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(33, 150, 243, 0.3);
+      }
+      .tech-badge {
+      background: rgba(33, 150, 243, 0.2);
+      color: #2196F3;
+      border: 1px solid rgba(33, 150, 243, 0.3);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      }
+      input, textarea {
+      background: rgba(30, 30, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #e0e0e0;
+      transition: all 0.3s ease;
+      }
+      input:focus, textarea:focus {
+      border-color: #2196F3;
+      box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+      outline: none;
+      }
+      .social-icon {
+      transition: all 0.3s ease;
+      }
+      .social-icon:hover {
+      transform: translateY(-3px);
+      color: #2196F3;
+      }
+      .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+      }
+      .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2196F3;
+      transition: width 0.3s ease;
+      }
+      .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+      }
+      .nav-link:hover {
+      color: #2196F3;
+      }
+      .hamburger {
+      width: 24px;
+      height: 18px;
+      position: relative;
+      cursor: pointer;
+      }
+      .hamburger span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: #e0e0e0;
+      border-radius: 2px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+      }
+      .hamburger span:nth-child(1) {
+      top: 0px;
+      }
+      .hamburger span:nth-child(2) {
+      top: 8px;
+      }
+      .hamburger span:nth-child(3) {
+      top: 16px;
+      }
+      .hamburger.open span:nth-child(1) {
+      top: 8px;
+      transform: rotate(135deg);
+      }
+      .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      left: -60px;
+      }
+      .hamburger.open span:nth-child(3) {
+      top: 8px;
+      transform: rotate(-135deg);
+      }
+      .mobile-menu {
+      position: fixed;
+      top: 70px;
+      right: -100%;
+      width: 80%;
+      height: calc(100vh - 70px);
+      background: #1a1a1a;
+      transition: right 0.3s ease;
+      z-index: 50;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      }
+      .mobile-menu.open {
+      right: 0;
+      }
+      .swiper {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      }
+      .swiper-wrapper {
+      display: flex;
+      transition: transform 0.3s ease;
+      }
+      .swiper-slide {
+      flex-shrink: 0;
+      width: 100%;
+      }
+      .swiper-pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+      }
+      .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      }
+      .swiper-pagination-bullet-active {
+      background: #2196F3;
+      transform: scale(1.2);
+      }
+      .swiper-button-prev, .swiper-button-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(30, 30, 30, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e0e0e0;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      }
+      .swiper-button-prev:hover, .swiper-button-next:hover {
+      background: rgba(33, 150, 243, 0.8);
+      }
+      .swiper-button-prev {
+      left: 10px;
+      }
+      .swiper-button-next {
+      right: 10px;
+      }
+      @media (max-width: 768px) {
+      .swiper-button-prev, .swiper-button-next {
+      width: 30px;
+      height: 30px;
+      }
+      }
+      .btn-download {
+      position: relative;
+      overflow: hidden;
+      }
+      .btn-download::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s ease;
+      }
+      .btn-download:hover::before {
+      left: 100%;
+      }
+      .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: #2196F3;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 100;
+      }
+      .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      }
+      .back-to-top:hover {
+      transform: translateY(-5px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header/Navigation -->
+    <header
+      class="fixed top-0 left-0 w-full bg-secondary bg-opacity-90 backdrop-blur-md z-50 py-4"
+    >
+      <div
+        class="container mx-auto px-4 md:px-6 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary">YY</a>
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="nav-link text-sm font-medium">À propos</a>
+          <a href="#skills" class="nav-link text-sm font-medium">Compétences</a>
+          <a href="#projects" class="nav-link text-sm font-medium">Projets</a>
+          <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
+          <a
+            href="#"
+            class="ml-4 bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-sm font-medium flex items-center whitespace-nowrap"
+          >
+            <i class="ri-download-line mr-2"></i> CV
+          </a>
+        </nav>
+        <!-- Mobile Hamburger -->
+        <div class="hamburger md:hidden" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+      </div>
     </header>
-
-    <div class="menu-wrapper">
-        <ul class="main-menu" id="main-menu">
-            <li><a href="#aboutMe" data-text="about">about</a></li>
-            <li><a href="#portfolio" data-text="Projets">Projets</a></li>
-            <li><a href="#skill" data-text="skill">skill</a></li>
-            <li><a href="#blog" data-text="blog">blog</a></li>
-            <li><a href="#contact" data-text="contact">contact</a></li>
-        </ul>
-
-        <div class="quick-link">
-            <div class="email">
-                <span>Want to talk?</span>
-                <a href="#"><span class="__cf_email__" data-cfemail="95ecfae0e7b8f8f4fcf9d5f2f8f4fcf9bbf6faf8">yendiyohann@gmail.com</span></a>
-            </div>
-            <div class="follow-me">
-                <span>Follow me :</span>
-                <ul class="social-icon">
-                   
-                    <li class="linkedin">
-                        <a href="https://www.linkedin.com/in/yendi-aharh-a9b2992a8/" title="Linkedin" target="_blank">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in" class="svg-inline--fa fa-linkedin-in fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
-                            </svg>
-                        </a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
-        <img src="images/horizontal-logo.png" alt="image" class="horizontal-img">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu md:hidden" id="mobile-menu">
+      <a href="#about" class="text-lg font-medium">À propos</a>
+      <a href="#skills" class="text-lg font-medium">Compétences</a>
+      <a href="#projects" class="text-lg font-medium">Projets</a>
+      <a href="#contact" class="text-lg font-medium">Contact</a>
+      <a
+        href="#"
+        class="bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-base font-medium flex items-center w-fit whitespace-nowrap"
+      >
+        <i class="ri-download-line mr-2"></i> Télécharger CV
+      </a>
     </div>
-    <!-- ======================================= 
-        ==End Header section==  
-    =======================================-->
-
-
-    <!-- ======================================= 
-        ==Start Hero section==  
-    =======================================-->
-    <span class="vertical-line line1"></span>
-    <span class="vertical-line line2"></span>
-    <span class="vertical-line line3"></span>
-    <span class="vertical-line line4"></span>
-    <span class="vertical-line line5"></span>
-
-   <div id="fullpage">
-    <section class="section hero-section pos-relative">
-        <span class="vertical-logo"><img src="images/vertical-logo.png" alt="vertical-logo"></span>
-        <div class="hero-image-wrapper">
-            <span class="hero-image animate-me"></span>
-            <img src="images/dot-texture.png" alt="texture" class="dot-texture animate-me">
-        </div>
-        <a href="#aboutMe" class="scroll-down animate-me">Voir plus <img src="images/scroll-down-arrow.png" alt="arrow"></a>
-        <ul class="social-icon">
-            
-            <li class="linkedin">
-                <a href="https://www.linkedin.com/in/yendi-aharh-a9b2992a8/" title="Linkedin" target="_blank">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in" class="svg-inline--fa fa-linkedin-in fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
-                    </svg>
-                </a>
-            </li>
-           
-        </ul>
-
-        <div class="container">
-            <div class="content-wrapper">
-                <div class="hero-content">
-                    <h1 class="animate-me">Salut! Je suis Yohann</h1>
-                    <h2 class="animate-me">Junior FullStack Data Scientist</h2>
-                    <a href="#contact" class="hire-me link-default animate-me">Me contacter
-                        <span>
-                            <img src="images/arrow-right-white.png" alt="arrow">
-                        </span>
-                    </a>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              <span class="text-white">Yohann</span>
+              <span class="text-gradient"> Yendi</span>
+            </h1>
+            <h2 class="text-xl md:text-2xl font-medium text-gray-300 mb-6">
+              Développeur Fullstack & Mobile
+            </h2>
+            <div class="flex items-center justify-center md:justify-start mb-8">
+              <div class="w-6 h-6 flex items-center justify-center mr-2">
+                <i class="ri-map-pin-line text-primary"></i>
+              </div>
+              <span class="text-gray-400">Paris, France</span>
+            </div>
+            <p class="text-gray-400 max-w-lg mx-auto md:mx-0 mb-8">
+              Passionné par le développement d'applications innovantes et les
+              technologies émergentes. Actuellement en Master Big Data & IA, je
+              combine expertise technique et vision stratégique.
+            </p>
+            <a
+              href="#"
+              class="btn-download inline-block bg-primary hover:bg-opacity-80 text-white px-6 py-3 !rounded-button text-base font-medium flex items-center w-fit mx-auto md:mx-0 whitespace-nowrap"
+            >
+              <i class="ri-download-line mr-2"></i> Télécharger mon CV
+            </a>
+          </div>
+          <div class="md:w-1/2 flex justify-center md:justify-end">
+            <div class="relative">
+              <div
+                class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary p-1"
+              >
+                <div
+                  class="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
+                >
+                  <span class="text-6xl font-bold text-primary opacity-80"
+                    >YY</span
+                  >
                 </div>
+              </div>
+              <div
+                class="absolute -bottom-4 -right-4 bg-secondary border border-gray-700 rounded-lg px-4 py-2 shadow-lg"
+              >
+                <div class="flex items-center">
+                  <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                  <span class="text-sm font-medium"
+                    >Disponible pour des projets</span
+                  >
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+      <!-- Background Elements -->
+      <div
+        class="absolute top-0 right-0 w-1/3 h-1/3 bg-primary opacity-5 rounded-bl-full"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary opacity-5 rounded-tr-full"
+      ></div>
     </section>
-    <!-- ======================================= 
-        ==End Hero section==  
-    =======================================-->
-
-    <!-- ======================================= 
-        ==Start about section==  
-    =======================================-->
-    <section class="section about-section pos-relative">
-        <div class="overlay"></div>
-        <div class="about-shape">
-            <img src="images/about-shape.png" alt="shape" class="shape">
-            <span class="circle1"></span>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[#151515] relative">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center mb-16 slide-in">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">À propos de moi</h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
         </div>
-        <div class="container">
-            <img src="images/dot-texture.png" alt="pattern img" class="dot-pattern">
-            <span class="about-img1 animate-me"></span>
-            <div class="about-content">
-                <h2 class="animate-me" style="margin-left: auto;margin-right: auto;">A propos de moi</h2>
-                <h5 class="animate-me" style="margin-left: auto;margin-right: auto;">Voici une version plus concise :
-
-                    ---
-                    
-                    Je suis **développeur junior et scientifique des données**, actuellement en Master Data & IA, avec la **certification Google Advanced Data Analyst**. Passionné par les nouvelles technologies, je maîtrise le développement frontend (HTML, CSS, JavaScript, Symfony, Vue.js, Angular) et backend (Node.js, Python/Django, MySQL, MongoDB). Mon objectif est de créer des solutions performantes et intuitives.</h5>
+        <div class="flex flex-col md:flex-row gap-10 md:gap-16">
+          <div class="md:w-1/2 slide-in">
+            <h3 class="text-2xl font-semibold mb-6">Mon parcours</h3>
+            <p class="text-gray-300 mb-6">
+              Développeur fullstack & mobile avec une solide formation en
+              développement et une passion pour l'innovation technologique.
+              Basé à Paris, j'ai développé une expertise
+              technique diversifiée qui me permet de concevoir des solutions
+              complètes, du backend au frontend, en passant par les applications
+              mobiles.
+            </p>
+            <p class="text-gray-300 mb-6">
+              Actuellement en Master Big Data & IA, je combine mes compétences
+              en développement avec une approche data-driven pour créer des
+              applications intelligentes et performantes. Ma double expertise en
+              développement et en data science me permet d'apporter une vision
+              globale aux projets sur lesquels je travaille.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-8">
+              <span class="tech-badge">Flutter</span>
+              <span class="tech-badge">Symfony</span>
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">Firebase</span>
+              <span class="tech-badge">PHP 8</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">MongoDB</span>
             </div>
-            <span class="about-img2 animate-me"></span>
+          </div>
+          <div class="md:w-1/2 slide-in">
+            <h3 class="text-2xl font-semibold mb-6">Formation</h3>
+            <div class="timeline">
+                 <div class="timeline-item">
+                <h4 class="text-lg font-medium">Certifications Google Advanced Data Analytics Professional</h4>
+                <p class="text-gray-400">2025 Google | Coursera Paris</p>
+                <ul class="list-disc list-inside text-sm text-gray-500 mt-1">
+                  Data Analysis
+Data Ethics
+Data Manipulation
+Descriptive Statistics
+Data Storytelling
+Regression Analysis
+Tableau Software
+Statistical Hypothesis Testing
+Data Presentation
+Sampling (Statistics)
+Exploratory Data Analysis
+Object Oriented Programming (OOP)
+                  
+                </ul>
+              </div>
+              <div class="timeline-item">
+
+                <h4 class="text-lg font-medium">Certifications IBM Data Analyst Professional</h4>
+                <p class="text-gray-400">2025 Google | Coursera Paris</p>
+                <ul class="list-disc list-inside text-sm text-gray-500 mt-1">
+                  Professional Networking,Data Analysis,Generative AI
+Data Manipulation
+Data Storytelling
+Plotly
+SQL
+Data Cleansing
+Jupyter
+Exploratory Data Analysis
+Pandas (Python Package)
+Matplotlib
+                </ul>
+              </div>
+              <div class="timeline-item">
+                <h4 class="text-lg font-medium">Master Big Data & IA</h4>
+                <p class="text-gray-400">IPSSI Paris | 2025 - 2027</p>
+                <p class="text-sm text-gray-500 mt-1">
+                  Spécialisation en analyse de données et intelligence
+                  artificielle
+                </p>
+              </div>
+              <div class="timeline-item">
+                <h4 class="text-lg font-medium">
+                  Bachelor Développement Fullstack & DevOps
+                </h4>
+                <p class="text-gray-400">Paris | 2024 - 2025</p>
+                <p class="text-sm text-gray-500 mt-1">
+                  Formation complète en développement web et mobile avec
+                  spécialisation DevOps
+                </p>
+              </div>
+              <div class="timeline-item">
+                <h4 class="text-lg font-medium">Diplôme en Génie Logiciel</h4>
+                <p class="text-gray-400">Togo | 2020 - 2023</p>
+                <p class="text-sm text-gray-500 mt-1">
+                  Formation complète axée sur le développement web et mobile, les mathématiques appliquées, les statistiques et la conception de systèmes logiciels. Acquisition de bases solides en algorithmique, architecture logicielle, gestion de bases de données et programmation orientée objet.
+                </p>
+              </div>
+             
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-    <!-- ======================================= 
-        ==End about section==  
-    =======================================-->
-    
-    
-    <!-- ======================================= 
-        ==Start Portfolio section==  
-    =======================================-->
-    <section class="section portfolio-section">
-  <div class="overlay"></div>
-  <img src="images/portfolio-shape.png" alt="shape" class="shape">
-  <h2 class="section-title">Mes PROJETS</h2>
-  <div class="container">
-    <div class="portfolio-grid">
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center mb-16 slide-in">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes compétences</h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
+          <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
+            Un ensemble de compétences techniques diversifiées me permettant de
+            développer des applications complètes et performantes.
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+        >
+          <!-- Mobile Development -->
+          <div class="card p-6 rounded-lg slide-in">
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mb-6"
+            >
+              <i class="ri-smartphone-line text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Développement Mobile</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">Flutter</span>
+                  <span class="text-xs text-gray-400">95%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 95%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">Firebase</span>
+                  <span class="text-xs text-gray-400">90%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 90%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">Dart</span>
+                  <span class="text-xs text-gray-400">92%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 92%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Web Development -->
+          <div class="card p-6 rounded-lg slide-in">
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mb-6"
+            >
+              <i class="ri-code-s-slash-line text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Développement Web</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">Symfony</span>
+                  <span class="text-xs text-gray-400">88%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 88%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">React</span>
+                  <span class="text-xs text-gray-400">85%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 85%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">Node.js</span>
+                  <span class="text-xs text-gray-400">80%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Backend Development -->
+          <div class="card p-6 rounded-lg slide-in">
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mb-6"
+            >
+              <i class="ri-database-2-line text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Backend</h3>
+            <div class="space-y-4">
+            
+            <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">Python</span>
+                  <span class="text-xs text-gray-400">90%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 98%"></div>
+                </div>
+              </div>
+                
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">PHP 8</span>
+                  <span class="text-xs text-gray-400">98%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 90%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">Flask</span>
+                  <span class="text-xs text-gray-400">75%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">MySQL/MongoDB</span>
+                  <span class="text-xs text-gray-400">85%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- DevOps -->
+          <div class="card p-6 rounded-lg slide-in">
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mb-6"
+            >
+              <i class="ri-server-line text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">DevOps</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">Docker</span>
+                  <span class="text-xs text-gray-400">85%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 85%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">GitHub Actions</span>
+                  <span class="text-xs text-gray-400">80%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 80%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium">CI/CD</span>
+                  <span class="text-xs text-gray-400">78%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 78%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <!-- Projects Section -->
+<section id="projects" class="py-20 bg-[#151515] relative">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-16 slide-in">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes projets</h2>
+      <div class="w-20 h-1 bg-primary mx-auto"></div>
+      <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
+        Découvrez une sélection de mes réalisations récentes dans le
+        développement mobile et web.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 slide-in">
 
+      <!-- Project 1 -->
+      <div class="project-card rounded-lg overflow-hidden">
+        <img src="images/transcorre(1)(1).png" alt="Text-to-Speech avec IA" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Text-to-Speech avec IA</h3>
+          <div class="flex flex-wrap mb-4">
+            <span class="tech-badge">Flutter</span>
+            <span class="tech-badge">Firebase</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">
+            Application Flutter avec synthèse vocale intégrée et interaction IA.
+          </p>
+          <a href="https://github.com/Yohannkp/application_translate_flutter" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+        </div>
+      </div>
 
+      <!-- Project 2 -->
+      <div class="project-card rounded-lg overflow-hidden">
+        <img src="images/Rectangle-3.png" alt="AUTO-ECOLE EN LIGNE" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">AUTO-ECOLE EN LIGNE</h3>
+          <div class="flex flex-wrap mb-4">
+            <span class="tech-badge">Symfony</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">
+            Réservation en ligne de cours de conduite avec interface web intuitive.
+          </p>
+          <a href="https://github.com/Yohannkp/AUTO_ECOLE" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+        </div>
+      </div>
 
-      <!-- Tu peux dupliquer ce bloc pour chaque projet -->
+      <!-- Project 3 -->
+      <div class="project-card rounded-lg overflow-hidden">
+        <img src="images/OIP (3).jpg" alt="Site Flask" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Site Flask</h3>
+          <div class="flex flex-wrap mb-4">
+            <span class="tech-badge">Flask</span>
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">SQLite</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">
+            Backend léger en Flask avec base de données SQLite.
+          </p>
+          <a href="https://github.com/Yohannkp/Site_Flask" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card rounded-lg overflow-hidden">
+        <img src="images/project-5.jpg" alt="Application FastFood" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Application FastFood</h3>
+          <div class="flex flex-wrap mb-4">
+            <span class="tech-badge">Symfony</span>
+            <span class="tech-badge">MySQL</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">
+            Application de gestion de plats en fast-food avec CRUD complet.
+          </p>
+          <a href="https://github.com/Yohannkp/Chililoco" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card rounded-lg overflow-hidden">
+        <img src="images/4251115-systeme-de-gestion-de-fichiers-et-information-illustrationle-avec-archives-de-dossiers-ou-service-en-ligne-pour-stockage-et-organisation-de-documents-vectoriel.jpg" alt="API de Gestion de Fichiers" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">API de Gestion de Fichiers</h3>
+          <div class="flex flex-wrap mb-4">
+            <span class="tech-badge">Symfony</span>
+            <span class="tech-badge">MySQL</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">
+            API sécurisée pour gérer les fichiers, l'espace disque et les utilisateurs.
+          </p>
+          <a href="https://github.com/Batyeste/CloudUs/tree/back" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card rounded-lg overflow-hidden">
+        <img src="images/docker.jpg" alt="Projet Docker-K8s" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Projet Docker-K8s</h3>
+          <div class="flex flex-wrap mb-4">
+            <span class="tech-badge">Docker</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">
+            Architecture web multi-conteneurs avec Docker & Kubernetes.
+          </p>
+          <a href="https://github.com/Yohannkp/Groupe-12-TP-docker" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+        </div>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="project-card rounded-lg overflow-hidden">
+        <img src="images/Capture d'écran 2025-05-22 122054.png" alt="Le Bon Coin - Clone MERN Stack" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Le Bon Coin - Clone</h3>
+          <div class="flex flex-wrap mb-4">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Express</span>
+            <span class="tech-badge">MongoDB</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">
+            Marketplace MERN avec authentification et gestion d’annonces.
+          </p>
+          <a href="https://github.com/Yohannkp/React-MERN-Project" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+        </div>
+      </div>
+
+      <!-- Project 8 -->
+      <div class="project-card rounded-lg overflow-hidden">
+        <img src="images/Capture d'écran 2025-05-23 151552.png" alt="Product App" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Product App</h3>
+          <div class="flex flex-wrap mb-4">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Express</span>
+            <span class="tech-badge">MongoDB</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">
+            Application CRUD sécurisée avec gestion utilisateur et filtres produits.
+          </p>
+          <a href="https://github.com/fayesarah555/tp-groupe-mern-.git" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+        </div>
+      </div>
 
     </div>
   </div>
 </section>
 
-    <!-- ======================================= 
-        ==End Portfolio section==  
-    =======================================-->
-    
-    
-    <!-- ======================================= 
-        ==Start Skill section==  
-    =======================================-->
- 
-
-    <section class="section skill-section">
-        <div class="container">
-            <h2 class="section-title">Mes Compétences</h2>
-            
-            <div class="skill-wrapper" id="me-working-skill">
-                <span class="vertical-line"></span>
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">HTML, CSS</span></h3>
-                    <p class="description">Maîtrise des bases du développement web pour créer des interfaces modernes, responsives et accessibles.</p>
-                </div>
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">Angular</span></h3>
-                    <p class="description">Développement d'applications web performantes avec Angular, en utilisant une architecture basée sur des composants et des services.</p>
-                </div>
-                
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">Python</span></h3>
-                    <p class="description">Maîtrise de Python pour des applications web, scripts automatisés et projets de data science.</p>
-                </div>
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">Vue.js</span></h3>
-                    <p class="description">Création d'interfaces utilisateur interactives avec Vue.js, en utilisant une approche modulaire et réactive.</p>
-                </div>
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">PHP</span></h3>
-                    <p class="description">Développement côté serveur avec PHP pour gérer des bases de données et créer des fonctionnalités dynamiques.</p>
-                </div>
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">Symfony</span></h3>
-                    <p class="description">Utilisation de Symfony pour développer des applications web robustes et maintenables.</p>
-                </div>
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">JavaScript</span></h3>
-                    <p class="description">Création d'interfaces utilisateur dynamiques et interactives avec JavaScript pur et ses bibliothèques.</p>
-                </div>
-                
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">Django</span></h3>
-                    <p class="description">Création d'applications web performantes et sécurisées avec Django, en utilisant Python.</p>
-                </div>
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">Java</span></h3>
-                    <p class="description">Développement d'applications robustes et orientées objet avec Java pour des projets variés.</p>
-                </div>
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">Flutter</span></h3>
-                    <p class="description">Création d'applications mobiles multiplateformes avec Flutter, en offrant des expériences utilisateurs fluides.</p>
-                </div>
-                <div class="single-skill animate-me">
-                    <span class="rectengle"></span>
-                    <h3><span class="title">Dart</span></h3>
-                    <p class="description">Pour la création d'application mobile</p>
-                </div>
-            </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center mb-16 slide-in">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
+          <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
+            Vous avez un projet en tête ? N'hésitez pas à me contacter pour
+            discuter de votre idée.
+          </p>
         </div>
-    </section>
-    <!-- ======================================= 
-        ==End Skill section==  
-    =======================================-->
-    
-    
-    <!-- ======================================= 
-        ==Start Service section==  
-    =======================================-->
-    <!-- <section class="section service-section pos-relative">
-        <h2 class="section-title">Live Coding</h2>
-        <div class="container">
-            <div class="service-wrapper" id="home2-service">
-                <div class="single-service pos-relative">
-                    <video autoplay loop muted class="service-video">
-                        <source src="videos/ui-ux.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="service-text">
-                        <h2>UI/UX Design</h2>
-                        <p>Sed eget sodales tellus. In maxim velit nec euismod vehicul Fusceblan sapien pretium eros faucibus lobortis a sit amet leo. Duis erat .</p>
-                    </div>
+        <div class="flex flex-col md:flex-row gap-10 md:gap-16">
+            <div class="md:w-1/2 slide-in">
+            <div class="card p-8 rounded-lg h-full">
+                <h3 class="text-2xl font-semibold mb-6">
+                Envoyez-moi un message
+                </h3>
+                <form id="contact-form">
+                <div class="mb-6">
+                    <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-400 mb-2"
+                    >Nom complet</label
+                    >
+                    <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-3 rounded border-none focus:ring-2 focus:ring-primary"
+                    placeholder="Votre nom"
+                    required
+                    />
                 </div>
-                
-                <div class="single-service pos-relative">
-                    <video autoplay loop muted class="service-video">
-                        <source src="images/yendi-aharh-on-linkedin-coding-flutter-appdevelopment-uiux-fastfoodapp-developerexperience….mp4" style="font-size: 9000px;" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="service-text">
-                        <h2>Wordpress Theme Development</h2>
-                        <p>Sed eget sodales tellus. In maxim velit nec euismod vehicul Fusceblan sapien pretium eros faucibus lobortis a sit amet leo. Duis erat .</p>
-                    </div>
+                <div class="mb-6">
+                    <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-400 mb-2"
+                    >Email</label
+                    >
+                    <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-3 rounded border-none focus:ring-2 focus:ring-primary"
+                    placeholder="votre@email.com"
+                    required
+                    />
                 </div>
-                
-                <div class="single-service pos-relative">
-                    <video autoplay loop muted class="service-video">
-                        <source src="images/yendi-aharh-on-linkedin-design-uxui-flutter-développementmobile-programmation-tech….mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="service-text">
-                        <h2>Woocommerce Theme Development</h2>
-                        <p>Sed eget sodales tellus. In maxim velit nec euismod vehicul Fusceblan sapien pretium eros faucibus lobortis a sit amet leo. Duis erat .</p>
-                    </div>
+                <div class="mb-6">
+                    <label
+                    for="message"
+                    class="block text-sm font-medium text-gray-400 mb-2"
+                    >Message</label
+                    >
+                    <textarea
+                    id="message"
+                    rows="5"
+                    class="w-full px-4 py-3 rounded border-none focus:ring-2 focus:ring-primary"
+                    placeholder="Votre message..."
+                    required
+                    ></textarea>
                 </div>
-                
-                <div class="single-service pos-relative">
-                    <video autoplay loop muted class="service-video">
-                        <source src="images/yendi-aharh-on-linkedin-speedcoding-coding-flutter-androidstudio-code-dart-speedcoding.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="service-text">
-                        <h2>Website Bug Fixing</h2>
-                        <p>Sed eget sodales tellus. In maxim velit nec euismod vehicul Fusceblan sapien pretium eros faucibus lobortis a sit amet leo. Duis erat .</p>
-                    </div>
-                </div>
+                <button
+                    type="submit"
+                    class="w-full bg-primary hover:bg-opacity-80 text-white px-6 py-3 !rounded-button text-base font-medium flex items-center justify-center whitespace-nowrap"
+                    style="text-decoration: none;"
+                >
+                    <i class="ri-send-plane-line mr-2"></i> Envoyer le message
+                </button>
+                </form>
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const contactForm = document.getElementById("contact-form");
+                    contactForm.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById("name").value;
+                    const email = document.getElementById("email").value;
+                    const message = document.getElementById("message").value;
+                    if (!name || !email || !message) {
+                        alert("Veuillez remplir tous les champs.");
+                        return;
+                    }
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert("Veuillez entrer une adresse email valide.");
+                        return;
+                    }
+                    // Génère le mailto avec la précision client portfolio
+                    const subject = encodeURIComponent("Contact Portfolio de " + name);
+                    const body = encodeURIComponent(
+                        "Ce message provient d'un client via votre portfolio.\n\nNom: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message
+                    );
+                    window.location.href =
+                        "mailto:yendiyohann@gmail.com?subject=" + subject + "&body=" + body;
+                    });
+                });
+                </script>
             </div>
-            <span class="service2-paging-status"></span>
-        </div>
-    </section> -->
-
-
-    <section class="section portfolio-section">
-        <div class="overlay"></div>
-        <img src="images/portfolio-shape.png" alt="shape" class="shape" data-enllax-ratio="0.5" data-enllax-type="foreground">
-        <h2 class="section-title">LIVE CODING</h2>
-        <div class="container">
-            <div class="portfolio-wrapper"> 
-                <div class="portfolio-img" id="mobile-2">
-
-                    
-
-                    
-
-                     <div class="img-area">
-                        <video autoplay loop muted controls class="service-video" width="100%" style="margin-left: auto ; margin-right: auto;" height="500" >
-                            <source src="images/yendi-aharh-on-linkedin-coding-flutter-appdevelopment-uiux-fastfoodapp-developerexperience….mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                       
-                    </div>
-
-                    <div class="img-area">
-                        <video autoplay loop muted controls class="service-video" width="100%" style="margin-left: auto ; margin-right: auto;" height="500" >
-                            <source src="images/yendi-aharh-on-linkedin-design-uxui-flutter-développementmobile-programmation-tech….mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                       
-                    </div>
-
-                    <div class="img-area">
-                        <video autoplay loop muted controls class="service-video" width="100%" height="500" style="margin-left: auto ; margin-right: auto;">
-                            <source src="images/yendi-aharh-on-linkedin-speedcoding-coding-flutter-androidstudio-code-dart-speedcoding.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                       
-                    </div>
-
-                     
-                    
-                </div>
-                
-
-
-                <div class="portfolio-content-wrapper">
-
-                    <div class="portfolio-content">
-                        <span class="portfolio-type">Application mobile</span>
-                        <h2>Food Delivery</h2>
-                        <p>Developpement en live d'une application de livraison de nourriture</p>
-                
-                    </div>
-
-                    <div class="portfolio-content">
-                        <span class="portfolio-type">Application mobile</span>
-                        <h2>Interface de vente de vêtement (Inspiré de Vinted) </h2>
-                        <p>Montre comment je passe d'une idée au concret</p>
-                       
-                    </div>
-
-                    <div class="portfolio-content">
-                        <span class="portfolio-type">Application Mobile</span>
-                        <h2>Car App</h2>
-                        <p>Developpement en live d'un CARS App.Démontre mon processus de Developpement ainsi que les petites erreurs que je commet et comment je les regle</p>
-                        
-                    </div>
-                    
-                </div>
-                <span class="portfolio-paging-status"></span>
             </div>
-        </div>
-    </section>
-    
-    <!-- ======================================= 
-        ==End Service section==  
-    =======================================-->
-    
-    
-    <!-- ======================================= 
-        ==Start Testimonial section==  
-    =======================================-->
-
-    <!-- ======================================= 
-        ==End Testimonial section==  
-    =======================================-->
-    
-    
-    <!-- ======================================= 
-        ==Start Blog section==  
-    =======================================-->
-    <section class="section blog-section">
-       <img src="images/blog-ellipse.png" alt="" class="ellipse">
-        <div class="container">
-           <h2 class="section-title">Mes autres projets</h2>
-            <div class="blog-wrapper">
-                <div class="single-blog title">
-                    <h2 class="animate-me">Mes projets</h2>
-                    
-                </div>
-                
-                <div class="single-blog animate-me">
+            <div class="md:w-1/2 slide-in">
+            <div class="card p-8 rounded-lg mb-8">
+                <h3 class="text-2xl font-semibold mb-6">
+                Informations de contact
+                </h3>
+                <div class="space-y-6">
+                <div class="flex items-start">
+                    <div
+                    class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mr-4"
+                    >
+                    <i class="ri-map-pin-line text-xl text-primary"></i>
+                    </div>
                     <div>
-                        <a href="https://github.com/Yohannkp/shoes-app" class="featured-img"><img src="images/ce0521d7-ab0d-4cfd-aae4-8fbee5429448.jpg" alt="featured img"></a>
-                        <div class="post-title">
-                            <h3><a href="https://github.com/Yohannkp/shoes-app">Interface Application de vente de chaussures avec flutter</a></h3>
-                        </div>
-                    </div>
-                    <div class="like-comment">
-                        <a href="https://github.com/Yohannkp/shoes-app" class="read-more">
-                            <img src="images/arrow-right-white.png" alt="arrow">
-                        </a>
-                        
-                        
+                    <h4 class="text-lg font-medium mb-1">Localisation</h4>
+                    <p class="text-gray-400">Paris, France</p>
                     </div>
                 </div>
-                
-                <div class="single-blog animate-me">
+                <div class="flex items-start">
+                    <div
+                    class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mr-4"
+                    >
+                    <i class="ri-mail-line text-xl text-primary"></i>
+                    </div>
                     <div>
-                        <a href="https://github.com/Yohannkp/yummly" class="featured-img"><img src="images/design app cuisine.jpg" alt="featured img"></a>
-                        <div class="post-title">
-                            <h3><a href="https://github.com/Yohannkp/yummly">Interface d'une application de cuisine</a></h3>
-                        </div>
-                    </div>
-                    <div class="like-comment">
-                        <a href="https://github.com/Yohannkp/yummly" class="read-more">
-                            <span>
-                                <img src="images/arrow-right-white.png" alt="arrow">
-                            </span>
-                        </a>
-                        
-                        
+                    <h4 class="text-lg font-medium mb-1">Email</h4>
+                    <p class="text-gray-400">yendiyohann@gmail.com</p>
                     </div>
                 </div>
-                
-                <div class="single-blog animate-me">
+                <div class="flex items-start">
+                    <div
+                    class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mr-4"
+                    >
+                    <i class="ri-smartphone-line text-xl text-primary"></i>
+                    </div>
                     <div>
-                        <a href="https://github.com/Yohannkp/flutter_python" class="featured-img"><img src="images/flutter_python.png" alt="featured img"></a>
-                        <div class="post-title">
-                            <h3><a href="https://github.com/Yohannkp/flutter_python">Code python permettant de faire le CRUD d'une application flutter et Firebase suivant l'architechture MVC</a></h3>
-                        </div>
-                    </div>
-                    <div class="like-comment">
-                        <a href="https://github.com/Yohannkp/flutter_python" class="read-more">
-                            <span>
-                                <img src="images/arrow-right-white.png" alt="arrow">
-                            </span>
-                        </a>
-                        
-                        
+                    <h4 class="text-lg font-medium mb-1">Téléphone</h4>
+                    <p class="text-gray-400">+33 6 45 86 35 33</p>
                     </div>
                 </div>
+                </div>
+            </div>
+            <div class="card p-8 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-6">Réseaux sociaux</h3>
+                <div class="flex flex-wrap gap-4">
+                <a
+                    href="https://github.com/Yohannkp"
+                    class="social-icon w-12 h-12 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded-lg text-gray-300"
+                >
+                    <i class="ri-github-fill text-xl"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/yendi-aharh-data-scientist-alternance-paris-contrat-apprentissage-dataanalyst-datascientist-data/"
+                    class="social-icon w-12 h-12 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded-lg text-gray-300"
+                >
+                    <i class="ri-linkedin-fill text-xl"></i>
+                </a>
+                </div>
+                <div class="mt-8">
+                <a
+                    href="#"
+                    class="bg-transparent border border-primary text-primary hover:bg-primary hover:bg-opacity-10 px-6 py-3 !rounded-button text-base font-medium flex items-center w-full justify-center whitespace-nowrap"
+                >
+                    <i class="ri-download-line mr-2"></i> Télécharger mon CV
+                </a>
+                </div>
+            </div>
             </div>
         </div>
+      </div>
     </section>
-    <!-- ======================================= 
-        ==End Blog section==  
-    =======================================-->
-    
-    
-    <!-- ======================================= 
-        ==Start Instagram section==  
-    =======================================-->
-    <!-- ======================================= 
-        ==End Instagram section==  
-    =======================================-->
-    
-    <!-- ======================================= 
-        ==Start Contact section==  
-    =======================================-->
-    <section class="section footer-area">
-        <div class="contact-section">
-            <div class="container">
-                <div class="section-title">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope-open-text" class="svg-inline--fa fa-envelope-open-text fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M176 216h160c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16H176c-8.84 0-16 7.16-16 16v16c0 8.84 7.16 16 16 16zm-16 80c0 8.84 7.16 16 16 16h160c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16H176c-8.84 0-16 7.16-16 16v16zm96 121.13c-16.42 0-32.84-5.06-46.86-15.19L0 250.86V464c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V250.86L302.86 401.94c-14.02 10.12-30.44 15.19-46.86 15.19zm237.61-254.18c-8.85-6.94-17.24-13.47-29.61-22.81V96c0-26.51-21.49-48-48-48h-77.55c-3.04-2.2-5.87-4.26-9.04-6.56C312.6 29.17 279.2-.35 256 0c-23.2-.35-56.59 29.17-73.41 41.44-3.17 2.3-6 4.36-9.04 6.56H96c-26.51 0-48 21.49-48 48v44.14c-12.37 9.33-20.76 15.87-29.61 22.81A47.995 47.995 0 0 0 0 200.72v10.65l96 69.35V96h320v184.72l96-69.35v-10.65c0-14.74-6.78-28.67-18.39-37.77z"></path></svg>
-                    <h2>CONTACT</h2>
-                </div>
-
-                <div class="content-wrapper">
-                    <div class="address-area">
-                        <address>
-                            <span class="label address-label animate-me">Addresse :</span>
-                            <p class="address animate-me">Rue Andre Lalande Evry, 91000</p>
-                            <span class="label email-label animate-me">E-mail :</span>
-                            <a href="#" class="email animate-me"><span class="__cf_email__" data-cfemail="4c3523393e61212d25200c2b212d2520622f2321">yendiyohann@gmail.com</span></a>
-                        </address>
-                    </div>
-
-                    <div class="contact-form">
-                        <form id="contactForm">
-                            <div class="input-group name animate-me">
-                                <label for="name">Nom *</label>
-                                <input type="text" name="name" id="nom" placeholder="Votre Nom">
-                            </div>
-
-                            <div class="input-group email animate-me">
-                                <label for="email">Email *</label>
-                                <input type="email" name="email" id="email" placeholder="Votre Email">
-                            </div>
-
-                            <div class="input-group msg animate-me">
-                                <label for="message">Message *</label>
-                                <textarea name="message" id="message" cols="30" rows="10" placeholder="Ecrivez votre message"></textarea>
-                            </div>
-
-                            <div class="input-group submit animate-me">
-                                <button type="button" id="button_contact" onclick="envoyerForm()">Envoyer</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    <!-- Footer -->
+    <footer class="py-10 bg-[#0a0a0a] relative">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary">YY</a>
+            <p class="text-gray-500 mt-2">
+              © 2025 Yohann Yendi. Tous droits réservés.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a href="#about" class="text-gray-400 hover:text-primary text-sm"
+              >À propos</a
+            >
+            <a href="#skills" class="text-gray-400 hover:text-primary text-sm"
+              >Compétences</a
+            >
+            <a href="#projects" class="text-gray-400 hover:text-primary text-sm"
+              >Projets</a
+            >
+            <a href="#contact" class="text-gray-400 hover:text-primary text-sm"
+              >Contact</a
+            >
+          </div>
         </div>
-        
-        <footer class="footer-section">
-            <div class="container">
-                <div class="footer-content">
-                   
-                    
-                    <ul class="social-icon">
-                       
-                        
-                        <li class="linkedin">
-                            <a href="https://www.linkedin.com/in/yendi-aharh-a9b2992a8/" title="Linkedin" target="_blank">
-                                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in" class="svg-inline--fa fa-linkedin-in fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                    <path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
-                                </svg>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    </section>
-    <!-- ======================================= 
-        ==End Contact section==  
-    =======================================-->
+      </div>
+    </footer>
+    <!-- Back to top button -->
+    <div class="back-to-top" id="back-to-top">
+      <i class="ri-arrow-up-line"></i>
     </div>
-
-
-    <!-- ======================================= 
-        ==Start scroll top==  
-    =======================================-->
-    <div class="scroll-top not-visible">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-up" class="svg-inline--fa fa-angle-up fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"></path></svg>
-    </div>
-    <!-- =======================================
-        ==End scroll top==  
-    =======================================-->
-
-    <!-- jQuary library -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-3.2.1.min.js"></script>
-    
-    <!-- waypoint -->
-    <script src="js/waypoint.js"></script>
-    
-    <!-- slick carousel -->
-    <script src="js/slick.min.js"></script>
-    
-    <!-- fullpage js -->
-    <script src="js/fullpage.min.js"></script>
-    <script src="js/easings.min.js"></script>
-
-    <!-- all jQuary activation code here and always it will be bottom of all script tag -->
-    <script src="js/main-2.js"></script>
-
-    <script>
-        // Fonction pour vérifier si on est sur un écran mobile
-function isMobileScreen() {
-  return window.innerWidth <= 768; // Généralement, 768px est utilisé comme limite pour les écrans mobiles
-}
-
-// Fonction pour ajuster la taille de l'image
-function adjustImageSize() {
-  const image = document.getElementById("mobile"); // Remplacez "responsive-image" par l'ID de votre image
-  
-  if (image) {
-    if (isMobileScreen()) {
-        
-      image.style.width = "100%"; // Ajuste la largeur à 100% de l'écran
-      image.style.height = "auto"; // Garde le ratio d'aspect
-    } else {
-      image.style.width = "500px"; // Largeur par défaut pour les écrans non mobiles
-      image.style.height = "auto"; // Garde le ratio d'aspect
-    }
-  }
-}
-
-function envoyerForm() {
-    document.getElementById("button_contact").addEventListener("click", function(event) {
-            event.preventDefault(); // Empêche le rechargement de la page
-
-            const recipient = "yendiyohann@gmail.com"
-            const nom = document.getElementById("nom").value;
-            const email = document.getElementById("email").value;
-            const message = document.getElementById("message").value;
-            const subjet = "Prise de contact"
-            // Encodez les valeurs pour éviter des problèmes avec les caractères spéciaux
-            const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subjet)}&body=${encodeURIComponent(message)}`;
-
-            // Ouvrir le client de messagerie par défaut de l'utilisateur
-            window.location.href = mailtoLink;
+    <!-- Scripts -->
+    <script id="navigation-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobile-menu");
+        hamburger.addEventListener("click", function () {
+          hamburger.classList.toggle("open");
+          mobileMenu.classList.toggle("open");
         });
-}
-
-
-// Fonction pour ajuster la taille de la div
-function adjustDivSize() {
-    const recommandation = document.getElementById("recommandation"); // Remplacez "responsive-div" par l'ID de votre div
-  const transcorre = document.getElementById("transcorre"); // Remplacez "responsive-div" par l'ID de votre div
-  const chili1 = document.getElementById("chili1"); // Remplacez "responsive-div" par l'ID de votre div
-  const rectengle = document.getElementById("rectengle"); // Remplacez "responsive-div" par l'ID de votre div
-  const Rectangle_noraf = document.getElementById("Rectangle_noraf"); // Remplacez "responsive-div" par l'ID de votre div
-  const sos1 = document.getElementById("sos1"); // Remplacez "responsive-div" par l'ID de votre div
-  const text_mobile = document.querySelector(".text-mobile"); // Remplacez "responsive-div" par l'ID de votre div
-  
-
-  if(isMobileScreen()){
-    const divgé = document.getElementById("mobile");
-    const divgé2 = document.getElementById("mobile-2");
-    divgé.style.height = "50px";
-    divgé2.style.height = "300px";
-    if (text_mobile) {
-        text_mobile.style.setProperty('color', color, 'important');
-
-        text_mobile.style.color = "red"; // Change la couleur du texte
-  }
-  }
-
-  if (transcorre) {
-    if (isMobileScreen()) {
-        transcorre.style.width = "80%"; // Ajuste la largeur à 100% de l'écran
-        transcorre.style.height = "400px"; // Ajuste la hauteur automatiquement
-    } else {
-        transcorre.style.height="700px";
-        transcorre.style.marginLeft="auto";
-        transcorre.style.marginRight="auto";
-        }
-  }
-
-  if (chili1) {
-    if (isMobileScreen()) {
-        chili1.style.width = "100%"; // Ajuste la largeur à 100% de l'écran
-        chili1.style.height = "400px"; 
-        chili1.style.marginTop = "0px"// Ajuste la hauteur automatiquement
-    } else {
-        }
-  }
-
-
-  if (rectengle) {
-    if (isMobileScreen()) {
-        rectengle.style.width = "100%"; // Ajuste la largeur à 100% de l'écran
-        rectengle.style.height = "400px";
-        rectengle.style.marginTop = "0px"; // Ajuste la hauteur automatiquement
-    } else {
-        // Hauteur par défaut pour les écrans non mobiles
-        rectengle.style.width = "100%"; // Ajuste la largeur à 100% de l'écran
-        rectengle.style.height = "700px";
-        rectengle.style.marginTop = "-150px";
-    }
-  }
-
-
-  if (recommandation) {
-    if (isMobileScreen()) {
-        
-        recommandation.style.marginTop = "auto"; // Ajuste la hauteur automatiquement
-        recommandation.style.marginBottom = "auto"; // Ajuste la hauteur automatiquement
-    } else {
-        
-    }
-  }
-
-
-  if (Rectangle_noraf) {
-    if (isMobileScreen()) {
-        Rectangle_noraf.style.width = "100%"; // Ajuste la largeur à 100% de l'écran
-        Rectangle_noraf.style.height = "400px"; // Ajuste la hauteur automatiquement
-    } else {
-        // Hauteur par défaut pour les écrans non mobiles
-    }
-  }
-
-  if (sos1) {
-    if (isMobileScreen()) {
-        sos1.style.width = "200%"; // Ajuste la largeur à 100% de l'écran
-        sos1.style.height = "400px"; // Ajuste la hauteur automatiquement
-    } else {
-        // Hauteur par défaut pour les écrans non mobiles
-    }
-  }
-
-
- 
-
-
-}
-
-// Écouteur pour ajuster la taille lors du chargement de la page ou du redimensionnement
-window.addEventListener("load", adjustDivSize);
-window.addEventListener("resize", adjustDivSize);
-
-
-
-
-
-
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            hamburger.classList.remove("open");
+            mobileMenu.classList.remove("open");
+          });
+        });
+        // Smooth scroll for navigation links
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            if (this.getAttribute("href") !== "#") {
+              e.preventDefault();
+              const targetId = this.getAttribute("href");
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                window.scrollTo({
+                  top: targetElement.offsetTop - 80,
+                  behavior: "smooth",
+                });
+              }
+            }
+          });
+        });
+        // Active link on scroll
+        const sections = document.querySelectorAll("section[id]");
+        window.addEventListener("scroll", function () {
+          let current = "";
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 100) {
+              current = section.getAttribute("id");
+            }
+          });
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+              link.classList.add("active");
+            }
+          });
+        });
+      });
     </script>
-</body>
+    <script id="scroll-animations-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        // Scroll animations
+        const slideInElements = document.querySelectorAll(".slide-in");
+        function checkSlide() {
+          slideInElements.forEach((element) => {
+            // Half way through the element
+            const slideInAt =
+              window.scrollY + window.innerHeight - element.clientHeight / 2;
+            // Bottom of the element
+            const elementBottom = element.offsetTop + element.clientHeight;
+            const isHalfShown = slideInAt > element.offsetTop;
+            const isNotScrolledPast = window.scrollY < elementBottom;
+            if (isHalfShown && isNotScrolledPast) {
+              element.classList.add("active");
+            }
+          });
+        }
+        // Run checkSlide initially
+        checkSlide();
+        // Run checkSlide on scroll
+        window.addEventListener("scroll", checkSlide);
+        // Back to top button
+        const backToTopButton = document.getElementById("back-to-top");
+        function toggleBackToTopButton() {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.add("visible");
+          } else {
+            backToTopButton.classList.remove("visible");
+          }
+        }
+        window.addEventListener("scroll", toggleBackToTopButton);
+        backToTopButton.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+    <script id="projects-slider-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        // Simple Swiper implementation
+        const swiper = document.getElementById("projects-swiper");
+        if (!swiper) return;
 
+        const swiperWrapper = swiper.querySelector(".swiper-wrapper");
+        const slides = swiper.querySelectorAll(".swiper-slide");
+        const prevButton = swiper.querySelector(".swiper-button-prev");
+        const nextButton = swiper.querySelector(".swiper-button-next");
+        const pagination = swiper.querySelector(".swiper-pagination");
+
+        // Check if required elements exist
+        if (
+          !swiperWrapper ||
+          !slides.length ||
+          !prevButton ||
+          !nextButton ||
+          !pagination
+        )
+          return;
+
+        let currentIndex = 0;
+        const slidesPerView =
+          window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+        const slideWidth = 100 / slidesPerView;
+        const totalSlides = slides.length;
+        // Set initial styles
+        slides.forEach((slide) => {
+          slide.style.width = `${slideWidth}%`;
+        });
+        // Create pagination bullets
+        function createPaginationBullets() {
+          if (!pagination) return;
+          pagination.innerHTML = ""; // Clear existing bullets
+          for (let i = 0; i < totalSlides - slidesPerView + 1; i++) {
+            const bullet = document.createElement("div");
+            bullet.classList.add("swiper-pagination-bullet");
+            if (i === 0) bullet.classList.add("swiper-pagination-bullet-active");
+            bullet.addEventListener("click", () => {
+              goToSlide(i);
+            });
+            pagination.appendChild(bullet);
+          }
+        }
+        // Initialize pagination after DOM is loaded
+        createPaginationBullets();
+        // Update active bullet
+        function updatePagination() {
+          const bullets = pagination.querySelectorAll(".swiper-pagination-bullet");
+          bullets.forEach((bullet, index) => {
+            if (index === currentIndex) {
+              bullet.classList.add("swiper-pagination-bullet-active");
+            } else {
+              bullet.classList.remove("swiper-pagination-bullet-active");
+            }
+          });
+        }
+        // Go to specific slide
+        function goToSlide(index) {
+          if (index < 0) {
+            index = 0;
+          } else if (index > totalSlides - slidesPerView) {
+            index = totalSlides - slidesPerView;
+          }
+          currentIndex = index;
+          swiperWrapper.style.transform = `translateX(-${index * slideWidth}%)`;
+          updatePagination();
+        }
+        // Next slide
+        nextButton.addEventListener("click", () => {
+          goToSlide(currentIndex + 1);
+        });
+        // Previous slide
+        prevButton.addEventListener("click", () => {
+          goToSlide(currentIndex - 1);
+        });
+        // Handle resize
+        window.addEventListener("resize", () => {
+          const newSlidesPerView =
+            window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+          if (newSlidesPerView !== slidesPerView) {
+            location.reload();
+          }
+        });
+        // Touch events for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        swiper.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+        swiper.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        });
+        function handleSwipe() {
+          const difference = touchStartX - touchEndX;
+          if (difference > 50) {
+            // Swipe left, go to next slide
+            goToSlide(currentIndex + 1);
+          } else if (difference < -50) {
+            // Swipe right, go to previous slide
+            goToSlide(currentIndex - 1);
+          }
+        }
+      });
+    </script>
+    <script id="contact-form-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const contactForm = document.getElementById("contact-form");
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message").value;
+          // Form validation
+          if (!name || !email || !message) {
+            alert("Veuillez remplir tous les champs.");
+            return;
+          }
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            alert("Veuillez entrer une adresse email valide.");
+            return;
+          }
+          // Simulate form submission
+          const submitButton = contactForm.querySelector('button[type="submit"]');
+          const originalButtonText = submitButton.innerHTML;
+          submitButton.innerHTML =
+            '<i class="ri-loader-4-line animate-spin mr-2"></i> Envoi en cours...';
+          submitButton.disabled = true;
+          // Simulate API call
+          setTimeout(() => {
+            // Reset form
+            contactForm.reset();
+            // Show success message
+            submitButton.innerHTML =
+              '<i class="ri-check-line mr-2"></i> Message envoyé !';
+            submitButton.classList.remove("bg-primary");
+            submitButton.classList.add("bg-green-500");
+            // Reset button after 3 seconds
+            setTimeout(() => {
+              submitButton.innerHTML = originalButtonText;
+              submitButton.disabled = false;
+              submitButton.classList.remove("bg-green-500");
+              submitButton.classList.add("bg-primary");
+            }, 3000);
+          }, 1500);
+        });
+      });
+    </script>
+  </body>
 </html>

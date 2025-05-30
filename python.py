@@ -41,13 +41,15 @@ def ajouter_projet():
         return
 
     bloc_html = f"""
-      <div class="project-card">
-        <img src="{chemin_image_html}" alt="{titre}">
-        <div class="project-content">
-          <span class="portfolio-type">{type_projet}</span>
-          <h3>{titre}</h3>
-          <p>{description}</p>
-          <a href="{lien}" class="view-link">Voir plus</a>
+      <div class=\"project-card rounded-lg overflow-hidden\">
+        <img src=\"{chemin_image_html}\" alt=\"{titre}\" class=\"w-full h-48 object-cover\">
+        <div class=\"p-6\">
+          <h3 class=\"text-xl font-semibold mb-2\">{titre}</h3>
+          <div class=\"flex flex-wrap mb-4\">
+            {''.join([f'<span class=\"tech-badge\">{tech.strip()}</span>' for tech in type_projet.split(',')])}
+          </div>
+          <p class=\"text-gray-400 text-sm mb-6\">{description}</p>
+          <a href=\"{lien}\" class=\"bg-primary text-white px-4 py-2 rounded text-sm\">Voir plus</a>
         </div>
       </div>
 """
@@ -63,12 +65,9 @@ def ajouter_projet():
     inserted = False
     for i, line in enumerate(lines):
         new_lines.append(line)
-        if 'class="portfolio-grid"' in line and not inserted:
-            for j in range(i + 1, len(lines)):
-                if '</div>' in lines[j]:  # fin de .portfolio-grid
-                    new_lines.insert(j, bloc_html)
-                    inserted = True
-                    break
+        if '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 slide-in">' in line and not inserted:
+            new_lines.append(bloc_html + "\n")
+            inserted = True
 
     if inserted:
         with open(HTML_FILE, "w", encoding="utf-8") as f:
@@ -92,7 +91,7 @@ tk.Label(root, text="Titre du projet").pack()
 entry_titre = tk.Entry(root, width=60)
 entry_titre.pack()
 
-tk.Label(root, text="Type de projet").pack()
+tk.Label(root, text="Type de projet (séparé par des virgules)").pack()
 entry_type = tk.Entry(root, width=60)
 entry_type.pack()
 

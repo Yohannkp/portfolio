@@ -1818,3 +1818,31 @@ header.header.sticky {
   color: #007bff;
   font-weight: bold;
 }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card .img-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-card .content-wrapper {
+  padding: 1rem;
+}
