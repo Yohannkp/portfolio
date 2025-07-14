@@ -87,6 +87,21 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
     />
+    
+    <!-- Cyberpunk CSS Modules -->
+    <link rel="stylesheet" href="./css/cyberpunk-theme.css">
+    <link rel="stylesheet" href="./css/cyberpunk-components.css">
+    <link rel="stylesheet" href="./css/cyberpunk-animations.css">
+    <link rel="stylesheet" href="./css/cyberpunk-backgrounds.css">
+    <link rel="stylesheet" href="./css/image-optimization.css">
+    
+    <!-- Phase 2: UX/UI Enhancements -->
+    <link rel="stylesheet" href="./css/ux-ui-enhancements.css">
+    
+    <!-- Preload critical JavaScript -->
+    <link rel="preload" href="./js/performance-optimization.js" as="script">
+    <link rel="preload" href="./js/ux-enhancements.js" as="script">
+    
     <style>
       :where([class^="ri-"])::before { content: "\f3c2"; }
       
@@ -2176,23 +2191,23 @@
     <canvas id="particles-canvas"></canvas>
     <!-- Header/Navigation -->
     <header
-      class="fixed top-0 left-0 w-full bg-secondary bg-opacity-90 backdrop-blur-md z-50 py-4"
+      class="enhanced-header fixed top-0 left-0 w-full bg-secondary bg-opacity-90 backdrop-blur-md z-50 py-4"
     >
       <div
         class="container mx-auto px-4 md:px-6 flex justify-between items-center"
       >
-        <a href="#" class="logo-header flex items-center space-x-2">
+        <a href="#" class="logo-enhanced logo-header flex items-center space-x-2 magnetic">
           <div class="logo-icon w-8 h-8 bg-primary rounded-lg flex items-center justify-center neon-border">
             <span class="text-black font-bold text-sm font-cyber">YY</span>
           </div>
           <span class="text-xl font-cyber text-primary hidden sm:block animate-neon-pulse">[YOHANN]</span>
         </a>
         <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center space-x-8">
-          <a href="#about" class="nav-link text-sm font-medium cyber-text">> À_PROPOS</a>
-          <a href="#skills" class="nav-link text-sm font-medium cyber-text">> COMPÉTENCES</a>
-          <a href="#projects" class="nav-link text-sm font-medium cyber-text">> PROJETS</a>
-          <a href="#contact" class="nav-link text-sm font-medium cyber-text">> CONTACT</a>
+        <nav class="nav-enhanced hidden md:flex items-center space-x-8">
+          <a href="#about" class="nav-link-enhanced nav-link text-sm font-medium cyber-text">> À_PROPOS</a>
+          <a href="#skills" class="nav-link-enhanced nav-link text-sm font-medium cyber-text">> COMPÉTENCES</a>
+          <a href="#projects" class="nav-link-enhanced nav-link text-sm font-medium cyber-text">> PROJETS</a>
+          <a href="#contact" class="nav-link-enhanced nav-link text-sm font-medium cyber-text">> CONTACT</a>
           <a
             href="#"
             class="cyber-button magnetic ml-4 px-4 py-2 !rounded-button text-sm font-medium flex items-center whitespace-nowrap"
@@ -2201,7 +2216,7 @@
           </a>
         </nav>
         <!-- Mobile Hamburger -->
-        <div class="hamburger md:hidden" id="hamburger">
+        <div class="hamburger-enhanced hamburger md:hidden" id="hamburger">
           <span></span>
           <span></span>
           <span></span>
@@ -2209,18 +2224,20 @@
       </div>
     </header>
     <!-- Mobile Menu -->
-    <div class="mobile-menu md:hidden cyber-card" id="mobile-menu">
-      <a href="#about" class="text-lg font-medium cyber-text">> À_PROPOS</a>
-      <a href="#skills" class="text-lg font-medium cyber-text">> COMPÉTENCES</a>
-      <a href="#projects" class="text-lg font-medium cyber-text">> PROJETS</a>
-      <a href="#contact" class="text-lg font-medium cyber-text">> CONTACT</a>
-    <a
-      href="./docs/cv.pdf"
-      download
-      class="btn-primary bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-base font-medium flex items-center w-fit whitespace-nowrap"
-    >
-      <i class="ri-download-line mr-2"></i> Télécharger CV
-    </a>
+    <div class="mobile-menu-enhanced mobile-menu md:hidden cyber-card" id="mobile-menu">
+      <div class="nav-item"><a href="#about" class="text-lg font-medium cyber-text">> À_PROPOS</a></div>
+      <div class="nav-item"><a href="#skills" class="text-lg font-medium cyber-text">> COMPÉTENCES</a></div>
+      <div class="nav-item"><a href="#projects" class="text-lg font-medium cyber-text">> PROJETS</a></div>
+      <div class="nav-item"><a href="#contact" class="text-lg font-medium cyber-text">> CONTACT</a></div>
+      <div class="nav-item">
+        <a
+          href="./docs/cv.pdf"
+          download
+          class="btn-primary bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-base font-medium flex items-center w-fit whitespace-nowrap magnetic"
+        >
+          <i class="ri-download-line mr-2"></i> Télécharger CV
+        </a>
+      </div>
     </div>
     <!-- Hero Section -->
     <section class="hero-section pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
@@ -2262,7 +2279,7 @@
             
             <!-- Animated Role -->
             <div class="mb-6">
-              <h2 class="text-xl md:text-2xl font-medium text-accent cyber-text">
+              <h2 class="text-xl md:text-2xl font-medium text-accent cyber-text" data-typing data-speed="100">
                 <span id="typing-text">Neural Networks Engineer</span><span class="typing-cursor animate-pulse text-neon">█</span>
               </h2>
             </div>
@@ -2617,6 +2634,114 @@ Matplotlib
         </div>
       </div>
     </section>
+
+    <!-- Section Démo UX/UI Enhancements -->
+    <section class="py-20 bg-gradient-to-br from-[#0D0D0D] to-[#1A1A1A] relative overflow-hidden">
+      <!-- Background cyberpunk effects -->
+      <div class="cyber-grid-overlay opacity-20"></div>
+      <div class="neon-circuit-board opacity-40"></div>
+      
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="text-center mb-16">
+          <h2 class="cyber-title text-3xl md:text-4xl font-bold mb-4 text-gradient" data-typing data-speed="80">
+            [INTERACTIVE_FEATURES.DEMO]
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
+          <p class="text-gray-300 mt-6 max-w-2xl mx-auto cyber-text">
+            Découvrez les nouvelles fonctionnalités interactives et les améliorations UX/UI
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Flip Card Demo -->
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="w-16 h-16 mx-auto mb-4 bg-primary bg-opacity-20 rounded-full flex items-center justify-center">
+                  <i class="ri-palette-line text-2xl text-primary"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 cyber-title">Design Interactif</h3>
+                <p class="text-gray-400 text-sm">Survolez pour découvrir les détails techniques</p>
+              </div>
+              <div class="flip-card-back">
+                <h3 class="text-lg font-semibold mb-4 text-accent">Technologies utilisées</h3>
+                <div class="space-y-2 text-sm">
+                  <div class="flex items-center gap-2">
+                    <i class="ri-code-line text-primary"></i>
+                    <span>CSS Transform 3D</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="ri-javascript-line text-accent"></i>
+                    <span>Interactions JavaScript</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="ri-magic-line text-primary"></i>
+                    <span>Animations fluides</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enhanced Card Demo -->
+          <div class="card-enhanced">
+            <div class="w-16 h-16 mx-auto mb-4 bg-accent bg-opacity-20 rounded-full flex items-center justify-center float-animation">
+              <i class="ri-rocket-line text-2xl text-accent"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 cyber-title">Effets Holographiques</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              Cartes avec effets de scan holographique et animations de rotation au survol
+            </p>
+            <div class="cyber-progress-bar">
+              <div class="cyber-progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <!-- Magnetic Effect Demo -->
+          <div class="card-enhanced magnetic">
+            <div class="w-16 h-16 mx-auto mb-4 bg-electric bg-opacity-20 rounded-full flex items-center justify-center">
+              <i class="ri-magnet-line text-2xl text-electric subtle-glitch"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 cyber-title">Effet Magnétique</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              Les éléments suivent subtilement le mouvement de votre curseur
+            </p>
+            <button class="cyber-button cyber-btn bg-electric text-black px-4 py-2 rounded text-sm magnetic">
+              [INTERACTION.TEST]
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme Selector Preview -->
+        <div class="mt-16 text-center">
+          <h3 class="text-2xl font-semibold mb-6 cyber-title">Système de Thèmes Cyberpunk</h3>
+          <p class="text-gray-400 mb-8">Regardez à droite de votre écran pour changer de thème ➡️</p>
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-2xl mx-auto">
+            <div class="text-center">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400"></div>
+              <span class="text-xs text-gray-400">Défaut</span>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-green-400 to-green-600"></div>
+              <span class="text-xs text-gray-400">Matrix</span>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-pink-500 to-orange-500"></div>
+              <span class="text-xs text-gray-400">Neon City</span>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-pink-400 to-cyan-400"></div>
+              <span class="text-xs text-gray-400">Synthwave</span>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500"></div>
+              <span class="text-xs text-gray-400">Blade Runner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Skills Section -->
     <section id="skills" class="py-20 relative overflow-hidden">
       <!-- Cyberpunk HUD interface -->
@@ -2892,7 +3017,7 @@ Matplotlib
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 slide-in">
 
       <!-- Movies Database - Carte Cyberpunk Premium -->
-      <div class="cyber-project-card rounded-lg overflow-hidden relative">
+      <div class="project-card-enhanced cyber-project-card rounded-lg overflow-hidden relative magnetic">
         <!-- HUD Overlay pour cette carte -->
         <div class="cyber-project-hud absolute inset-0">
           <div class="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-accent opacity-60"></div>
@@ -2906,12 +3031,12 @@ Matplotlib
         
         <!-- Image avec overlay cyberpunk -->
         <div class="relative">
-          <img src="images/Capture d'écran 2025-07-14 115831.png" alt="Interface de l'application Movies Database montrant la liste des films avec navigation moderne" class="w-full h-48 object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <img src="images/Capture d'écran 2025-07-14 115831.png" alt="Interface de l'application Movies Database montrant la liste des films avec navigation moderne" class="card-image w-full h-48 object-cover">
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           <div class="absolute top-2 left-2 cyber-text text-xs text-accent">[STATUS: ACTIVE]</div>
         </div>
         
-        <div class="p-6 relative z-10">
+        <div class="card-content p-6 relative z-10">
           <h3 class="text-xl font-semibold mb-2 cyber-title">🎬 Movies Database - Application Web</h3>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="cyber-tech-badge">React</span>
@@ -2927,7 +3052,7 @@ Recherche avancée : Recherche floue et tolérante aux erreurs
 Détails complets : Informations détaillées sur les films, acteurs, réalisateurs
 Recommandations : Suggestions de films similaires
 Monitoring : Vérification de l'état des services (API + Neo4j)</p>
-          <a href="https://github.com/fayesarah555/movies-webapp.git" class="cyber-btn bg-primary text-white px-4 py-2 rounded text-sm inline-flex items-center">
+          <a href="https://github.com/fayesarah555/movies-webapp.git" class="cyber-btn bg-primary text-white px-4 py-2 rounded text-sm inline-flex items-center magnetic">
             <i class="ri-external-link-line mr-2"></i>
             [EXPLORER.EXE]
           </a>
@@ -2936,7 +3061,7 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
 
 
       <!-- Project 1 -->
-      <div class="project-card rounded-lg overflow-hidden">
+      <div class="card-enhanced project-card rounded-lg overflow-hidden magnetic">
         <img src="images/transcorre(1)(1).png" alt="Application mobile Text-to-Speech avec interface d'IA pour la synthèse vocale" class="w-full h-48 object-cover">
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Text-to-Speech avec IA</h3>
@@ -4329,5 +4454,12 @@ Traduction de texte en plusieurs langue
         });
       });
     </script>
+    
+    <!-- Performance Optimization Script -->
+    <script src="./js/performance-optimization.js"></script>
+    
+    <!-- Phase 2: UX/UI Enhancements Script -->
+    <script src="./js/ux-enhancements.js"></script>
+    
   </body>
 </html>

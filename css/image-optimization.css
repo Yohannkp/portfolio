@@ -1,0 +1,110 @@
+/* ===================================
+   OPTIMISATION IMAGES & LAZY LOADING
+   =================================== */
+
+/* Lazy loading avec fallback progressif */
+.lazy-image {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: rgba(157, 78, 221, 0.1);
+  background-image: 
+    linear-gradient(45deg, 
+      rgba(157, 78, 221, 0.1) 25%, 
+      transparent 25%
+    ),
+    linear-gradient(-45deg, 
+      rgba(157, 78, 221, 0.1) 25%, 
+      transparent 25%
+    );
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  animation: loadingPattern 2s linear infinite;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+  background: none;
+  animation: none;
+}
+
+@keyframes loadingPattern {
+  0% { background-position: 0 0, 10px 10px; }
+  100% { background-position: 20px 20px, 30px 30px; }
+}
+
+/* Placeholder pour images non chargées */
+.image-placeholder {
+  background: linear-gradient(135deg, 
+    rgba(21, 21, 21, 0.9), 
+    rgba(30, 30, 30, 0.9)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.image-placeholder::before {
+  content: '[LOADING...]';
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Optimisation WebP avec fallback */
+.webp-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.webp-image:hover {
+  transform: scale(1.05);
+}
+
+/* Images responsives cyberpunk */
+.cyber-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(157, 78, 221, 0.3);
+}
+
+.cyber-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 245, 255, 0.1) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cyber-image:hover::before {
+  opacity: 1;
+}
+
+/* Performance optimizations */
+@media (max-width: 768px) {
+  .lazy-image {
+    background-size: 15px 15px;
+    background-position: 0 0, 7px 7px;
+  }
+}
+
+/* Support pour images haute densité */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .retina-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
