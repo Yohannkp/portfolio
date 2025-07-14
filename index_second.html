@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime.js v4 Animation Example</title>
-    <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.2/lib/anime.iife.min.js"></script>
+    <title>Portfolio Animation</title>
     <style>
-      body { background: #181818; color: #fff; font-family: Inter, Arial, sans-serif; }
+      body { background: #181818; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
       .large { margin: 60px auto 0; text-align: center; font-size: 2.5rem; letter-spacing: 0.2em; }
       .large span { display: inline-block; min-width: 1ch; }
+      /* Optimisation pour GitHub Pages */
+      * { box-sizing: border-box; }
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
     </style>
 </head>
 <body>
@@ -25,27 +29,7 @@
     <span>L</span>
     <span>D</span>
   </h2>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.anime && window.anime.animate) {
-        window.anime.animate('.large span', {
-          y: [
-            { to: '-2.75rem', ease: 'outExpo', duration: 600 },
-            { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
-          ],
-          rotate: {
-            from: '-1turn',
-            delay: 0
-          },
-          delay: (_, i) => i * 50,
-          ease: 'inOutCirc',
-          loopDelay: 1000,
-          loop: true,
-          direction: 'alternate'
-        });
-      }
-    });
-  </script>
+  <!-- Animation supprimée pour optimiser les performances sur GitHub Pages -->
 </body>
 </html>
 
