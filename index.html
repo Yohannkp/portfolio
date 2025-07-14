@@ -3,7 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yohann Yendi - Développeur Fullstack & Mobile</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Yohann Yendi - Développeur Fullstack & Mobile | Portfolio</title>
+    <meta name="description" content="Développeur Fullstack & Mobile passionné par les technologies émergentes. Spécialisé en Flutter, Symfony, React, Python et Big Data. Étudiant en Master Big Data & IA à Paris." />
+    <meta name="keywords" content="développeur fullstack, développeur mobile, Flutter, Symfony, React, Python, big data, intelligence artificielle, portfolio, Paris, freelance" />
+    <meta name="author" content="Yohann Yendi" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="French" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Yohann Yendi - Développeur Fullstack & Mobile" />
+    <meta property="og:description" content="Développeur Fullstack & Mobile passionné par les technologies émergentes. Spécialisé en Flutter, Symfony, React, Python et Big Data." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yohann-yendi.com" />
+    <meta property="og:image" content="https://yohann-yendi.com/images/og-image.jpg" />
+    <meta property="og:site_name" content="Yohann Yendi Portfolio" />
+    <meta property="og:locale" content="fr_FR" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yohann Yendi - Développeur Fullstack & Mobile" />
+    <meta name="twitter:description" content="Développeur Fullstack & Mobile passionné par les technologies émergentes. Spécialisé en Flutter, Symfony, React, Python et Big Data." />
+    <meta name="twitter:image" content="https://yohann-yendi.com/images/og-image.jpg" />
+    <meta name="twitter:creator" content="@YohannYendi" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yohann-yendi.com" />
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.2/lib/anime.iife.min.js"></script>
     <script>
@@ -334,6 +367,428 @@
         display: inline-block;
         min-width: 1ch;
       }
+
+      /* === MICRO-INTERACTIONS & ANIMATIONS === */
+      
+      /* Smooth transitions globales */
+      * {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Hover effects avancés pour les boutons */
+      .btn-primary {
+        position: relative;
+        overflow: hidden;
+        transform: translateZ(0);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.6s ease;
+      }
+      
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+      
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
+      }
+      
+      .btn-primary:active {
+        transform: translateY(0);
+        transition: transform 0.1s ease;
+      }
+
+      /* Cards avec micro-interactions */
+      .card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(3, 169, 244, 0.05));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      
+      .card:hover::before {
+        opacity: 1;
+      }
+
+      /* Project cards avec effet parallax léger */
+      .project-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .project-card img {
+        transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .project-card:hover img {
+        transform: scale(1.08);
+      }
+
+      /* Navigation links avec effet underline animé */
+      .nav-link {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #2196F3, #03a9f4);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform: translateX(-50%);
+      }
+      
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      /* Icons avec rotation subtile */
+      .social-icon {
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+      }
+      
+      .social-icon::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(33, 150, 243, 0.2);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+      }
+      
+      .social-icon:hover::before {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .social-icon:hover {
+        transform: translateY(-3px) rotate(5deg);
+        color: #2196F3;
+      }
+
+      /* Tech badges avec effet pulse */
+      .tech-badge {
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+      }
+      
+      .tech-badge:hover {
+        transform: translateY(-2px) scale(1.05);
+        background: rgba(33, 150, 243, 0.3);
+        box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+      }
+
+      /* Input focus avec effet glow */
+      input:focus,
+      textarea:focus {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(33, 150, 243, 0.3);
+      }
+
+      /* Progress bars avec animation */
+      .progress-fill {
+        background: linear-gradient(90deg, #2196F3, #03a9f4, #2196F3);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+      }
+      
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+
+      /* Hamburger avec micro-interaction */
+      .hamburger span {
+        transform-origin: center;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      /* Back to top avec effet bounce */
+      .back-to-top {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .back-to-top:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
+      }
+
+      /* === TYPOGRAPHIE AMÉLIORÉE === */
+      
+      /* Hiérarchie typographique claire */
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+      }
+      
+      h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        margin-bottom: 1.25rem;
+      }
+      
+      h3 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+      }
+      
+      h4 {
+        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+        font-weight: 500;
+        line-height: 1.4;
+        margin-bottom: 0.75rem;
+      }
+
+      /* Paragraphes avec meilleure lisibilité */
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        color: #e0e0e0;
+      }
+      
+      .lead {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        font-weight: 400;
+        color: #f5f5f5;
+      }
+
+      /* === ESPACEMENT COHÉRENT === */
+      
+      /* Variables CSS pour l'espacement */
+      :root {
+        --spacing-xs: 0.25rem;   /* 4px */
+        --spacing-sm: 0.5rem;    /* 8px */
+        --spacing-md: 1rem;      /* 16px */
+        --spacing-lg: 1.5rem;    /* 24px */
+        --spacing-xl: 2rem;      /* 32px */
+        --spacing-2xl: 3rem;     /* 48px */
+        --spacing-3xl: 4rem;     /* 64px */
+        --spacing-4xl: 6rem;     /* 96px */
+      }
+      
+      /* Sections avec espacement cohérent */
+      section {
+        padding: var(--spacing-4xl) 0;
+      }
+      
+      @media (max-width: 768px) {
+        section {
+          padding: var(--spacing-3xl) 0;
+        }
+      }
+      
+      /* Container avec marges cohérentes */
+      .container {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+      }
+      
+      @media (min-width: 768px) {
+        .container {
+          padding-left: var(--spacing-lg);
+          padding-right: var(--spacing-lg);
+        }
+      }
+      
+      /* Grilles avec gaps cohérents */
+      .grid {
+        gap: var(--spacing-xl);
+      }
+      
+      @media (max-width: 768px) {
+        .grid {
+          gap: var(--spacing-lg);
+        }
+      }
+
+      /* Cards avec padding cohérent */
+      .card {
+        padding: var(--spacing-xl);
+      }
+      
+      @media (max-width: 768px) {
+        .card {
+          padding: var(--spacing-lg);
+        }
+      }
+
+      /* Boutons avec espacement cohérent */
+      .btn {
+        padding: var(--spacing-md) var(--spacing-xl);
+        margin: var(--spacing-sm);
+      }
+
+      /* Timeline avec espacement optimisé */
+      .timeline-item {
+        margin-bottom: var(--spacing-xl);
+        padding-left: var(--spacing-2xl);
+      }
+
+      /* === ANIMATIONS D'ENTRÉE === */
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Animations avec delay pour effet cascade */
+      .slide-in:nth-child(1) { animation-delay: 0.1s; }
+      .slide-in:nth-child(2) { animation-delay: 0.2s; }
+      .slide-in:nth-child(3) { animation-delay: 0.3s; }
+      .slide-in:nth-child(4) { animation-delay: 0.4s; }
+
+      /* === RESPONSIVE MICRO-INTERACTIONS === */
+      
+      @media (max-width: 768px) {
+        /* Réduire les effets hover sur mobile */
+        .card:hover {
+          transform: translateY(-2px);
+        }
+        
+        .project-card:hover img {
+          transform: scale(1.02);
+        }
+        
+        .btn-primary:hover {
+          transform: translateY(-1px);
+        }
+      }
+
+      /* === ACCESSIBILITÉ === */
+      
+      /* Respecter les préférences de mouvement réduit */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* Focus visible pour l'accessibilité */
+      *:focus-visible {
+        outline: 2px solid #2196F3;
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      /* === LOGO AMÉLIORÉ === */
+      
+      .logo-header {
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .logo-header:hover {
+        transform: translateY(-1px);
+      }
+      
+      .logo-icon {
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .logo-icon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s ease;
+      }
+      
+      .logo-header:hover .logo-icon::before {
+        left: 100%;
+      }
+      
+      .logo-header:hover .logo-icon {
+        transform: rotate(5deg) scale(1.05);
+        box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+      }
+      
+      .logo-footer .logo-icon {
+        transition: all 0.3s ease;
+      }
+      
+      .logo-footer:hover .logo-icon {
+        transform: rotate(-5deg) scale(1.1);
+        box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+      }
     </style>
   </head>
   <body>
@@ -344,7 +799,12 @@
       <div
         class="container mx-auto px-4 md:px-6 flex justify-between items-center"
       >
-        <a href="#" class="text-2xl font-['Pacifico'] text-primary">YY</a>
+        <a href="#" class="logo-header flex items-center space-x-2">
+          <div class="logo-icon w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">YY</span>
+          </div>
+          <span class="text-xl font-['Pacifico'] text-primary hidden sm:block">Yohann</span>
+        </a>
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center space-x-8">
           <a href="#about" class="nav-link text-sm font-medium">À propos</a>
@@ -353,7 +813,7 @@
           <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
           <a
             href="#"
-            class="ml-4 bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-sm font-medium flex items-center whitespace-nowrap"
+            class="btn-primary ml-4 bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-sm font-medium flex items-center whitespace-nowrap"
           >
             <i class="ri-download-line mr-2"></i> CV
           </a>
@@ -375,16 +835,16 @@
     <a
       href="./docs/cv.pdf"
       download
-      class="bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-base font-medium flex items-center w-fit whitespace-nowrap"
+      class="btn-primary bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-base font-medium flex items-center w-fit whitespace-nowrap"
     >
       <i class="ri-download-line mr-2"></i> Télécharger CV
     </a>
     </div>
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
-      <div class="container mx-auto px-4 md:px-6">
-        <div class="flex flex-col md:flex-row items-center">
-          <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+    <section class="hero-section pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+      <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+          <div class="hero-content md:w-1/2 text-center md:text-left mb-10 md:mb-0">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 large text-center md:text-left" style="letter-spacing:0.2em;">
               Yohann Yendi
             </h1>
@@ -397,19 +857,19 @@
               </div>
               <span class="text-gray-400">Paris, France</span>
             </div>
-            <p class="text-gray-400 max-w-lg mx-auto md:mx-0 mb-8">
+            <p class="lead text-gray-400 max-w-lg mx-auto md:mx-0 mb-8">
               Passionné par le développement d'applications innovantes et les
               technologies émergentes. Actuellement en Master Big Data & IA, je
               combine expertise technique et vision stratégique.
             </p>
             <a
               href="./docs/cv.pdf"
-              class="btn-download inline-block bg-primary hover:bg-opacity-80 text-white px-6 py-3 !rounded-button text-base font-medium flex items-center w-fit mx-auto md:mx-0 whitespace-nowrap"
+              class="btn-primary btn-download inline-block bg-primary hover:bg-opacity-80 text-white px-6 py-3 !rounded-button text-base font-medium flex items-center w-fit mx-auto md:mx-0 whitespace-nowrap"
             >
               <i class="ri-download-line mr-2"></i> Télécharger mon CV
             </a>
           </div>
-          <div class="md:w-1/2 flex justify-center md:justify-end">
+          <div class="hero-image md:w-1/2 flex justify-center md:justify-end">
             <div class="relative">
               <div
                 class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary p-1"
@@ -745,9 +1205,30 @@ Matplotlib
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 slide-in">
 
+      <div class="project-card rounded-lg overflow-hidden">
+        <img src="images/Capture d'écran 2025-07-14 115831.png" alt="Interface de l'application Movies Database montrant la liste des films avec navigation moderne" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">🎬 Movies Database - Application Web</h3>
+          <div class="flex flex-wrap mb-4">
+            <span class="tech-badge">React (front-end)</span><span class="tech-badge">FastAPI (backend)</span><span class="tech-badge">Neo4j</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">Une application web moderne pour explorer et gérer une base de données de films utilisant React (front-end), FastAPI (backend) et Neo4j (base de données graphique).
+
+📋 Fonctionnalités
+Navigation intuitive : Interface utilisateur moderne et responsive
+Liste des films : Affichage paginé de tous les films
+Recherche avancée : Recherche floue et tolérante aux erreurs
+Détails complets : Informations détaillées sur les films, acteurs, réalisateurs
+Recommandations : Suggestions de films similaires
+Monitoring : Vérification de l'état des services (API + Neo4j)</p>
+          <a href="https://github.com/fayesarah555/movies-webapp.git" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+        </div>
+      </div>
+
+
       <!-- Project 1 -->
       <div class="project-card rounded-lg overflow-hidden">
-        <img src="images/transcorre(1)(1).png" alt="Text-to-Speech avec IA" class="w-full h-48 object-cover">
+        <img src="images/transcorre(1)(1).png" alt="Application mobile Text-to-Speech avec interface d'IA pour la synthèse vocale" class="w-full h-48 object-cover">
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Text-to-Speech avec IA</h3>
           <div class="flex flex-wrap mb-4">
@@ -763,7 +1244,7 @@ Matplotlib
 
       <!-- Project 2 -->
       <div class="project-card rounded-lg overflow-hidden">
-        <img src="images/Rectangle-3.png" alt="AUTO-ECOLE EN LIGNE" class="w-full h-48 object-cover">
+        <img src="images/Rectangle-3.png" alt="Interface web de l'auto-école en ligne pour la réservation de cours de conduite" class="w-full h-48 object-cover">
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">AUTO-ECOLE EN LIGNE</h3>
           <div class="flex flex-wrap mb-4">
@@ -778,7 +1259,7 @@ Matplotlib
 
       <!-- Project 3 -->
       <div class="project-card rounded-lg overflow-hidden">
-        <img src="images/OIP (3).jpg" alt="Site Flask" class="w-full h-48 object-cover">
+        <img src="images/OIP (3).jpg" alt="Application web Flask avec interface backend Python et base de données SQLite" class="w-full h-48 object-cover">
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Site Flask</h3>
           <div class="flex flex-wrap mb-4">
@@ -795,7 +1276,7 @@ Matplotlib
 
       <!-- Project 4 -->
       <div class="project-card rounded-lg overflow-hidden">
-        <img src="images/project-5.jpg" alt="Application FastFood" class="w-full h-48 object-cover">
+        <img src="images/project-5.jpg" alt="Application de gestion FastFood avec interface Symfony pour la gestion des plats" class="w-full h-48 object-cover">
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Application FastFood</h3>
           <div class="flex flex-wrap mb-4">
@@ -811,7 +1292,7 @@ Matplotlib
 
       <!-- Project 5 -->
       <div class="project-card rounded-lg overflow-hidden">
-        <img src="images/4251115-systeme-de-gestion-de-fichiers-et-information-illustrationle-avec-archives-de-dossiers-ou-service-en-ligne-pour-stockage-et-organisation-de-documents-vectoriel.jpg" alt="API de Gestion de Fichiers" class="w-full h-48 object-cover">
+        <img src="images/4251115-systeme-de-gestion-de-fichiers-et-information-illustrationle-avec-archives-de-dossiers-ou-service-en-ligne-pour-stockage-et-organisation-de-documents-vectoriel.jpg" alt="API de gestion de fichiers sécurisée avec système de stockage et organisation de documents" class="w-full h-48 object-cover">
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">API de Gestion de Fichiers</h3>
           <div class="flex flex-wrap mb-4">
@@ -827,7 +1308,7 @@ Matplotlib
 
       <!-- Project 6 -->
       <div class="project-card rounded-lg overflow-hidden">
-        <img src="images/docker.jpg" alt="Projet Docker-K8s" class="w-full h-48 object-cover">
+        <img src="images/docker.jpg" alt="Architecture Docker et Kubernetes pour applications web multi-conteneurs" class="w-full h-48 object-cover">
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Projet Docker-K8s</h3>
           <div class="flex flex-wrap mb-4">
@@ -842,7 +1323,7 @@ Matplotlib
 
       <!-- Project 7 -->
       <div class="project-card rounded-lg overflow-hidden">
-        <img src="images/Capture d'écran 2025-05-22 122054.png" alt="Le Bon Coin - Clone MERN Stack" class="w-full h-48 object-cover">
+        <img src="images/Capture d'écran 2025-05-22 122054.png" alt="Clone de Le Bon Coin développé en MERN Stack avec système d'annonces et authentification" class="w-full h-48 object-cover">
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Le Bon Coin - Clone</h3>
           <div class="flex flex-wrap mb-4">
@@ -860,7 +1341,7 @@ Matplotlib
 
       <!-- Project 8 -->
       <div class="project-card rounded-lg overflow-hidden">
-        <img src="images/Capture d'écran 2025-05-23 151552.png" alt="Product App" class="w-full h-48 object-cover">
+        <img src="images/Capture d'écran 2025-05-23 151552.png" alt="Application CRUD Product App avec gestion utilisateur et filtres de recherche produits" class="w-full h-48 object-cover">
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Product App</h3>
           <div class="flex flex-wrap mb-4">
@@ -942,7 +1423,7 @@ Matplotlib
                 </div>
                 <button
                     type="submit"
-                    class="w-full bg-primary hover:bg-opacity-80 text-white px-6 py-3 !rounded-button text-base font-medium flex items-center justify-center whitespace-nowrap"
+                    class="btn-primary w-full bg-primary hover:bg-opacity-80 text-white px-6 py-3 !rounded-button text-base font-medium flex items-center justify-center whitespace-nowrap"
                     style="text-decoration: none;"
                 >
                     <i class="ri-send-plane-line mr-2"></i> Envoyer le message
@@ -1037,7 +1518,7 @@ Matplotlib
                 <div class="mt-8">
                 <a
                     href="./docs/cv.pdf"
-                    class="bg-transparent border border-primary text-primary hover:bg-primary hover:bg-opacity-10 px-6 py-3 !rounded-button text-base font-medium flex items-center w-full justify-center whitespace-nowrap"
+                    class="btn-primary bg-transparent border border-primary text-primary hover:bg-primary hover:bg-opacity-10 px-6 py-3 !rounded-button text-base font-medium flex items-center w-full justify-center whitespace-nowrap"
                 >
                     <i class="ri-download-line mr-2"></i> Télécharger mon CV
                 </a>
@@ -1077,7 +1558,12 @@ Matplotlib
       <div class="container mx-auto px-4 md:px-6">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="mb-6 md:mb-0">
-            <a href="#" class="text-2xl font-['Pacifico'] text-primary">YY</a>
+            <div class="logo-footer flex items-center space-x-2 mb-4">
+              <div class="logo-icon w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold">YY</span>
+              </div>
+              <span class="text-2xl font-['Pacifico'] text-primary">Yohann Yendi</span>
+            </div>
             <p class="text-gray-500 mt-2">
               © 2025 Yohann Yendi. Tous droits réservés.
             </p>
@@ -1103,6 +1589,115 @@ Matplotlib
     <div class="back-to-top" id="back-to-top">
       <i class="ri-arrow-up-line"></i>
     </div>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yohann Yendi",
+      "jobTitle": "Développeur Fullstack & Mobile",
+      "description": "Développeur Fullstack & Mobile passionné par les technologies émergentes. Spécialisé en Flutter, Symfony, React, Python et Big Data.",
+      "url": "https://yohann-yendi.com",
+      "image": "https://yohann-yendi.com/images/profile-photo.jpg",
+      "email": "yendiyohann@gmail.com",
+      "telephone": "+33645863533",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Paris",
+        "addressCountry": "FR"
+      },
+      "sameAs": [
+        "https://github.com/Yohannkp",
+        "https://www.linkedin.com/in/yendi-aharh-data-scientist-alternance-paris-contrat-apprentissage-dataanalyst-datascientist-data/"
+      ],
+      "knowsAbout": [
+        "Flutter",
+        "Symfony", 
+        "React",
+        "Python",
+        "Big Data",
+        "Intelligence Artificielle",
+        "Développement Mobile",
+        "Développement Web",
+        "DevOps",
+        "Firebase",
+        "Docker",
+        "MySQL",
+        "MongoDB"
+      ],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "IPSSI Paris"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Yohann Yendi Portfolio",
+      "url": "https://yohann-yendi.com",
+      "description": "Portfolio professionnel de Yohann Yendi, développeur fullstack et mobile spécialisé en Flutter, Symfony, React et technologies Big Data.",
+      "author": {
+        "@type": "Person",
+        "name": "Yohann Yendi"
+      },
+      "inLanguage": "fr-FR"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Projets de Yohann Yendi",
+      "description": "Portfolio de projets développés par Yohann Yendi",
+      "itemListElement": [
+        {
+          "@type": "SoftwareApplication",
+          "position": 1,
+          "name": "Movies Database - Application Web",
+          "description": "Application web moderne pour explorer et gérer une base de données de films utilisant React, FastAPI et Neo4j",
+          "applicationCategory": "WebApplication",
+          "programmingLanguage": ["React", "FastAPI", "Neo4j"],
+          "url": "https://github.com/fayesarah555/movies-webapp.git"
+        },
+        {
+          "@type": "SoftwareApplication", 
+          "position": 2,
+          "name": "Text-to-Speech avec IA",
+          "description": "Application Flutter avec synthèse vocale intégrée et interaction IA",
+          "applicationCategory": "MobileApplication",
+          "programmingLanguage": ["Flutter", "Firebase"],
+          "url": "https://github.com/Yohannkp/application_translate_flutter"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "position": 3,
+          "name": "AUTO-ECOLE EN LIGNE",
+          "description": "Réservation en ligne de cours de conduite avec interface web intuitive",
+          "applicationCategory": "WebApplication",
+          "programmingLanguage": ["Symfony"],
+          "url": "https://github.com/Yohannkp/AUTO_ECOLE"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "position": 4,
+          "name": "Le Bon Coin - Clone",
+          "description": "Marketplace MERN avec authentification et gestion d'annonces",
+          "applicationCategory": "WebApplication",
+          "programmingLanguage": ["React", "Node.js", "Express", "MongoDB"],
+          "url": "https://github.com/Yohannkp/React-MERN-Project"
+        }
+      ]
+    }
+    </script>
     <!-- Scripts -->
     <script id="navigation-script">
       document.addEventListener("DOMContentLoaded", function () {

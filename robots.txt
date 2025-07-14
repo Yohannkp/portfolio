@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://yohann-yendi.com/sitemap.xml
+
+# Disallow specific files
+Disallow: /python.py
+Disallow: /*.log
+Disallow: /node_modules/
+Disallow: /.git/
