@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cartes Flip</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0A0A0A, #1A1A1A);
+            min-height: 100vh;
+            padding: 50px;
+        }
+
+        /* 3D Card Flip Effect */
+        .flip-card {
+            perspective: 1000px;
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+            margin: 20px;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s ease-in-out;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .flip-card-front {
+            background: linear-gradient(135deg, #2196F3, #03a9f4);
+            color: white;
+            z-index: 2;
+            transform: rotateY(0deg);
+        }
+        
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, 
+                rgba(21, 21, 21, 0.95), 
+                rgba(33, 150, 243, 0.3),
+                rgba(0, 245, 255, 0.2)
+            );
+            border: 2px solid rgba(0, 245, 255, 0.5);
+            color: white;
+            box-shadow: 
+                inset 0 0 30px rgba(0, 245, 255, 0.2),
+                0 0 40px rgba(0, 245, 255, 0.3);
+        }
+
+        .tech-item {
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            text-shadow: 0 0 8px currentColor;
+            margin: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .tech-item::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: currentColor;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-white text-3xl mb-8 text-center">Test des Cartes Flip</h1>
+    
+    <div class="flex flex-wrap justify-center">
+        <!-- Carte Frontend -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h3 class="text-xl font-bold">[FRONTEND.SYS]</h3>
+                </div>
+                <div class="flip-card-back">
+                    <div class="text-center">
+                        <h3 class="text-lg font-bold mb-3 text-cyan-400">[FRONTEND.SYS]</h3>
+                        <div class="space-y-1">
+                            <div class="text-green-400 tech-item">React.js</div>
+                            <div class="text-blue-400 tech-item">Vue.js</div>
+                            <div class="text-purple-400 tech-item">TypeScript</div>
+                            <div class="text-cyan-400 tech-item">TailwindCSS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carte Backend -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h3 class="text-xl font-bold">[BACKEND.EXE]</h3>
+                </div>
+                <div class="flip-card-back">
+                    <div class="text-center">
+                        <h3 class="text-lg font-bold mb-3 text-orange-400">[BACKEND.EXE]</h3>
+                        <div class="space-y-1">
+                            <div class="text-green-400 tech-item">Node.js</div>
+                            <div class="text-yellow-400 tech-item">Python</div>
+                            <div class="text-blue-400 tech-item">PHP</div>
+                            <div class="text-purple-400 tech-item">MongoDB</div>
+                            <div class="text-orange-400 tech-item">MySQL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carte Mobile -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h3 class="text-xl font-bold">[MOBILE.APP]</h3>
+                </div>
+                <div class="flip-card-back">
+                    <div class="text-center">
+                        <h3 class="text-lg font-bold mb-3 text-pink-400">[MOBILE.APP]</h3>
+                        <div class="space-y-1">
+                            <div class="text-blue-400 tech-item">Flutter</div>
+                            <div class="text-cyan-400 tech-item">React Native</div>
+                            <div class="text-green-400 tech-item">Dart</div>
+                            <div class="text-orange-400 tech-item">Firebase</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('🎮 Test des cartes flip chargé');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const flipCards = document.querySelectorAll('.flip-card');
+            console.log(`📱 ${flipCards.length} cartes trouvées`);
+            
+            flipCards.forEach((card, index) => {
+                card.addEventListener('mouseenter', () => {
+                    console.log(`🖱️ Hover sur carte ${index + 1}`);
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    console.log(`🖱️ Sortie hover carte ${index + 1}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
