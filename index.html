@@ -2300,6 +2300,79 @@
       body[data-theme="blade-runner"] {
         background: linear-gradient(135deg, #1a1000 0%, #332200 50%, #1a1000 100%) !important;
       }
+
+      /* Styles pour le widget flottant de thèmes */
+      .theme-widget {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .theme-widget-toggle {
+        animation: themeWidgetPulse 3s ease-in-out infinite;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .theme-widget-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(157, 78, 221, 0.6);
+      }
+
+      @keyframes themeWidgetPulse {
+        0%, 100% { 
+          box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
+        }
+        50% { 
+          box-shadow: 0 0 30px rgba(157, 78, 221, 0.8);
+        }
+      }
+
+      .theme-widget-menu.active {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: all;
+      }
+
+      .theme-option-widget.active {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.02);
+      }
+
+      .theme-option-widget:hover {
+        transform: scale(1.02);
+      }
+
+      /* Animation d'entrée pour le widget */
+      .theme-widget {
+        animation: slideInFromRight 0.6s ease-out;
+      }
+
+      @keyframes slideInFromRight {
+        from {
+          transform: translateX(100%) translateY(-50%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0) translateY(-50%);
+          opacity: 1;
+        }
+      }
+
+      /* Responsive pour mobile */
+      @media (max-width: 768px) {
+        .theme-widget {
+          right: 1rem;
+          transform: translateY(-50%);
+        }
+        
+        .theme-widget-toggle {
+          width: 3rem;
+          height: 3rem;
+        }
+        
+        .theme-widget-menu {
+          right: 3.5rem;
+          min-width: 180px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2311,6 +2384,53 @@
     
     <!-- Custom Cursor -->
     <div class="custom-cursor" id="custom-cursor"></div>
+
+    <!-- Widget flottant de changement de thème -->
+    <div id="theme-widget" class="theme-widget fixed right-4 top-1/2 transform -translate-y-1/2 z-[9999] transition-all duration-300">
+      <!-- Bouton principal du widget -->
+      <button id="theme-widget-toggle" class="theme-widget-toggle w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-white border-2 border-white/20 backdrop-blur-sm">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a4 4 0 004-4V5z"/>
+        </svg>
+      </button>
+      
+      <!-- Menu des thèmes (caché par défaut) -->
+      <div id="theme-widget-menu" class="theme-widget-menu absolute right-16 top-0 bg-black/80 backdrop-blur-md rounded-xl p-4 shadow-2xl border border-white/10 opacity-0 transform translate-x-4 transition-all duration-300 pointer-events-none">
+        <div class="flex flex-col gap-3 min-w-[200px]">
+          <h4 class="text-white font-semibold text-sm mb-2 text-center">Choisir un thème</h4>
+          
+          <!-- Thème par défaut -->
+          <div class="theme-option-widget cursor-pointer flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-colors" data-theme="default">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400"></div>
+            <span class="text-white text-sm">Défaut</span>
+          </div>
+          
+          <!-- Thème Matrix -->
+          <div class="theme-option-widget cursor-pointer flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-colors" data-theme="matrix">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-green-600"></div>
+            <span class="text-white text-sm">Matrix</span>
+          </div>
+          
+          <!-- Thème Neon City -->
+          <div class="theme-option-widget cursor-pointer flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-colors" data-theme="neon-city">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-orange-500"></div>
+            <span class="text-white text-sm">Neon City</span>
+          </div>
+          
+          <!-- Thème Synthwave -->
+          <div class="theme-option-widget cursor-pointer flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-colors" data-theme="synthwave">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-cyan-400"></div>
+            <span class="text-white text-sm">Synthwave</span>
+          </div>
+          
+          <!-- Thème Blade Runner -->
+          <div class="theme-option-widget cursor-pointer flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-colors" data-theme="blade-runner">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500"></div>
+            <span class="text-white text-sm">Blade Runner</span>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <!-- Particules pour le Hero -->
     <canvas id="particles-canvas"></canvas>
@@ -2933,7 +3053,7 @@
         <!-- Theme Selector Preview -->
         <div class="mt-16 text-center">
           <h3 class="text-2xl font-semibold mb-6 cyber-title">Système de Thèmes Cyberpunk</h3>
-          <p class="text-gray-400 mb-8">Regardez à droite de votre écran pour changer de thème ➡️</p>
+          <p class="text-gray-400 mb-8">Utilisez le widget flottant à droite ➡️ ou cliquez directement ici</p>
           <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-2xl mx-auto">
             <div class="text-center theme-option cursor-pointer" data-theme="default">
               <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 theme-preview hover:scale-110 transition-transform"></div>
@@ -3769,7 +3889,7 @@ Traduction de texte en plusieurs langue
           const selectedTheme = option.getAttribute('data-theme');
           console.log('🎨 Thème sélectionné:', selectedTheme);
           
-          // Supprimer la classe active de toutes les options
+          // Supprimer la classe active de toutes les options principales
           document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
           
           // Ajouter la classe active à l'option cliquée
@@ -3780,6 +3900,9 @@ Traduction de texte en plusieurs langue
           
           // Sauvegarder le thème
           localStorage.setItem('cyberpunk-theme', selectedTheme);
+          
+          // Synchroniser avec le widget
+          syncWidgetThemeOptions(selectedTheme);
           
           // Notification visuelle améliorée
           showThemeNotification(option.querySelector('span').textContent);
@@ -3827,9 +3950,116 @@ Traduction de texte en plusieurs langue
             }, 300);
           }, 2000);
         }
+
+        // Fonction pour initialiser le widget flottant
+        function initThemeWidget() {
+          console.log('🎛️ Initialisation du widget flottant...');
+          
+          const widgetToggle = document.getElementById('theme-widget-toggle');
+          const widgetMenu = document.getElementById('theme-widget-menu');
+          const widgetOptions = document.querySelectorAll('.theme-option-widget');
+          
+          if (!widgetToggle || !widgetMenu) {
+            console.warn('⚠️ Widget de thème non trouvé, retry dans 1 seconde...');
+            setTimeout(initThemeWidget, 1000);
+            return;
+          }
+          
+          console.log('🔍 Widget trouvé, nombre d\'options:', widgetOptions.length);
+          
+          let isMenuOpen = false;
+          
+          // Gestion du clic sur le bouton principal du widget
+          widgetToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+              widgetMenu.classList.add('active');
+              console.log('📖 Menu du widget ouvert');
+            } else {
+              widgetMenu.classList.remove('active');
+              console.log('📕 Menu du widget fermé');
+            }
+          });
+          
+          // Fermer le menu en cliquant ailleurs
+          document.addEventListener('click', (e) => {
+            if (!e.target.closest('#theme-widget') && isMenuOpen) {
+              isMenuOpen = false;
+              widgetMenu.classList.remove('active');
+              console.log('📕 Menu fermé (clic extérieur)');
+            }
+          });
+          
+          // Gestion des clics sur les options du widget
+          widgetOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              const selectedTheme = option.getAttribute('data-theme');
+              console.log('🎨 Thème sélectionné depuis le widget:', selectedTheme);
+              
+              // Supprimer la classe active de toutes les options du widget
+              widgetOptions.forEach(opt => opt.classList.remove('active'));
+              option.classList.add('active');
+              
+              // Appliquer le thème
+              applyTheme(selectedTheme);
+              
+              // Sauvegarder le thème
+              localStorage.setItem('cyberpunk-theme', selectedTheme);
+              
+              // Synchroniser avec les options principales
+              syncThemeOptions(selectedTheme);
+              
+              // Notification
+              const themeName = option.querySelector('span').textContent;
+              showThemeNotification(themeName);
+              
+              // Fermer le menu après sélection
+              isMenuOpen = false;
+              widgetMenu.classList.remove('active');
+            });
+          });
+          
+          // Marquer le thème actuel dans le widget
+          const currentTheme = localStorage.getItem('cyberpunk-theme') || 'default';
+          syncWidgetThemeOptions(currentTheme);
+          
+          console.log('✅ Widget flottant initialisé avec succès !');
+        }
+        
+        // Fonction pour synchroniser les options du widget avec le thème actuel
+        function syncWidgetThemeOptions(themeName) {
+          const widgetOptions = document.querySelectorAll('.theme-option-widget');
+          widgetOptions.forEach(option => {
+            option.classList.remove('active');
+            if (option.getAttribute('data-theme') === themeName) {
+              option.classList.add('active');
+            }
+          });
+        }
+        
+        // Fonction pour synchroniser toutes les options de thème
+        function syncThemeOptions(themeName) {
+          // Synchroniser les options principales
+          const mainOptions = document.querySelectorAll('.theme-option');
+          mainOptions.forEach(option => {
+            option.classList.remove('active');
+            if (option.getAttribute('data-theme') === themeName) {
+              option.classList.add('active');
+            }
+          });
+          
+          // Synchroniser les options du widget
+          syncWidgetThemeOptions(themeName);
+        }
         
         // Démarrer l'initialisation
         initThemeSystem();
+        initThemeWidget();
         
         // 1. TYPING ANIMATION
         const typingTexts = [
