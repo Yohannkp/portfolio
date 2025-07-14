@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yohann Yendi - Développeur Fullstack & Mobile</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.2/lib/anime.iife.min.js"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -329,6 +330,10 @@
       .back-to-top:hover {
       transform: translateY(-5px);
       }
+      .large span {
+        display: inline-block;
+        min-width: 1ch;
+      }
     </style>
   </head>
   <body>
@@ -380,9 +385,8 @@
       <div class="container mx-auto px-4 md:px-6">
         <div class="flex flex-col md:flex-row items-center">
           <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              <span class="text-white">Yohann</span>
-              <span class="text-gradient"> Yendi</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 large text-center md:text-left" style="letter-spacing:0.2em;">
+              Yohann Yendi
             </h1>
             <h2 class="text-xl md:text-2xl font-medium text-gray-300 mb-6">
               Développeur Fullstack & Mobile
@@ -413,9 +417,9 @@
                 <div
                   class="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
                 >
-                  <span class="text-6xl font-bold text-primary opacity-80"
-                    >YY</span
-                  >
+                  <span class="logo-yy text-6xl font-bold text-primary opacity-80">
+                    <span>Y</span><span>Y</span>
+                  </span>
                 </div>
               </div>
               <div
@@ -1043,6 +1047,31 @@ Matplotlib
         </div>
       </div>
     </section>
+    <!-- Animation déplacée sur le nom, section HELLO WORLD supprimée -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.anime && typeof window.anime.animate === 'function') {
+          console.log('anime.js chargé, lancement animation LOGO YY');
+          window.anime.animate('.logo-yy span', {
+            y: [
+              { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+              { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+            ],
+            rotate: {
+              from: '-1turn',
+              delay: 0
+            },
+            delay: (_, i) => i * 100,
+            ease: 'inOutCirc',
+            loopDelay: 1000,
+            loop: true,
+            direction: 'alternate'
+          });
+        } else {
+          console.warn('anime.js non chargé ou mauvaise version');
+        }
+      });
+    </script>
     <!-- Footer -->
     <footer class="py-10 bg-[#0a0a0a] relative">
       <div class="container mx-auto px-4 md:px-6">
@@ -1205,14 +1234,14 @@ Matplotlib
           if (!pagination) return;
           pagination.innerHTML = ""; // Clear existing bullets
           for (let i = 0; i < totalSlides - slidesPerView + 1; i++) {
-            const bullet = document.createElement("div");
-            bullet.classList.add("swiper-pagination-bullet");
-            if (i === 0) bullet.classList.add("swiper-pagination-bullet-active");
-            bullet.addEventListener("click", () => {
-              goToSlide(i);
-            });
-            pagination.appendChild(bullet);
-          }
+          const bullet = document.createElement("div");
+          bullet.classList.add("swiper-pagination-bullet");
+          if (i === 0) bullet.classList.add("swiper-pagination-bullet-active");
+          bullet.addEventListener("click", () => {
+            goToSlide(i);
+          });
+          pagination.appendChild(bullet);
+        }
         }
         // Initialize pagination after DOM is loaded
         createPaginationBullets();
