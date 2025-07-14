@@ -942,6 +942,326 @@
         z-index: 1000;
         transition: width 0.1s ease;
       }
+
+      /* === NOUVELLES ANIMATIONS CRÉATIVES === */
+      
+      /* Wave Animation pour séparateurs de sections */
+      .wave-separator {
+        position: relative;
+        height: 100px;
+        overflow: hidden;
+      }
+      
+      .wave-separator svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        animation: wave 3s ease-in-out infinite;
+      }
+      
+      @keyframes wave {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(-25px); }
+      }
+
+      /* Morphing Background Shapes */
+      .morphing-bg {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(45deg, rgba(33, 150, 243, 0.1), rgba(3, 169, 244, 0.05));
+        border-radius: 50%;
+        animation: morph 8s ease-in-out infinite;
+        z-index: -1;
+      }
+      
+      @keyframes morph {
+        0%, 100% { 
+          border-radius: 50% 50% 50% 50%;
+          transform: rotate(0deg) scale(1);
+        }
+        25% { 
+          border-radius: 60% 40% 30% 70%;
+          transform: rotate(90deg) scale(1.1);
+        }
+        50% { 
+          border-radius: 30% 70% 70% 30%;
+          transform: rotate(180deg) scale(0.9);
+        }
+        75% { 
+          border-radius: 70% 30% 50% 50%;
+          transform: rotate(270deg) scale(1.05);
+        }
+      }
+
+      /* Text Reveal avec masque */
+      .text-reveal {
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .text-reveal::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #121212;
+        animation: textReveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        z-index: 1;
+      }
+      
+      @keyframes textReveal {
+        0% { width: 100%; }
+        100% { width: 0%; }
+      }
+
+      /* Elastic Cards */
+      .elastic-card {
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      
+      .elastic-card:hover {
+        transform: scale(1.05) rotate(2deg);
+      }
+
+      /* Typing Sound Effect (visual) */
+      .typing-sound {
+        position: relative;
+      }
+      
+      .typing-sound::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -30px;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, rgba(33, 150, 243, 0.6) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: soundWave 0.1s ease-in-out;
+      }
+      
+      @keyframes soundWave {
+        0% { transform: scale(0.8); opacity: 1; }
+        100% { transform: scale(1.2); opacity: 0; }
+      }
+
+      /* Matrix Binary Rain */
+      .binary-rain {
+        position: absolute;
+        font-family: 'Courier New', monospace;
+        font-size: 12px;
+        color: #00ff00;
+        opacity: 0.3;
+        animation: binaryFall linear infinite;
+        z-index: 1;
+      }
+      
+      @keyframes binaryFall {
+        0% { transform: translateY(-100vh); }
+        100% { transform: translateY(100vh); }
+      }
+
+      /* 3D Card Flip Effect */
+      .flip-card {
+        perspective: 1000px;
+        width: 100%;
+        height: 200px;
+      }
+      
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .flip-card-back {
+        transform: rotateY(180deg);
+        background: linear-gradient(135deg, #2196F3, #03a9f4);
+      }
+
+      /* Neon Glow Effect */
+      .neon-glow {
+        position: relative;
+        color: #fff;
+        text-shadow: 
+          0 0 5px #2196F3,
+          0 0 10px #2196F3,
+          0 0 15px #2196F3,
+          0 0 20px #2196F3;
+        animation: neonFlicker 2s infinite alternate;
+      }
+      
+      @keyframes neonFlicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+          text-shadow: 
+            0 0 5px #2196F3,
+            0 0 10px #2196F3,
+            0 0 15px #2196F3,
+            0 0 20px #2196F3;
+        }
+        20%, 24%, 55% {
+          text-shadow: none;
+        }
+      }
+
+      /* Liquid Loading Effect */
+      .liquid-loader {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+      }
+      
+      .liquid-loader::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #2196F3, #03a9f4);
+        animation: liquidPulse 2s ease-in-out infinite;
+      }
+      
+      @keyframes liquidPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+      }
+
+      /* Staggered Slide Animation */
+      .stagger-item {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: staggerSlide 0.6s ease forwards;
+      }
+      
+      .stagger-item:nth-child(1) { animation-delay: 0.1s; }
+      .stagger-item:nth-child(2) { animation-delay: 0.2s; }
+      .stagger-item:nth-child(3) { animation-delay: 0.3s; }
+      .stagger-item:nth-child(4) { animation-delay: 0.4s; }
+      .stagger-item:nth-child(5) { animation-delay: 0.5s; }
+      
+      @keyframes staggerSlide {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Breathing Animation */
+      .breathing {
+        animation: breathe 4s ease-in-out infinite;
+      }
+      
+      @keyframes breathe {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      /* DNA Helix Animation */
+      .dna-helix {
+        position: relative;
+        width: 4px;
+        height: 100px;
+        background: linear-gradient(to bottom, #2196F3, #03a9f4);
+        margin: 0 auto;
+        animation: dnaRotate 3s linear infinite;
+      }
+      
+      .dna-helix::before,
+      .dna-helix::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #2196F3;
+        border-radius: 50%;
+        animation: dnaBubble 3s linear infinite;
+      }
+      
+      .dna-helix::before {
+        left: -10px;
+        animation-delay: 0s;
+      }
+      
+      .dna-helix::after {
+        right: -10px;
+        animation-delay: 1.5s;
+      }
+      
+      @keyframes dnaRotate {
+        0% { transform: rotateY(0deg); }
+        100% { transform: rotateY(360deg); }
+      }
+      
+      @keyframes dnaBubble {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-80px); }
+      }
+
+      /* Holographic Text Effect */
+      .holographic {
+        background: linear-gradient(45deg, #ff006e, #2196F3, #00f5ff, #ff006e);
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: holographicShift 3s ease-in-out infinite;
+      }
+      
+      @keyframes holographicShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      /* Radar Scanning Effect */
+      .radar-scan {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border: 2px solid #2196F3;
+        border-radius: 50%;
+        margin: 0 auto;
+      }
+      
+      .radar-scan::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2px;
+        height: 50%;
+        background: #2196F3;
+        transform-origin: bottom center;
+        animation: radarSweep 2s linear infinite;
+      }
+      
+      @keyframes radarSweep {
+        0% { transform: translate(-50%, -100%) rotate(0deg); }
+        100% { transform: translate(-50%, -100%) rotate(360deg); }
+      }
     </style>
   </head>
   <body>
@@ -1078,7 +1398,18 @@
       <div
         class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary opacity-5 rounded-tr-full"
       ></div>
+      
+      <!-- Morphing Background Shapes -->
+      <div class="morphing-bg" style="top: 10%; right: 10%; animation-delay: 0s;"></div>
+      <div class="morphing-bg" style="bottom: 20%; left: 5%; animation-delay: -4s;"></div>
     </section>
+
+    <!-- Wave Separator -->
+    <div class="wave-separator">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#151515"></path>
+      </svg>
+    </div>
 
     <!-- Stats Section avec Count Up Animation -->
     <section class="py-16 bg-gradient-to-r from-primary to-blue-600 relative overflow-hidden">
@@ -1103,12 +1434,95 @@
         </div>
       </div>
     </section>
+
+    <!-- Section Animations Showcase -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+      <!-- Binary Rain Background -->
+      <div id="binary-container" class="absolute inset-0 pointer-events-none"></div>
+      
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="text-center mb-16">
+          <h2 class="holographic text-4xl font-bold mb-4">Technologies Avancées</h2>
+          <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+          
+          <!-- DNA Helix Animation -->
+          <div class="dna-helix mx-auto mb-8"></div>
+          
+          <p class="text-gray-300 max-w-2xl mx-auto">
+            Découvrez les technologies que je maîtrise à travers des animations interactives
+          </p>
+        </div>
+        
+        <!-- Flip Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Frontend Card -->
+          <div class="flip-card stagger-item">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-800 border border-gray-700">
+                <div class="text-center">
+                  <i class="ri-reactjs-line text-4xl text-blue-400 mb-4"></i>
+                  <h3 class="text-xl font-semibold">Frontend</h3>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="text-center text-white p-4">
+                  <h3 class="text-xl font-bold mb-2">Frontend</h3>
+                  <p class="text-sm">React, Vue.js, TypeScript, Tailwind CSS</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Backend Card -->
+          <div class="flip-card stagger-item">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-800 border border-gray-700">
+                <div class="text-center">
+                  <i class="ri-server-line text-4xl text-green-400 mb-4"></i>
+                  <h3 class="text-xl font-semibold">Backend</h3>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="text-center text-white p-4">
+                  <h3 class="text-xl font-bold mb-2">Backend</h3>
+                  <p class="text-sm">Node.js, Python, PHP, MongoDB, MySQL</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Mobile Card -->
+          <div class="flip-card stagger-item">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-800 border border-gray-700">
+                <div class="text-center">
+                  <i class="ri-smartphone-line text-4xl text-purple-400 mb-4"></i>
+                  <h3 class="text-xl font-semibold">Mobile</h3>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="text-center text-white p-4">
+                  <h3 class="text-xl font-bold mb-2">Mobile</h3>
+                  <p class="text-sm">Flutter, React Native, Dart, Firebase</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Radar Scanning Animation -->
+        <div class="mt-16 text-center">
+          <h3 class="neon-glow text-2xl font-semibold mb-8">Scanning Technologies...</h3>
+          <div class="radar-scan breathing"></div>
+        </div>
+      </div>
+    </section>
     
     <!-- About Section -->
     <section id="about" class="py-20 bg-[#151515] relative">
       <div class="container mx-auto px-4 md:px-6">
         <div class="text-center mb-16 slide-in">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">À propos de moi</h2>
+          <h2 class="text-reveal text-3xl md:text-4xl font-bold mb-4">À propos de moi</h2>
           <div class="w-20 h-1 bg-primary mx-auto"></div>
         </div>
         <div class="flex flex-col md:flex-row gap-10 md:gap-16">
@@ -1226,7 +1640,7 @@ Matplotlib
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
         >
           <!-- Mobile Development -->
-          <div class="card p-6 rounded-lg slide-in">
+          <div class="card elastic-card p-6 rounded-lg slide-in">
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mb-6"
             >
@@ -1264,7 +1678,7 @@ Matplotlib
             </div>
           </div>
           <!-- Web Development -->
-          <div class="card p-6 rounded-lg slide-in">
+          <div class="card elastic-card p-6 rounded-lg slide-in">
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mb-6"
             >
@@ -1302,7 +1716,7 @@ Matplotlib
             </div>
           </div>
           <!-- Backend Development -->
-          <div class="card p-6 rounded-lg slide-in">
+          <div class="card elastic-card p-6 rounded-lg slide-in">
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mb-6"
             >
@@ -1351,7 +1765,7 @@ Matplotlib
             </div>
           </div>
           <!-- DevOps -->
-          <div class="card p-6 rounded-lg slide-in">
+          <div class="card elastic-card p-6 rounded-lg slide-in">
             <div
               class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 rounded-lg mb-6"
             >
@@ -2375,6 +2789,67 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
             goToSlide(currentIndex - 1);
           }
         }
+      });
+
+      // Binary Rain Effect
+      function initBinaryRain() {
+        const container = document.getElementById('binary-container');
+        if (!container) return;
+        
+        const characters = '01';
+        const columns = Math.floor(container.offsetWidth / 20);
+        
+        for (let i = 0; i < columns; i++) {
+          const column = document.createElement('div');
+          column.className = 'binary-column';
+          column.style.position = 'absolute';
+          column.style.left = i * 20 + 'px';
+          column.style.color = '#2196F3';
+          column.style.fontSize = '14px';
+          column.style.lineHeight = '20px';
+          column.style.opacity = '0.6';
+          column.style.animation = `binaryFall ${Math.random() * 3 + 2}s linear infinite`;
+          column.style.animationDelay = Math.random() * 5 + 's';
+          
+          for (let j = 0; j < 20; j++) {
+            const char = document.createElement('span');
+            char.textContent = characters[Math.floor(Math.random() * characters.length)];
+            char.style.display = 'block';
+            char.style.opacity = Math.random();
+            column.appendChild(char);
+          }
+          
+          container.appendChild(column);
+        }
+      }
+
+      // Radar Scanning Effect
+      function initRadarScanning() {
+        const scanners = document.querySelectorAll('.radar-scanner');
+        scanners.forEach(scanner => {
+          const line = document.createElement('div');
+          line.className = 'radar-line';
+          line.style.position = 'absolute';
+          line.style.top = '50%';
+          line.style.left = '50%';
+          line.style.width = '2px';
+          line.style.height = '50%';
+          line.style.background = 'linear-gradient(to bottom, transparent, #2196F3)';
+          line.style.transformOrigin = 'top center';
+          line.style.animation = 'radarSweep 3s linear infinite';
+          scanner.appendChild(line);
+        });
+      }
+
+      // Initialize all new animations
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize binary rain
+        initBinaryRain();
+        
+        // Initialize radar scanning
+        initRadarScanning();
+        
+        console.log('🌟 Advanced animations initialized!');
       });
     </script>
     <script id="contact-form-script">
