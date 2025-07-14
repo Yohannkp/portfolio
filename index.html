@@ -2361,16 +2361,43 @@
         .theme-widget {
           right: 1rem;
           transform: translateY(-50%);
+          z-index: 10000; /* Augmenter le z-index pour mobile */
         }
         
         .theme-widget-toggle {
-          width: 3rem;
-          height: 3rem;
+          width: 3.5rem;
+          height: 3.5rem;
+          /* Améliorer la zone de touch pour mobile */
+          min-height: 44px;
+          min-width: 44px;
+          touch-action: manipulation;
         }
         
         .theme-widget-menu {
-          right: 3.5rem;
-          min-width: 180px;
+          right: 4rem;
+          min-width: 200px;
+          /* Ajustements pour mobile */
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .theme-option-widget {
+          /* Améliorer la zone de touch pour mobile */
+          min-height: 44px;
+          touch-action: manipulation;
+          padding: 0.75rem;
+        }
+      }
+      
+      /* Support pour iOS Safari */
+      @supports (-webkit-touch-callout: none) {
+        .theme-widget-toggle,
+        .theme-option-widget {
+          -webkit-tap-highlight-color: transparent;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          user-select: none;
         }
       }
     </style>
@@ -4096,6 +4123,10 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
         function initThemeWidget() {
           console.log('🎛️ Initialisation du widget flottant...');
           
+          // Détecter si on est sur un appareil tactile
+          const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+          console.log('📱 Appareil tactile détecté:', isTouchDevice);
+          
           const widgetToggle = document.getElementById('theme-widget-toggle');
           const widgetMenu = document.getElementById('theme-widget-menu');
           const widgetOptions = document.querySelectorAll('.theme-option-widget');
@@ -4110,9 +4141,10 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
           
           let isMenuOpen = false;
           
-          // Gestion du clic sur le bouton principal du widget
-          widgetToggle.addEventListener('click', (e) => {
+          // Gestion du clic sur le bouton principal du widget (mobile-friendly)
+          function toggleMenu(e) {
             e.stopPropagation();
+            e.preventDefault();
             isMenuOpen = !isMenuOpen;
             
             if (isMenuOpen) {
@@ -4122,7 +4154,18 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
               widgetMenu.classList.remove('active');
               console.log('📕 Menu du widget fermé');
             }
-          });
+          }
+          
+          // Événements pour ordinateur et mobile
+          if (isTouchDevice) {
+            // Pour les appareils tactiles, privilégier touchend
+            widgetToggle.addEventListener('touchend', toggleMenu, { passive: false });
+            // Fallback pour click
+            widgetToggle.addEventListener('click', toggleMenu);
+          } else {
+            // Pour les ordinateurs, utiliser click
+            widgetToggle.addEventListener('click', toggleMenu);
+          }
           
           // Fermer le menu en cliquant ailleurs
           document.addEventListener('click', (e) => {
@@ -4133,9 +4176,9 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
             }
           });
           
-          // Gestion des clics sur les options du widget
+          // Gestion des clics sur les options du widget (mobile-friendly)
           widgetOptions.forEach(option => {
-            option.addEventListener('click', (e) => {
+            function selectTheme(e) {
               e.preventDefault();
               e.stopPropagation();
               
@@ -4162,7 +4205,18 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
               // Fermer le menu après sélection
               isMenuOpen = false;
               widgetMenu.classList.remove('active');
-            });
+            }
+            
+            // Événements pour ordinateur et mobile
+            if (isTouchDevice) {
+              // Pour les appareils tactiles, privilégier touchend
+              option.addEventListener('touchend', selectTheme, { passive: false });
+              // Fallback pour click
+              option.addEventListener('click', selectTheme);
+            } else {
+              // Pour les ordinateurs, utiliser click
+              option.addEventListener('click', selectTheme);
+            }
           });
           
           // Marquer le thème actuel dans le widget
