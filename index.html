@@ -3573,18 +3573,38 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
         </div>
       </div>
 
-      <!-- Project 6 -->
-      <div class="project-card rounded-lg overflow-hidden">
-        <img src="images/docker.jpg" alt="Architecture Docker et Kubernetes pour applications web multi-conteneurs" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Projet Docker-K8s</h3>
-          <div class="flex flex-wrap mb-4">
-            <span class="tech-badge">Docker</span>
+      <!-- Project 6 - Docker-K8s -->
+      <div class="project-card-enhanced cyber-project-card rounded-lg overflow-hidden relative magnetic">
+        <!-- HUD Overlay pour cette carte -->
+        <div class="cyber-project-hud absolute inset-0">
+          <div class="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-accent opacity-60"></div>
+          <div class="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-accent opacity-60"></div>
+          <div class="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-accent opacity-60"></div>
+          <div class="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-accent opacity-60"></div>
+        </div>
+        
+        <!-- Effet de scan au hover -->
+        <div class="scan-line-effect absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+        
+        <!-- Image avec overlay cyberpunk -->
+        <div class="relative">
+          <img src="images/docker.jpg" alt="Architecture Docker et Kubernetes pour applications web multi-conteneurs" class="card-image w-full h-48 object-cover">
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute top-2 left-2 cyber-text text-xs text-accent">[STATUS: SCALED]</div>
+        </div>
+        
+        <div class="card-content p-6 relative z-10">
+          <h3 class="text-xl font-semibold mb-2 cyber-title">🐳 Projet Docker-K8s</h3>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="cyber-tech-badge">Docker</span>
+            <span class="cyber-tech-badge">Kubernetes</span>
+            <span class="cyber-tech-badge">DevOps</span>
           </div>
-          <p class="text-gray-400 text-sm mb-6">
-            Architecture web multi-conteneurs avec Docker & Kubernetes.
-          </p>
-          <a href="https://github.com/Yohannkp/Groupe-12-TP-docker" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
+          <p class="text-gray-400 text-sm mb-6 cyber-text">Architecture web multi-conteneurs avec Docker & Kubernetes pour le déploiement scalable et la gestion automatisée.</p>
+          <a href="https://github.com/Yohannkp/Groupe-12-TP-docker" class="cyber-btn bg-primary text-white px-4 py-2 rounded text-sm inline-flex items-center magnetic">
+            <i class="ri-external-link-line mr-2"></i>
+            [EXPLORER.EXE]
+          </a>
         </div>
       </div>
 
