@@ -107,6 +107,19 @@
     <link rel="preload" href="./js/ux-enhancements.js" as="script">
     <link rel="preload" href="./js/content-enhancements.js" as="script">
     
+    <!-- Script de thème immédiat pour éviter le flash -->
+    <script>
+      (function() {
+        'use strict';
+        // Appliquer le thème immédiatement au chargement pour éviter le flash
+        var savedTheme = localStorage.getItem('cyberpunk-theme');
+        if (savedTheme && savedTheme !== 'default') {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+          console.log('🎨 Thème appliqué au chargement:', savedTheme);
+        }
+      })();
+    </script>
+    
     <style>
       :where([class^="ri-"])::before { content: "\f3c2"; }
       
@@ -2225,6 +2238,7 @@
       }
 
       /* Thème Matrix */
+      html[data-theme="matrix"],
       body[data-theme="matrix"] {
         --primary: #00FF41;
         --accent: #00DD00;
@@ -2234,11 +2248,13 @@
         --text-secondary: #00DD00;
       }
 
+      html[data-theme="matrix"] body,
       body[data-theme="matrix"] {
         background: linear-gradient(135deg, #000000 0%, #001100 50%, #000000 100%) !important;
       }
 
       /* Thème Neon City */
+      html[data-theme="neon-city"],
       body[data-theme="neon-city"] {
         --primary: #FF1493;
         --accent: #FF6600;
@@ -2248,11 +2264,13 @@
         --text-secondary: #FF6600;
       }
 
+      html[data-theme="neon-city"] body,
       body[data-theme="neon-city"] {
         background: linear-gradient(135deg, #000000 0%, #2D0B00 50%, #000000 100%) !important;
       }
 
       /* Thème Synthwave */
+      html[data-theme="synthwave"],
       body[data-theme="synthwave"] {
         --primary: #FF00FF;
         --accent: #00FFFF;
@@ -2262,11 +2280,13 @@
         --text-secondary: #00FFFF;
       }
 
+      html[data-theme="synthwave"] body,
       body[data-theme="synthwave"] {
         background: linear-gradient(135deg, #1a0033 0%, #330066 50%, #1a0033 100%) !important;
       }
 
       /* Thème Blade Runner */
+      html[data-theme="blade-runner"],
       body[data-theme="blade-runner"] {
         --primary: #FFA500;
         --accent: #FFD700;
@@ -2276,6 +2296,7 @@
         --text-secondary: #FFD700;
       }
 
+      html[data-theme="blade-runner"] body,
       body[data-theme="blade-runner"] {
         background: linear-gradient(135deg, #1a1000 0%, #332200 50%, #1a1000 100%) !important;
       }
@@ -3685,67 +3706,130 @@ Traduction de texte en plusieurs langue
           card.classList.remove('reveal-element', 'slide-in');
         });
 
-        // SYSTÈME DE CHANGEMENT DE THÈMES
-        const themeOptions = document.querySelectorAll('.theme-option');
-        const currentTheme = localStorage.getItem('cyberpunk-theme') || 'default';
+        // SYSTÈME DE CHANGEMENT DE THÈMES - VERSION GITHUB PAGES ROBUSTE
+        console.log('🎨 Initialisation du système de thèmes...');
         
-        // Appliquer le thème sauvegardé
-        if (currentTheme !== 'default') {
-          document.body.setAttribute('data-theme', currentTheme);
+        // Fonction d'initialisation avec retry pour GitHub Pages
+        function initThemeSystem() {
+          const themeOptions = document.querySelectorAll('.theme-option');
+          console.log('🔍 Nombre d\'options de thème trouvées:', themeOptions.length);
+          
+          // Si les éléments ne sont pas encore chargés, retry
+          if (themeOptions.length === 0) {
+            console.warn('⚠️ Options de thème non trouvées, retry dans 1 seconde...');
+            setTimeout(initThemeSystem, 1000);
+            return;
+          }
+          
+          const currentTheme = localStorage.getItem('cyberpunk-theme') || 'default';
+          console.log('🎨 Thème actuel:', currentTheme);
+          
+          // Appliquer le thème sauvegardé immédiatement
+          applyTheme(currentTheme);
+          
+          // Marquer le thème actuel comme actif
+          themeOptions.forEach(option => {
+            option.classList.remove('active'); // Reset
+            if (option.getAttribute('data-theme') === currentTheme) {
+              option.classList.add('active');
+              console.log('✅ Option marquée comme active:', currentTheme);
+            }
+          });
+          
+          // Gestion des clics sur les options de thème
+          themeOptions.forEach(option => {
+            option.addEventListener('click', handleThemeClick);
+            option.addEventListener('touchstart', handleThemeClick); // Support mobile
+          });
+          
+          console.log('✅ Système de thèmes initialisé avec succès !');
         }
         
-        // Marquer le thème actuel comme actif
-        themeOptions.forEach(option => {
-          if (option.getAttribute('data-theme') === currentTheme) {
-            option.classList.add('active');
+        // Fonction pour appliquer un thème
+        function applyTheme(themeName) {
+          if (themeName === 'default') {
+            document.documentElement.removeAttribute('data-theme');
+            document.body.removeAttribute('data-theme');
+            console.log('✅ Thème par défaut appliqué');
+          } else {
+            document.documentElement.setAttribute('data-theme', themeName);
+            document.body.setAttribute('data-theme', themeName);
+            console.log('✅ Thème appliqué:', themeName);
           }
-        });
+        }
         
-        // Gestion des clics sur les options de thème
-        themeOptions.forEach(option => {
-          option.addEventListener('click', () => {
-            const selectedTheme = option.getAttribute('data-theme');
-            
-            // Supprimer la classe active de toutes les options
-            themeOptions.forEach(opt => opt.classList.remove('active'));
-            
-            // Ajouter la classe active à l'option cliquée
-            option.classList.add('active');
-            
-            // Appliquer le thème
-            if (selectedTheme === 'default') {
-              document.body.removeAttribute('data-theme');
-            } else {
-              document.body.setAttribute('data-theme', selectedTheme);
-            }
-            
-            // Sauvegarder le thème
-            localStorage.setItem('cyberpunk-theme', selectedTheme);
-            
-            // Notification visuelle
-            const notification = document.createElement('div');
-            notification.innerHTML = `🎨 Thème "${option.querySelector('span').textContent}" activé`;
-            notification.style.cssText = `
-              position: fixed;
-              top: 20px;
-              right: 20px;
-              background: var(--primary);
-              color: white;
-              padding: 12px 20px;
-              border-radius: 8px;
-              z-index: 10000;
-              font-family: var(--font-cyber);
-              box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
-              transition: all 0.3s ease;
-            `;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-              notification.style.opacity = '0';
-              setTimeout(() => notification.remove(), 300);
-            }, 2000);
+        // Fonction pour gérer les clics sur les thèmes
+        function handleThemeClick(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          console.log('🖱️ Clic sur option de thème détecté');
+          
+          const option = e.currentTarget;
+          const selectedTheme = option.getAttribute('data-theme');
+          console.log('🎨 Thème sélectionné:', selectedTheme);
+          
+          // Supprimer la classe active de toutes les options
+          document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
+          
+          // Ajouter la classe active à l'option cliquée
+          option.classList.add('active');
+          
+          // Appliquer le thème
+          applyTheme(selectedTheme);
+          
+          // Sauvegarder le thème
+          localStorage.setItem('cyberpunk-theme', selectedTheme);
+          
+          // Notification visuelle améliorée
+          showThemeNotification(option.querySelector('span').textContent);
+        }
+        
+        // Fonction de notification améliorée
+        function showThemeNotification(themeName) {
+          // Supprimer les notifications existantes
+          document.querySelectorAll('.theme-notification').forEach(n => n.remove());
+          
+          const notification = document.createElement('div');
+          notification.className = 'theme-notification';
+          notification.innerHTML = `🎨 Thème "${themeName}" activé`;
+          notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary, #9D4EDD);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            z-index: 10000;
+            font-family: var(--font-cyber, 'Orbitron', sans-serif);
+            box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
+            transition: all 0.3s ease;
+            transform: translateX(100%);
+            opacity: 0;
+          `;
+          document.body.appendChild(notification);
+          
+          // Animation d'entrée
+          requestAnimationFrame(() => {
+            notification.style.transform = 'translateX(0)';
+            notification.style.opacity = '1';
           });
-        });
+          
+          // Animation de sortie
+          setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            notification.style.opacity = '0';
+            setTimeout(() => {
+              if (notification.parentNode) {
+                notification.remove();
+              }
+            }, 300);
+          }, 2000);
+        }
+        
+        // Démarrer l'initialisation
+        initThemeSystem();
         
         // 1. TYPING ANIMATION
         const typingTexts = [
