@@ -789,9 +789,173 @@
         transform: rotate(-5deg) scale(1.1);
         box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
       }
+
+      /* === NOUVELLES ANIMATIONS JAVASCRIPT === */
+      
+      /* Typing Animation */
+      .typing-cursor {
+        display: inline-block;
+        background-color: #2196F3;
+        margin-left: 3px;
+        width: 2px;
+        animation: blink 1.2s infinite;
+      }
+      
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+      }
+
+      /* Particules Canvas */
+      #particles-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Curseur personnalisé */
+      .custom-cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background: rgba(33, 150, 243, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: all 0.1s ease;
+        transform: translate(-50%, -50%);
+      }
+      
+      .custom-cursor.hover {
+        transform: translate(-50%, -50%) scale(2);
+        background: rgba(33, 150, 243, 0.8);
+      }
+
+      /* Floating Elements */
+      .floating-element {
+        position: absolute;
+        opacity: 0.1;
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
+      }
+
+      /* Reveal Animation */
+      .reveal-element {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .reveal-element.revealed {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      /* Parallax Sections */
+      .parallax-bg {
+        transform: translateZ(0);
+        will-change: transform;
+      }
+
+      /* Count Up Animation */
+      .count-up {
+        font-feature-settings: 'tnum';
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Glitch Effect */
+      .glitch {
+        position: relative;
+        animation: glitch 2s infinite;
+      }
+      
+      @keyframes glitch {
+        0%, 100% { transform: translate(0); }
+        10% { transform: translate(-2px, -2px); }
+        20% { transform: translate(2px, 2px); }
+        30% { transform: translate(-2px, 2px); }
+        40% { transform: translate(2px, -2px); }
+        50% { transform: translate(-2px, -2px); }
+        60% { transform: translate(2px, 2px); }
+        70% { transform: translate(-2px, 2px); }
+        80% { transform: translate(2px, -2px); }
+        90% { transform: translate(-2px, -2px); }
+      }
+
+      /* Matrix Rain Effect */
+      .matrix-rain {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+      }
+      
+      .matrix-char {
+        position: absolute;
+        color: #00ff00;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        animation: matrix-fall 3s linear infinite;
+      }
+      
+      @keyframes matrix-fall {
+        0% { top: -20px; opacity: 1; }
+        100% { top: 100vh; opacity: 0; }
+      }
+
+      /* Magnetic Effect */
+      .magnetic {
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      /* Loading Bar */
+      .loading-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #2196F3, #03a9f4);
+        z-index: 10000;
+        transition: width 0.3s ease;
+      }
+
+      /* Scroll Progress */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #2196F3, #03a9f4);
+        z-index: 1000;
+        transition: width 0.1s ease;
+      }
     </style>
   </head>
   <body>
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loading-bar"></div>
+    
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    
+    <!-- Particules pour le Hero -->
+    <canvas id="particles-canvas"></canvas>
     <!-- Header/Navigation -->
     <header
       class="fixed top-0 left-0 w-full bg-secondary bg-opacity-90 backdrop-blur-md z-50 py-4"
@@ -813,7 +977,7 @@
           <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
           <a
             href="#"
-            class="btn-primary ml-4 bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-sm font-medium flex items-center whitespace-nowrap"
+            class="btn-primary magnetic ml-4 bg-primary hover:bg-opacity-80 text-white px-4 py-2 !rounded-button text-sm font-medium flex items-center whitespace-nowrap"
           >
             <i class="ri-download-line mr-2"></i> CV
           </a>
@@ -842,6 +1006,17 @@
     </div>
     <!-- Hero Section -->
     <section class="hero-section pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+      <!-- Floating Elements -->
+      <div class="floating-element" style="top: 10%; left: 10%;">
+        <i class="ri-code-s-slash-line text-4xl text-primary"></i>
+      </div>
+      <div class="floating-element" style="top: 20%; right: 15%; animation-delay: -2s;">
+        <i class="ri-smartphone-line text-3xl text-primary"></i>
+      </div>
+      <div class="floating-element" style="bottom: 30%; left: 20%; animation-delay: -4s;">
+        <i class="ri-database-2-line text-3xl text-primary"></i>
+      </div>
+      
       <div class="container mx-auto">
         <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
           <div class="hero-content md:w-1/2 text-center md:text-left mb-10 md:mb-0">
@@ -849,7 +1024,7 @@
               Yohann Yendi
             </h1>
             <h2 class="text-xl md:text-2xl font-medium text-gray-300 mb-6">
-              Développeur Fullstack & Mobile
+              <span id="typing-text"></span><span class="typing-cursor">|</span>
             </h2>
             <div class="flex items-center justify-center md:justify-start mb-8">
               <div class="w-6 h-6 flex items-center justify-center mr-2">
@@ -864,7 +1039,7 @@
             </p>
             <a
               href="./docs/cv.pdf"
-              class="btn-primary btn-download inline-block bg-primary hover:bg-opacity-80 text-white px-6 py-3 !rounded-button text-base font-medium flex items-center w-fit mx-auto md:mx-0 whitespace-nowrap"
+              class="btn-primary magnetic btn-download inline-block bg-primary hover:bg-opacity-80 text-white px-6 py-3 !rounded-button text-base font-medium flex items-center w-fit mx-auto md:mx-0 whitespace-nowrap"
             >
               <i class="ri-download-line mr-2"></i> Télécharger mon CV
             </a>
@@ -904,6 +1079,31 @@
         class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary opacity-5 rounded-tr-full"
       ></div>
     </section>
+
+    <!-- Stats Section avec Count Up Animation -->
+    <section class="py-16 bg-gradient-to-r from-primary to-blue-600 relative overflow-hidden">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div class="reveal-element">
+            <div class="count-up text-4xl font-bold text-white mb-2" data-target="15">0</div>
+            <p class="text-blue-100">Projets Réalisés</p>
+          </div>
+          <div class="reveal-element">
+            <div class="count-up text-4xl font-bold text-white mb-2" data-target="3">0</div>
+            <p class="text-blue-100">Années d'Expérience</p>
+          </div>
+          <div class="reveal-element">
+            <div class="count-up text-4xl font-bold text-white mb-2" data-target="8">0</div>
+            <p class="text-blue-100">Technologies Maîtrisées</p>
+          </div>
+          <div class="reveal-element">
+            <div class="count-up text-4xl font-bold text-white mb-2" data-target="100">0</div>
+            <p class="text-blue-100">% Satisfaction Client</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
     <!-- About Section -->
     <section id="about" class="py-20 bg-[#151515] relative">
       <div class="container mx-auto px-4 md:px-6">
@@ -912,7 +1112,7 @@
           <div class="w-20 h-1 bg-primary mx-auto"></div>
         </div>
         <div class="flex flex-col md:flex-row gap-10 md:gap-16">
-          <div class="md:w-1/2 slide-in">
+          <div class="md:w-1/2 slide-in reveal-element">
             <h3 class="text-2xl font-semibold mb-6">Mon parcours</h3>
             <p class="text-gray-300 mb-6">
               Développeur fullstack & mobile avec une solide formation en
@@ -941,7 +1141,7 @@
               <span class="tech-badge">MongoDB</span>
             </div>
           </div>
-          <div class="md:w-1/2 slide-in">
+          <div class="md:w-1/2 slide-in reveal-element">
             <h3 class="text-2xl font-semibold mb-6">Formation</h3>
             <div class="timeline">
                  <div class="timeline-item">
@@ -1530,7 +1730,258 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
     </section>
     <!-- Animation déplacée sur le nom, section HELLO WORLD supprimée -->
     <script>
+      // === SYSTÈME D'ANIMATIONS JAVASCRIPT AVANCÉES ===
+      
       document.addEventListener('DOMContentLoaded', function () {
+        console.log('🚀 Initialisation des animations JavaScript');
+        
+        // 1. TYPING ANIMATION
+        const typingTexts = [
+          "Développeur Fullstack & Mobile",
+          "Spécialiste Flutter & React", 
+          "Expert Big Data & IA",
+          "Passionné par l'Innovation"
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing-text');
+        
+        function typeEffect() {
+          const currentText = typingTexts[textIndex];
+          
+          if (isDeleting) {
+            typingElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+          } else {
+            typingElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+          }
+          
+          let typeSpeed = isDeleting ? 50 : 100;
+          
+          if (!isDeleting && charIndex === currentText.length) {
+            typeSpeed = 2000; // Pause
+            isDeleting = true;
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % typingTexts.length;
+            typeSpeed = 500;
+          }
+          
+          setTimeout(typeEffect, typeSpeed);
+        }
+        
+        if (typingElement) {
+          typeEffect();
+        }
+        
+        // 2. PARTICULES CANVAS
+        const canvas = document.getElementById('particles-canvas');
+        if (canvas) {
+          const ctx = canvas.getContext('2d');
+          const particles = [];
+          
+          function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+          }
+          
+          function createParticle(x, y) {
+            return {
+              x: x || Math.random() * canvas.width,
+              y: y || Math.random() * canvas.height,
+              vx: (Math.random() - 0.5) * 2,
+              vy: (Math.random() - 0.5) * 2,
+              size: Math.random() * 3 + 1,
+              opacity: Math.random() * 0.5 + 0.2,
+              color: Math.random() > 0.5 ? '#2196F3' : '#03a9f4'
+            };
+          }
+          
+          function updateParticles() {
+            particles.forEach((particle, index) => {
+              particle.x += particle.vx;
+              particle.y += particle.vy;
+              particle.opacity -= 0.002;
+              
+              if (particle.opacity <= 0 || 
+                  particle.x < 0 || particle.x > canvas.width ||
+                  particle.y < 0 || particle.y > canvas.height) {
+                particles.splice(index, 1);
+              }
+            });
+          }
+          
+          function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+              ctx.save();
+              ctx.globalAlpha = particle.opacity;
+              ctx.fillStyle = particle.color;
+              ctx.beginPath();
+              ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.restore();
+            });
+          }
+          
+          function animateParticles() {
+            updateParticles();
+            drawParticles();
+            requestAnimationFrame(animateParticles);
+          }
+          
+          // Initialiser les particules
+          resizeCanvas();
+          for (let i = 0; i < 50; i++) {
+            particles.push(createParticle());
+          }
+          
+          window.addEventListener('resize', resizeCanvas);
+          
+          // Ajouter des particules au mouvement de la souris
+          let mouseTimer;
+          document.addEventListener('mousemove', (e) => {
+            clearTimeout(mouseTimer);
+            mouseTimer = setTimeout(() => {
+              particles.push(createParticle(e.clientX, e.clientY));
+            }, 50);
+          });
+          
+          animateParticles();
+        }
+        
+        // 3. CURSEUR PERSONNALISÉ
+        const cursor = document.getElementById('custom-cursor');
+        if (cursor) {
+          document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+          });
+          
+          // Effet hover sur les éléments interactifs
+          const interactiveElements = document.querySelectorAll('a, button, .btn-primary, .project-card, .social-icon');
+          interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+          });
+        }
+        
+        // 4. ANIMATION COUNT UP
+        function animateCountUp(element, target, duration = 2000) {
+          const start = parseInt(element.textContent);
+          const increment = (target - start) / (duration / 16);
+          let current = start;
+          
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              element.textContent = target;
+              clearInterval(timer);
+            } else {
+              element.textContent = Math.floor(current);
+            }
+          }, 16);
+        }
+        
+        // 5. INTERSECTION OBSERVER POUR LES RÉVÉLATIONS
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              
+              // Déclencher count-up si c'est un élément compteur
+              const countUp = entry.target.querySelector('.count-up');
+              if (countUp && !countUp.classList.contains('animated')) {
+                countUp.classList.add('animated');
+                const target = parseInt(countUp.getAttribute('data-target'));
+                animateCountUp(countUp, target);
+              }
+            }
+          });
+        }, { threshold: 0.2 });
+        
+        document.querySelectorAll('.reveal-element').forEach(el => {
+          revealObserver.observe(el);
+        });
+        
+        // 6. SCROLL PROGRESS BAR
+        const progressBar = document.getElementById('scroll-progress');
+        if (progressBar) {
+          window.addEventListener('scroll', () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.pageYOffset / scrollHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+          });
+        }
+        
+        // 7. LOADING BAR SIMULATION
+        const loadingBar = document.getElementById('loading-bar');
+        if (loadingBar) {
+          let progress = 0;
+          const loadingInterval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+              progress = 100;
+              clearInterval(loadingInterval);
+              setTimeout(() => {
+                loadingBar.style.opacity = '0';
+                setTimeout(() => {
+                  loadingBar.style.display = 'none';
+                }, 300);
+              }, 200);
+            }
+            loadingBar.style.width = progress + '%';
+          }, 100);
+        }
+        
+        // 8. PARALLAX EFFECT
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          const parallaxElements = document.querySelectorAll('.parallax-bg');
+          
+          parallaxElements.forEach(el => {
+            const speed = el.dataset.speed || 0.5;
+            const yPos = -(scrolled * speed);
+            el.style.transform = `translateY(${yPos}px)`;
+          });
+        });
+        
+        // 9. MAGNETIC EFFECT
+        const magneticElements = document.querySelectorAll('.magnetic');
+        magneticElements.forEach(el => {
+          el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            el.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+          });
+          
+          el.addEventListener('mouseleave', () => {
+            el.style.transform = 'translate(0, 0)';
+          });
+        });
+        
+        // 10. GLITCH EFFECT ALÉATOIRE
+        function addGlitchEffect() {
+          const glitchableElements = document.querySelectorAll('h1, h2, .logo-yy');
+          const randomElement = glitchableElements[Math.floor(Math.random() * glitchableElements.length)];
+          
+          if (randomElement) {
+            randomElement.classList.add('glitch');
+            setTimeout(() => {
+              randomElement.classList.remove('glitch');
+            }, 2000);
+          }
+        }
+        
+        // Déclencher l'effet glitch aléatoirement
+        setInterval(addGlitchEffect, 15000);
+        
+        // 11. ANIMATION DU LOGO YY (EXISTANTE)
         if (window.anime && typeof window.anime.animate === 'function') {
           console.log('anime.js chargé, lancement animation LOGO YY');
           window.anime.animate('.logo-yy span', {
@@ -1548,8 +1999,34 @@ Monitoring : Vérification de l'état des services (API + Neo4j)</p>
             loop: true,
             direction: 'alternate'
           });
-        } else {
-          console.warn('anime.js non chargé ou mauvaise version');
+        }
+        
+        // 12. PERFORMANCE OPTIMIZATION
+        // Désactiver les animations sur les appareils à faible performance
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+          document.documentElement.style.setProperty('--animation-duration', '0.1s');
+        }
+        
+        console.log('✅ Toutes les animations sont initialisées');
+      });
+      
+      // 13. EASTER EG - KONAMI CODE
+      let konamiCode = [];
+      const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+      
+      document.addEventListener('keydown', (e) => {
+        konamiCode.push(e.code);
+        if (konamiCode.length > konamiSequence.length) {
+          konamiCode.shift();
+        }
+        
+        if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+          // Easter egg activé !
+          document.body.style.filter = 'hue-rotate(180deg)';
+          setTimeout(() => {
+            document.body.style.filter = 'none';
+          }, 3000);
+          konamiCode = [];
         }
       });
     </script>
