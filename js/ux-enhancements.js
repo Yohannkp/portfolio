@@ -9,12 +9,15 @@ class UXEnhancementManager {
   }
 
   init() {
+    // Nettoyer les anciens curseurs personnalisés
+    this.removeCursorFollower();
+    
     this.initEnhancedNavigation();
     this.initAdvancedCards();
     this.initMicroAnimations();
     this.initThemeSystem();
     this.initScrollEffects();
-    this.initCursorEffects();
+    // this.initCursorEffects(); // Désactivé sur demande de l'utilisateur
     this.initMagneticElements();
   }
 
@@ -145,10 +148,19 @@ class UXEnhancementManager {
   }
 
   initParallaxCards() {
-    const cards = document.querySelectorAll('.project-card, .card');
+    // Exclure les cartes avec animations CSS spécifiques
+    const cards = document.querySelectorAll('.project-card:not(.card-enhanced), .card:not(.card-enhanced)');
     
     cards.forEach(card => {
+      let isHovering = false;
+      
+      card.addEventListener('mouseenter', () => {
+        isHovering = true;
+      });
+      
       card.addEventListener('mousemove', (e) => {
+        if (!isHovering) return;
+        
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -156,19 +168,27 @@ class UXEnhancementManager {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateX = (y - centerY) / centerY * -10;
-        const rotateY = (x - centerX) / centerX * 10;
+        const rotateX = (y - centerY) / centerY * -8; // Réduit l'intensité
+        const rotateY = (x - centerX) / centerX * 8;
         
-        card.style.transform = `
-          perspective(1000px) 
-          rotateX(${rotateX}deg) 
-          rotateY(${rotateY}deg) 
-          translateZ(20px)
-        `;
+        requestAnimationFrame(() => {
+          card.style.transform = `
+            perspective(1000px) 
+            rotateX(${rotateX}deg) 
+            rotateY(${rotateY}deg) 
+            translateZ(15px)
+          `;
+        });
       });
       
       card.addEventListener('mouseleave', () => {
+        isHovering = false;
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        card.style.transition = 'transform 0.4s ease-out';
+        
+        setTimeout(() => {
+          card.style.transition = '';
+        }, 400);
       });
     });
   }
@@ -195,28 +215,45 @@ class UXEnhancementManager {
   }
 
   initMagneticCards() {
-    const magneticCards = document.querySelectorAll('.card, .cyber-button');
+    // Exclure les cartes avec animations CSS spécifiques
+    const magneticCards = document.querySelectorAll('.card:not(.card-enhanced), .cyber-button:not(.card-enhanced)');
     
     magneticCards.forEach(card => {
+      let isHovering = false;
+      
+      card.addEventListener('mouseenter', () => {
+        isHovering = true;
+      });
+      
       card.addEventListener('mousemove', (e) => {
+        if (!isHovering) return;
+        
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
         
         const distance = Math.sqrt(x * x + y * y);
-        const maxDistance = 100;
+        const maxDistance = 80; // Réduit la zone d'effet
         
         if (distance < maxDistance) {
           const force = (maxDistance - distance) / maxDistance;
-          const moveX = x * force * 0.3;
-          const moveY = y * force * 0.3;
+          const moveX = x * force * 0.2; // Réduit l'intensité
+          const moveY = y * force * 0.2;
           
-          card.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.02)`;
+          requestAnimationFrame(() => {
+            card.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(1.01)`;
+          });
         }
       });
       
       card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translate(0, 0) scale(1)';
+        isHovering = false;
+        card.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        card.style.transition = 'transform 0.3s ease-out';
+        
+        setTimeout(() => {
+          card.style.transition = '';
+        }, 300);
       });
     });
   }
@@ -433,24 +470,60 @@ class UXEnhancementManager {
      =============================== */
 
   initMagneticElements() {
+    // Exclure les cartes avec animations CSS pour éviter les conflits
     const magneticElements = document.querySelectorAll('.magnetic, .cyber-button, .logo-header');
     
     magneticElements.forEach(element => {
+      // Skip si l'élément a des animations CSS actives
+      if (element.classList.contains('card-enhanced') || 
+          element.closest('.card-enhanced') ||
+          element.classList.contains('project-card')) {
+        return;
+      }
+      
+      let isHovering = false;
+      
+      element.addEventListener('mouseenter', () => {
+        isHovering = true;
+      });
+      
       element.addEventListener('mousemove', (e) => {
+        if (!isHovering) return;
+        
         const rect = element.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
         
-        const moveX = x * 0.15;
-        const moveY = y * 0.15;
+        const moveX = x * 0.1; // Réduit l'intensité
+        const moveY = y * 0.1;
         
-        element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        // Utiliser requestAnimationFrame pour des animations fluides
+        requestAnimationFrame(() => {
+          element.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+        });
       });
       
       element.addEventListener('mouseleave', () => {
-        element.style.transform = 'translate(0, 0)';
+        isHovering = false;
+        element.style.transform = 'translate3d(0, 0, 0)';
+        element.style.transition = 'transform 0.3s ease-out';
+        
+        setTimeout(() => {
+          element.style.transition = '';
+        }, 300);
       });
     });
+  }
+
+  /* ===============================
+     NETTOYAGE
+     =============================== */
+
+  removeCursorFollower() {
+    const existingCursor = document.querySelector('.cursor-follower');
+    if (existingCursor) {
+      existingCursor.remove();
+    }
   }
 
   /* ===============================

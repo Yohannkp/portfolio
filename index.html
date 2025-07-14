@@ -39,6 +39,7 @@
     <link rel="canonical" href="https://yohann-yendi.com" />
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.2/lib/anime.iife.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -98,9 +99,13 @@
     <!-- Phase 2: UX/UI Enhancements -->
     <link rel="stylesheet" href="./css/ux-ui-enhancements.css">
     
+    <!-- Phase 3: Content Enhancements -->
+    <link rel="stylesheet" href="./css/content-enhancements.css">
+    
     <!-- Preload critical JavaScript -->
     <link rel="preload" href="./js/performance-optimization.js" as="script">
     <link rel="preload" href="./js/ux-enhancements.js" as="script">
+    <link rel="preload" href="./js/content-enhancements.js" as="script">
     
     <style>
       :where([class^="ri-"])::before { content: "\f3c2"; }
@@ -2411,7 +2416,7 @@
     </div>
 
     <!-- Stats Section avec Count Up Animation -->
-    <section class="py-16 bg-gradient-to-r from-primary to-blue-600 relative overflow-hidden">
+    <!-- <section class="py-16 bg-gradient-to-r from-primary to-blue-600 relative overflow-hidden">
       <div class="container mx-auto px-4 md:px-6">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div class="reveal-element">
@@ -2432,7 +2437,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Section Animations Showcase -->
     <section class="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
@@ -2565,70 +2570,163 @@
             </div>
           </div>
           <div class="md:w-1/2 slide-in reveal-element">
-            <h3 class="text-2xl font-semibold mb-6">Formation</h3>
-            <div class="timeline">
-                 <div class="timeline-item">
-                <h4 class="text-lg font-medium">Certifications Google Advanced Data Analytics Professional</h4>
-                <p class="text-gray-400">2025 Google | Coursera Paris</p>
-                <ul class="list-disc list-inside text-sm text-gray-500 mt-1">
-                  Data Analysis
-Data Ethics
-Data Manipulation
-Descriptive Statistics
-Data Storytelling
-Regression Analysis
-Tableau Software
-Statistical Hypothesis Testing
-Data Presentation
-Sampling (Statistics)
-Exploratory Data Analysis
-Object Oriented Programming (OOP)
-                  
-                </ul>
+            <h3 class="text-2xl font-semibold mb-6">Expérience & Expertise</h3>
+            <div class="space-y-6">
+              <div class="cyber-card p-6 rounded-lg border border-primary border-opacity-30">
+                <h4 class="text-lg font-medium text-primary mb-2">Développement Fullstack</h4>
+                <p class="text-gray-400 text-sm mb-3">
+                  Expertise complète en développement web et mobile avec une spécialisation DevOps
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 bg-primary bg-opacity-20 text-primary text-xs rounded">React</span>
+                  <span class="px-2 py-1 bg-accent bg-opacity-20 text-accent text-xs rounded">Flutter</span>
+                  <span class="px-2 py-1 bg-neon bg-opacity-20 text-neon text-xs rounded">Symfony</span>
+                  <span class="px-2 py-1 bg-electric bg-opacity-20 text-electric text-xs rounded">Python</span>
+                </div>
               </div>
-              <div class="timeline-item">
+              
+              <div class="cyber-card p-6 rounded-lg border border-accent border-opacity-30">
+                <h4 class="text-lg font-medium text-accent mb-2">Intelligence Artificielle & Big Data</h4>
+                <p class="text-gray-400 text-sm mb-3">
+                  Spécialisation en analyse de données et développement de solutions IA innovantes
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 bg-primary bg-opacity-20 text-primary text-xs rounded">Machine Learning</span>
+                  <span class="px-2 py-1 bg-accent bg-opacity-20 text-accent text-xs rounded">Data Analytics</span>
+                  <span class="px-2 py-1 bg-neon bg-opacity-20 text-neon text-xs rounded">Tableau</span>
+                  <span class="px-2 py-1 bg-electric bg-opacity-20 text-electric text-xs rounded">SQL</span>
+                </div>
+              </div>
+              
+              <div class="cyber-card p-6 rounded-lg border border-neon border-opacity-30">
+                <h4 class="text-lg font-medium text-neon mb-2">Certifications & Formation</h4>
+                <p class="text-gray-400 text-sm mb-3">
+                  Certifications Google Advanced Data Analytics & IBM Data Analyst Professional
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 bg-primary bg-opacity-20 text-primary text-xs rounded">Google Certified</span>
+                  <span class="px-2 py-1 bg-accent bg-opacity-20 text-accent text-xs rounded">IBM Professional</span>
+                  <span class="px-2 py-1 bg-neon bg-opacity-20 text-neon text-xs rounded">Master IPSSI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <h4 class="text-lg font-medium">Certifications IBM Data Analyst Professional</h4>
-                <p class="text-gray-400">2025 Google | Coursera Paris</p>
-                <ul class="list-disc list-inside text-sm text-gray-500 mt-1">
-                  Professional Networking,Data Analysis,Generative AI
-Data Manipulation
-Data Storytelling
-Plotly
-SQL
-Data Cleansing
-Jupyter
-Exploratory Data Analysis
-Pandas (Python Package)
-Matplotlib
-                </ul>
+    <!-- Section Timeline Interactive -->
+    <section class="py-20 bg-gradient-to-br from-[#0A0A0A] to-[#1F1F1F] relative overflow-hidden">
+      <!-- Background effects -->
+      <div class="cyber-matrix-bg opacity-30"></div>
+      <div class="neon-circuit-board opacity-40"></div>
+      
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="text-center mb-16">
+          <h2 class="cyber-title text-3xl md:text-4xl font-bold mb-4 text-gradient" data-typing data-speed="90">
+            [TIMELINE.EXECUTABLE]
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
+          <p class="text-gray-300 mt-6 max-w-2xl mx-auto cyber-text">
+            Mon parcours professionnel et académique retracé de manière interactive
+          </p>
+        </div>
+        
+        <div class="interactive-timeline">
+          <div class="timeline-track"></div>
+          <div class="timeline-progress"></div>
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">[2025 - Present]</div>
+              <h3 class="timeline-title">Master Big Data & IA - IPSSI Paris</h3>
+              <p class="timeline-description">
+                Formation avancée en intelligence artificielle et analyse de données massives. 
+                Spécialisation dans les algorithmes de machine learning, architectures distribuées et développement de solutions IA innovantes.
+              </p>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Machine Learning</span>
+                <span class="timeline-tag">Big Data</span>
+                <span class="timeline-tag">Deep Learning</span>
+                <span class="timeline-tag">Python</span>
+                <span class="timeline-tag">TensorFlow</span>
               </div>
-              <div class="timeline-item">
-                <h4 class="text-lg font-medium">Master Big Data & IA</h4>
-                <p class="text-gray-400">IPSSI Paris | 2025 - 2027</p>
-                <p class="text-sm text-gray-500 mt-1">
-                  Spécialisation en analyse de données et intelligence
-                  artificielle
-                </p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">[2025]</div>
+              <h3 class="timeline-title">Certifications Google & IBM Data Analytics</h3>
+              <p class="timeline-description">
+                Obtention des certifications Google Advanced Data Analytics Professional et IBM Data Analyst Professional. 
+                Maîtrise complète de l'analyse de données, visualisation avec Tableau, et statistiques avancées.
+              </p>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Data Analytics</span>
+                <span class="timeline-tag">Tableau Software</span>
+                <span class="timeline-tag">SQL</span>
+                <span class="timeline-tag">Statistics</span>
+                <span class="timeline-tag">Data Storytelling</span>
+                <span class="timeline-tag">Pandas</span>
+                <span class="timeline-tag">Matplotlib</span>
               </div>
-              <div class="timeline-item">
-                <h4 class="text-lg font-medium">
-                  Bachelor Développement Fullstack & DevOps
-                </h4>
-                <p class="text-gray-400">Paris | 2024 - 2025</p>
-                <p class="text-sm text-gray-500 mt-1">
-                  Formation complète en développement web et mobile avec
-                  spécialisation DevOps
-                </p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">[2024 - 2025]</div>
+              <h3 class="timeline-title">Bachelor Développement Fullstack & DevOps - Paris</h3>
+              <p class="timeline-description">
+                Formation complète en développement web et mobile avec une spécialisation DevOps. 
+                Maîtrise des technologies frontend, backend et des pratiques d'intégration continue.
+              </p>
+              <div class="timeline-tags">
+                <span class="timeline-tag">React</span>
+                <span class="timeline-tag">Node.js</span>
+                <span class="timeline-tag">Docker</span>
+                <span class="timeline-tag">CI/CD</span>
+                <span class="timeline-tag">Symfony</span>
+                <span class="timeline-tag">Flutter</span>
               </div>
-              <div class="timeline-item">
-                <h4 class="text-lg font-medium">Diplôme en Génie Logiciel</h4>
-                <p class="text-gray-400">Togo | 2020 - 2023</p>
-                <p class="text-sm text-gray-500 mt-1">
-                  Formation complète axée sur le développement web et mobile, les mathématiques appliquées, les statistiques et la conception de systèmes logiciels. Acquisition de bases solides en algorithmique, architecture logicielle, gestion de bases de données et programmation orientée objet.
-                </p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">[2020 - 2023]</div>
+              <h3 class="timeline-title">Diplôme en Génie Logiciel - Togo</h3>
+              <p class="timeline-description">
+                Formation complète axée sur le développement web et mobile, les mathématiques appliquées, 
+                les statistiques et la conception de systèmes logiciels. Acquisition de bases solides en 
+                algorithmique, architecture logicielle et programmation orientée objet.
+              </p>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Algorithmes</span>
+                <span class="timeline-tag">Architecture Logicielle</span>
+                <span class="timeline-tag">Base de Données</span>
+                <span class="timeline-tag">POO</span>
+                <span class="timeline-tag">Mathématiques</span>
               </div>
-             
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">[2023 - 2024]</div>
+              <h3 class="timeline-title">Projets Personnels & Freelance</h3>
+              <p class="timeline-description">
+                Développement d'applications mobiles et web pour divers clients. 
+                Création d'une expertise en Flutter et développement de solutions innovantes.
+              </p>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Flutter</span>
+                <span class="timeline-tag">Firebase</span>
+                <span class="timeline-tag">API REST</span>
+                <span class="timeline-tag">UI/UX</span>
+                <span class="timeline-tag">Freelance</span>
+              </div>
             </div>
           </div>
         </div>
@@ -2776,10 +2874,10 @@ Matplotlib
           </p>
         </div>
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          class="skills-matrix grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
         >
           <!-- Mobile Development -->
-          <div class="card elastic-card p-6 rounded-lg slide-in relative">
+          <div class="skill-category card elastic-card p-6 rounded-lg slide-in relative scale-in">
             <!-- HUD overlay for this card -->
             <div class="absolute inset-0 cyber-card-hud">
               <div class="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-accent"></div>
@@ -2801,8 +2899,8 @@ Matplotlib
                     <span class="text-sm font-medium cyber-text">Flutter</span>
                     <span class="text-xs text-accent cyber-text">[95%]</span>
                   </div>
-                  <div class="cyber-progress-bar">
-                    <div class="cyber-progress-fill" style="width: 95%"></div>
+                  <div class="cyber-progress-bar skill-bar">
+                    <div class="cyber-progress-fill skill-progress" data-percentage="95" style="width: 0%"></div>
                   </div>
                 </div>
                 <div>
@@ -2810,8 +2908,8 @@ Matplotlib
                     <span class="text-sm font-medium cyber-text">Firebase</span>
                     <span class="text-xs text-neon cyber-text">[90%]</span>
                   </div>
-                  <div class="cyber-progress-bar">
-                    <div class="cyber-progress-fill" style="width: 90%"></div>
+                  <div class="cyber-progress-bar skill-bar">
+                    <div class="cyber-progress-fill skill-progress" data-percentage="90" style="width: 0%"></div>
                   </div>
                 </div>
                 <div>
@@ -2819,8 +2917,8 @@ Matplotlib
                     <span class="text-sm font-medium cyber-text">Dart</span>
                     <span class="text-xs text-electric cyber-text">[92%]</span>
                   </div>
-                  <div class="cyber-progress-bar">
-                    <div class="cyber-progress-fill" style="width: 92%"></div>
+                  <div class="cyber-progress-bar skill-bar">
+                    <div class="cyber-progress-fill skill-progress" data-percentage="92" style="width: 0%"></div>
                   </div>
                 </div>
               </div>
@@ -3199,10 +3297,116 @@ Traduction de texte en plusieurs langue
           <a href="https://github.com/fayesarah555/tp-groupe-mern-.git" class="bg-primary text-white px-4 py-2 rounded text-sm">Voir plus</a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
+
+    <!-- Section Statistiques & Témoignages -->
+    <section class="py-20 bg-gradient-to-br from-[#0D0D0D] to-[#1A1A1A] relative overflow-hidden">
+      <!-- Background effects -->
+      <div class="cyber-grid-overlay opacity-20"></div>
+      <div class="holographic-overlay opacity-30"></div>
+      
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <!-- Statistiques Animées -->
+        <div class="text-center mb-16">
+          <h2 class="cyber-title text-3xl md:text-4xl font-bold mb-4 text-gradient">
+            [STATISTICS.RENDER()]
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
+          <p class="text-gray-300 mt-6 max-w-2xl mx-auto cyber-text">
+            Quelques chiffres qui reflètent mon parcours et mon engagement
+          </p>
+        </div>
+        
+        <div class="stats-grid mb-20">
+          <!-- Statistiques par défaut en attendant le JavaScript -->
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ri-folder-line"></i>
+            </div>
+            <div class="stat-number" data-target="50" data-suffix="+">0+</div>
+            <div class="stat-label">Projets Réalisés</div>
+            <svg class="stat-progress-ring" width="120" height="120">
+              <circle class="progress-ring-circle" cx="60" cy="60" r="45"></circle>
+            </svg>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ri-time-line"></i>
+            </div>
+            <div class="stat-number" data-target="3" data-suffix="+">0+</div>
+            <div class="stat-label">Années d'Expérience</div>
+            <svg class="stat-progress-ring" width="120" height="120">
+              <circle class="progress-ring-circle" cx="60" cy="60" r="45"></circle>
+            </svg>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ri-code-line"></i>
+            </div>
+            <div class="stat-number" data-target="15" data-suffix="+">0+</div>
+            <div class="stat-label">Technologies Maîtrisées</div>
+            <svg class="stat-progress-ring" width="120" height="120">
+              <circle class="progress-ring-circle" cx="60" cy="60" r="45"></circle>
+            </svg>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ri-heart-line"></i>
+            </div>
+            <div class="stat-number" data-target="100" data-suffix="%">0%</div>
+            <div class="stat-label">Satisfaction Client</div>
+            <svg class="stat-progress-ring" width="120" height="120">
+              <circle class="progress-ring-circle" cx="60" cy="60" r="45"></circle>
+            </svg>
+          </div>
+        </div>
+        
+        <!-- Graphique de Compétences -->
+        <div class="mb-20">
+          <h3 class="text-2xl font-bold text-center mb-8 cyber-title">Répartition des Compétences</h3>
+          <div class="chart-container">
+            <div class="chart-header">
+              <h4 class="chart-title">Technologies Maîtrisées</h4>
+              <p class="chart-subtitle">Niveau d'expertise par domaine</p>
+            </div>
+            <div class="bar-chart">
+              <!-- Graphique généré avec des barres par défaut -->
+              <div class="bar" style="height: 0%" data-value="90">
+                <div class="bar-value">90%</div>
+                <div class="bar-label">Frontend</div>
+              </div>
+              <div class="bar" style="height: 0%" data-value="85">
+                <div class="bar-value">85%</div>
+                <div class="bar-label">Backend</div>
+              </div>
+              <div class="bar" style="height: 0%" data-value="95">
+                <div class="bar-value">95%</div>
+                <div class="bar-label">Mobile</div>
+              </div>
+              <div class="bar" style="height: 0%" data-value="75">
+                <div class="bar-value">75%</div>
+                <div class="bar-label">DevOps</div>
+              </div>
+              <div class="bar" style="height: 0%" data-value="80">
+                <div class="bar-value">80%</div>
+                <div class="bar-label">Data</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+       
+        
+       
+        
+        
+      </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 relative">
@@ -4460,6 +4664,51 @@ Traduction de texte en plusieurs langue
     
     <!-- Phase 2: UX/UI Enhancements Script -->
     <script src="./js/ux-enhancements.js"></script>
+    
+    <!-- Phase 3: Content Enhancements Script -->
+    <script src="./js/content-enhancements.js"></script>
+    
+    <!-- Cursor Cleanup Script -->
+    <script>
+      // Force suppression du curseur personnalisé
+      document.addEventListener('DOMContentLoaded', function() {
+        // Supprimer tous les curseurs existants
+        function removeCursors() {
+          const cursors = document.querySelectorAll('.cursor-follower, [class*="cursor"]');
+          cursors.forEach(cursor => {
+            if (cursor.style.position === 'fixed' || cursor.style.position === 'absolute') {
+              cursor.remove();
+            }
+          });
+        }
+        
+        // Nettoyer immédiatement
+        removeCursors();
+        
+        // Nettoyer après un délai pour s'assurer que tous les scripts sont chargés
+        setTimeout(removeCursors, 500);
+        setTimeout(removeCursors, 1000);
+        
+        // Observer pour supprimer tout nouveau curseur ajouté
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            mutation.addedNodes.forEach(function(node) {
+              if (node.nodeType === 1 && (
+                node.classList.contains('cursor-follower') ||
+                node.className.includes('cursor')
+              )) {
+                node.remove();
+              }
+            });
+          });
+        });
+        
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      });
+    </script>
     
   </body>
 </html>

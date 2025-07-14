@@ -221,13 +221,15 @@
     transparent 360deg
   );
   border-radius: 50%;
-  animation: rotate 4s linear infinite;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
+  animation-play-state: paused;
 }
 
 .card-enhanced:hover::before {
   opacity: 1;
+  animation: rotate 4s linear infinite;
+  animation-play-state: running;
 }
 
 .card-enhanced::after {
@@ -246,10 +248,11 @@
 
 /* Effet parallax sur hover */
 .card-enhanced:hover {
-  transform: translateY(-8px) rotateX(5deg);
+  transform: translateY(-8px);
   box-shadow: 
     0 20px 40px rgba(157, 78, 221, 0.2),
     0 0 0 1px rgba(157, 78, 221, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Card de projet avancée */
@@ -574,7 +577,8 @@
   transform: scale(1.05);
 }
 
-/* Effet de suivi de curseur */
+/* Effet de suivi de curseur - DÉSACTIVÉ */
+/*
 .cursor-follower {
   position: fixed;
   width: 20px;
@@ -591,6 +595,22 @@
   transform: scale(2);
   background: var(--primary);
   opacity: 0.3;
+}
+*/
+
+/* Force suppression de tous les curseurs personnalisés */
+.cursor-follower,
+[class*="cursor"]:not(input):not(textarea):not(select) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* S'assurer qu'aucun élément fixe ne puisse créer un curseur */
+*[style*="position: fixed"][style*="border-radius: 50%"],
+*[style*="position:fixed"][style*="border-radius:50%"] {
+  display: none !important;
 }
 
 /* ===============================
@@ -679,5 +699,61 @@
   }
   100% {
     background-position: 200% 0;
+  }
+}
+
+/* ===============================
+   LOTTIE ANIMATIONS INTEGRATION
+   =============================== */
+
+.cybersecurity-lottie {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#cybersecurity-animation {
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#cybersecurity-animation svg {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50%;
+}
+
+/* Amélioration des animations Lottie avec effets cyberpunk */
+.cybersecurity-lottie:hover {
+  animation: cyber-pulse 2s infinite;
+}
+
+@keyframes cyber-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(157, 78, 221, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 245, 255, 0.8), 0 0 60px rgba(157, 78, 221, 0.4);
+  }
+}
+
+/* Fallback logo styling */
+#fallback-logo {
+  transition: opacity 0.3s ease;
+}
+
+/* Responsive adjustments for Lottie */
+@media (max-width: 768px) {
+  #cybersecurity-animation {
+    width: 180px !important;
+    height: 180px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #cybersecurity-animation {
+    width: 160px !important;
+    height: 160px !important;
   }
 }
