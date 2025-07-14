@@ -1514,11 +1514,19 @@
         100% { transform: translateY(100vh); }
       }
 
-      /* 3D Card Flip Effect */
+      /* 3D Card Flip Effect - ANTI-FLASH */
       .flip-card {
         perspective: 1000px;
         width: 100%;
         height: 200px;
+        cursor: pointer;
+        /* Désactiver les transitions globales qui causent le flash */
+        transition: none !important;
+      }
+      
+      .flip-card * {
+        /* Désactiver toutes les transitions sur les enfants */
+        transition: none !important;
       }
       
       .flip-card-inner {
@@ -1526,10 +1534,12 @@
         width: 100%;
         height: 100%;
         text-align: center;
-        transition: transform 0.8s;
+        /* Seule transition autorisée : le transform pour le flip */
+        transition: transform 0.5s ease-out !important;
         transform-style: preserve-3d;
       }
       
+      /* Hover sans délai pour éviter le flash */
       .flip-card:hover .flip-card-inner {
         transform: rotateY(180deg);
       }
@@ -1539,10 +1549,19 @@
         width: 100%;
         height: 100%;
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
+        /* Empêcher toutes les transitions sur les faces */
+        transition: none !important;
+        transform-origin: center center;
+      }
+      
+      /* Correction du flash : pas de transition sur les éléments enfants */
+      .flip-card-front *, .flip-card-back * {
+        transition: none !important;
       }
       
       .flip-card-back {
@@ -2180,6 +2199,86 @@
           linear-gradient(135deg, rgba(255, 16, 240, 0.05) 0%, transparent 50%);
         z-index: 1;
       }
+
+      /* ===================================
+         SYSTÈME DE THÈMES CYBERPUNK
+         =================================== */
+
+      /* Sélecteur de thème actif pour les options dans la grille */
+      .theme-option.active .theme-preview {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px rgba(157, 78, 221, 0.6);
+        border: 2px solid var(--primary);
+      }
+
+      /* Styles pour les options de thème dans la grille */
+      .theme-option {
+        transition: all 0.3s ease;
+      }
+
+      .theme-option:hover .theme-preview {
+        transform: scale(1.1);
+      }
+
+      .theme-option.active:hover .theme-preview {
+        transform: scale(1.2);
+      }
+
+      /* Thème Matrix */
+      body[data-theme="matrix"] {
+        --primary: #00FF41;
+        --accent: #00DD00;
+        --neon: #39FF14;
+        --electric: #00FF00;
+        --text-primary: #00FF41;
+        --text-secondary: #00DD00;
+      }
+
+      body[data-theme="matrix"] {
+        background: linear-gradient(135deg, #000000 0%, #001100 50%, #000000 100%) !important;
+      }
+
+      /* Thème Neon City */
+      body[data-theme="neon-city"] {
+        --primary: #FF1493;
+        --accent: #FF6600;
+        --neon: #FF0080;
+        --electric: #FF4500;
+        --text-primary: #FF1493;
+        --text-secondary: #FF6600;
+      }
+
+      body[data-theme="neon-city"] {
+        background: linear-gradient(135deg, #000000 0%, #2D0B00 50%, #000000 100%) !important;
+      }
+
+      /* Thème Synthwave */
+      body[data-theme="synthwave"] {
+        --primary: #FF00FF;
+        --accent: #00FFFF;
+        --neon: #FF0080;
+        --electric: #8A2BE2;
+        --text-primary: #FF00FF;
+        --text-secondary: #00FFFF;
+      }
+
+      body[data-theme="synthwave"] {
+        background: linear-gradient(135deg, #1a0033 0%, #330066 50%, #1a0033 100%) !important;
+      }
+
+      /* Thème Blade Runner */
+      body[data-theme="blade-runner"] {
+        --primary: #FFA500;
+        --accent: #FFD700;
+        --neon: #FF8C00;
+        --electric: #FFFF00;
+        --text-primary: #FFA500;
+        --text-secondary: #FFD700;
+      }
+
+      body[data-theme="blade-runner"] {
+        background: linear-gradient(135deg, #1a1000 0%, #332200 50%, #1a1000 100%) !important;
+      }
     </style>
   </head>
   <body>
@@ -2515,11 +2614,11 @@
         </div>
         
         <!-- Radar Scanning Animation -->
-        <div class="mt-16 text-center">
+        <!-- <div class="mt-16 text-center">
           <h3 class="neon-glow cyber-title text-2xl font-semibold mb-8 text-gradient glitch">[SCANNING_TECHNOLOGIES...]</h3>
           <div class="radar-scan breathing"></div>
         </div>
-      </div>
+      </div> -->
     </section>
     
     <!-- About Section -->
@@ -2815,24 +2914,24 @@
           <h3 class="text-2xl font-semibold mb-6 cyber-title">Système de Thèmes Cyberpunk</h3>
           <p class="text-gray-400 mb-8">Regardez à droite de votre écran pour changer de thème ➡️</p>
           <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-2xl mx-auto">
-            <div class="text-center">
-              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400"></div>
+            <div class="text-center theme-option cursor-pointer" data-theme="default">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 theme-preview hover:scale-110 transition-transform"></div>
               <span class="text-xs text-gray-400">Défaut</span>
             </div>
-            <div class="text-center">
-              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-green-400 to-green-600"></div>
+            <div class="text-center theme-option cursor-pointer" data-theme="matrix">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-green-400 to-green-600 theme-preview hover:scale-110 transition-transform"></div>
               <span class="text-xs text-gray-400">Matrix</span>
             </div>
-            <div class="text-center">
-              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-pink-500 to-orange-500"></div>
+            <div class="text-center theme-option cursor-pointer" data-theme="neon-city">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-pink-500 to-orange-500 theme-preview hover:scale-110 transition-transform"></div>
               <span class="text-xs text-gray-400">Neon City</span>
             </div>
-            <div class="text-center">
-              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-pink-400 to-cyan-400"></div>
+            <div class="text-center theme-option cursor-pointer" data-theme="synthwave">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-pink-400 to-cyan-400 theme-preview hover:scale-110 transition-transform"></div>
               <span class="text-xs text-gray-400">Synthwave</span>
             </div>
-            <div class="text-center">
-              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500"></div>
+            <div class="text-center theme-option cursor-pointer" data-theme="blade-runner">
+              <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 theme-preview hover:scale-110 transition-transform"></div>
               <span class="text-xs text-gray-400">Blade Runner</span>
             </div>
           </div>
@@ -3576,6 +3675,78 @@ Traduction de texte en plusieurs langue
       document.addEventListener('DOMContentLoaded', function () {
         console.log('🚀 Initialisation des animations JavaScript');
         
+        // CORRECTION FLIP-CARDS : Simplifiée pour éviter le flash
+        const flipCards = document.querySelectorAll('.flip-card');
+        flipCards.forEach(card => {
+          // Supprimer les classes de transition globales
+          card.style.transition = 'none';
+          
+          // Désactiver le système de révélation sur les flip-cards
+          card.classList.remove('reveal-element', 'slide-in');
+        });
+
+        // SYSTÈME DE CHANGEMENT DE THÈMES
+        const themeOptions = document.querySelectorAll('.theme-option');
+        const currentTheme = localStorage.getItem('cyberpunk-theme') || 'default';
+        
+        // Appliquer le thème sauvegardé
+        if (currentTheme !== 'default') {
+          document.body.setAttribute('data-theme', currentTheme);
+        }
+        
+        // Marquer le thème actuel comme actif
+        themeOptions.forEach(option => {
+          if (option.getAttribute('data-theme') === currentTheme) {
+            option.classList.add('active');
+          }
+        });
+        
+        // Gestion des clics sur les options de thème
+        themeOptions.forEach(option => {
+          option.addEventListener('click', () => {
+            const selectedTheme = option.getAttribute('data-theme');
+            
+            // Supprimer la classe active de toutes les options
+            themeOptions.forEach(opt => opt.classList.remove('active'));
+            
+            // Ajouter la classe active à l'option cliquée
+            option.classList.add('active');
+            
+            // Appliquer le thème
+            if (selectedTheme === 'default') {
+              document.body.removeAttribute('data-theme');
+            } else {
+              document.body.setAttribute('data-theme', selectedTheme);
+            }
+            
+            // Sauvegarder le thème
+            localStorage.setItem('cyberpunk-theme', selectedTheme);
+            
+            // Notification visuelle
+            const notification = document.createElement('div');
+            notification.innerHTML = `🎨 Thème "${option.querySelector('span').textContent}" activé`;
+            notification.style.cssText = `
+              position: fixed;
+              top: 20px;
+              right: 20px;
+              background: var(--primary);
+              color: white;
+              padding: 12px 20px;
+              border-radius: 8px;
+              z-index: 10000;
+              font-family: var(--font-cyber);
+              box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
+              transition: all 0.3s ease;
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+              notification.style.opacity = '0';
+              setTimeout(() => notification.remove(), 300);
+            }, 2000);
+          });
+        });
+        
         // 1. TYPING ANIMATION
         const typingTexts = [
           "Développeur Fullstack & Mobile",
@@ -3745,7 +3916,10 @@ Traduction de texte en plusieurs langue
         }, { threshold: 0.2 });
         
         document.querySelectorAll('.reveal-element').forEach(el => {
-          revealObserver.observe(el);
+          // Exclure les flip-cards du système de révélation pour éviter les conflits
+          if (!el.classList.contains('flip-card') && !el.closest('.flip-card')) {
+            revealObserver.observe(el);
+          }
         });
         
         // 6. SCROLL PROGRESS BAR
@@ -4250,31 +4424,31 @@ Traduction de texte en plusieurs langue
         }
       }
 
-      // Radar Scanning Effect
-      function initRadarScanning() {
-        const scanners = document.querySelectorAll('.radar-scanner');
-        scanners.forEach(scanner => {
-          const line = document.createElement('div');
-          line.className = 'radar-line';
-          line.style.position = 'absolute';
-          line.style.top = '50%';
-          line.style.left = '50%';
-          line.style.width = '2px';
-          line.style.height = '50%';
-          line.style.background = 'linear-gradient(to bottom, transparent, #2196F3)';
-          line.style.transformOrigin = 'top center';
-          line.style.animation = 'radarSweep 3s linear infinite';
-          scanner.appendChild(line);
-        });
-      }
+      // // Radar Scanning Effect
+      // function initRadarScanning() {
+      //   const scanners = document.querySelectorAll('.radar-scanner');
+      //   scanners.forEach(scanner => {
+      //     const line = document.createElement('div');
+      //     line.className = 'radar-line';
+      //     line.style.position = 'absolute';
+      //     line.style.top = '50%';
+      //     line.style.left = '50%';
+      //     line.style.width = '2px';
+      //     line.style.height = '50%';
+      //     line.style.background = 'linear-gradient(to bottom, transparent, #2196F3)';
+      //     line.style.transformOrigin = 'top center';
+      //     line.style.animation = 'radarSweep 3s linear infinite';
+      //     scanner.appendChild(line);
+      //   });
+      // }
 
       // Initialize all new animations
       document.addEventListener('DOMContentLoaded', function() {
         // Initialize binary rain
         initBinaryRain();
         
-        // Initialize radar scanning
-        initRadarScanning();
+        // // Initialize radar scanning
+        // initRadarScanning();
         
         // Cyberpunk typing effect for terminal
         const terminalTexts = [
