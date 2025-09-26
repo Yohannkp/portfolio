@@ -75,6 +75,7 @@ ready(() => {
     updateHeader();
   }
 
+
   const animatedNodes = document.querySelectorAll('[data-animate], [data-animate-child]');
 
   if (animatedNodes.length) {
