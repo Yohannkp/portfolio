@@ -368,90 +368,242 @@
             <p>Une sélection de projets représentatifs développés entre 2023 et 2025.</p>
           </header>
           <div class="projects-grid">
-            <article class="project-card">
-              <div class="project-card__meta">
-                <span class="project-card__status">[STATUS: ACTIVE]</span>
-                <span class="project-card__stack">React · FastAPI · Neo4j</span>
+            <article class="project-card project-card--featured">
+              <div class="project-card__visual">
+                <img
+                  src="images/project-1.jpg"
+                  alt="Interface de l'application Movies Database avec un tableau de films et des statistiques"
+                  loading="lazy"
+                />
+                <span class="project-card__badge">Projet phare</span>
               </div>
-              <h3>🎬 Movies Database - Application Web</h3>
-              <p>
-                Une application web moderne pour explorer et gérer une base de données de films utilisant React
-                (front-end), FastAPI (backend) et Neo4j (base de données graphique).
-              </p>
-              <ul>
-                <li>Navigation intuitive : Interface utilisateur moderne et responsive</li>
-                <li>Liste des films : Affichage paginé de tous les films</li>
-                <li>Recherche avancée : Recherche floue et tolérante aux erreurs</li>
-                <li>Détails complets : Informations détaillées sur les films, acteurs, réalisateurs</li>
-                <li>Recommandations : Suggestions de films similaires</li>
-                <li>Monitoring : Vérification de l'état des services (API + Neo4j)</li>
-              </ul>
-              <a class="project-card__link" href="https://github.com/fayesarah555/movies-webapp.git">[EXPLORER.EXE]</a>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__status">En optimisation continue</span>
+                  <span class="project-card__stack">React · FastAPI · Neo4j</span>
+                </div>
+                <h3>🎬 Movies Database - Application Web</h3>
+                <p>
+                  Application web moderne pour explorer et gérer une base de données de films via une architecture
+                  micro-services et une base graphique Neo4j.
+                </p>
+                <ul class="project-card__highlights">
+                  <li>Interface responsive avec navigation par filtres et favoris dynamiques</li>
+                  <li>Moteur de recherche tolérant aux fautes et suggestions contextuelles</li>
+                  <li>Pilotage de la qualité de service avec monitoring FastAPI + Neo4j</li>
+                </ul>
+              </div>
+              <footer class="project-card__footer">
+                <ul class="project-card__tags" aria-label="Technologies clés du projet">
+                  <li>Design system</li>
+                  <li>Graph DB</li>
+                  <li>CI/CD</li>
+                </ul>
+                <a
+                  class="project-card__link"
+                  href="https://github.com/fayesarah555/movies-webapp.git"
+                  target="_blank"
+                  rel="noopener"
+                  >Voir le repo<span aria-hidden="true">↗</span></a
+                >
+              </footer>
             </article>
 
             <article class="project-card">
-              <div class="project-card__meta">
-                <span class="project-card__status">[STATUS: DEPLOYED]</span>
-                <span class="project-card__stack">Flutter · Firebase · TTS</span>
+              <div class="project-card__visual">
+                <img
+                  src="images/project-2.jpg"
+                  alt="Application mobile de synthèse vocale affichée sur un smartphone"
+                  loading="lazy"
+                />
+                <span class="project-card__badge">Déployé</span>
               </div>
-              <h3>🤖 Text-to-Speech avec IA</h3>
-              <p>
-                Application Flutter intelligente avec IA conversationnelle et synthèse vocale. Interface animée pour envoi
-                de requêtes, réponses IA, correction orthographique et traduction multilingue.
-              </p>
-              <a class="project-card__link" href="https://github.com/Yohannkp/application_translate_flutter">[EXPLORER.EXE]</a>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__status">Disponible sur Android</span>
+                  <span class="project-card__stack">Flutter · Firebase · IA vocale</span>
+                </div>
+                <h3>🤖 Text-to-Speech avec IA</h3>
+                <p>
+                  Assistant vocal multilingue avec interface animée, correction orthographique, traduction et réponses
+                  IA en temps réel.
+                </p>
+                <ul class="project-card__highlights">
+                  <li>Synthèse vocale naturelle avec personnalisation des voix</li>
+                  <li>Historique des conversations synchronisé via Firebase</li>
+                  <li>Mode accessibilité avec commandes gestuelles</li>
+                </ul>
+              </div>
+              <footer class="project-card__footer">
+                <ul class="project-card__tags" aria-label="Technologies clés du projet">
+                  <li>Flutter</li>
+                  <li>Realtime DB</li>
+                  <li>UX animé</li>
+                </ul>
+                <a
+                  class="project-card__link"
+                  href="https://github.com/Yohannkp/application_translate_flutter"
+                  target="_blank"
+                  rel="noopener"
+                  >Voir le repo<span aria-hidden="true">↗</span></a
+                >
+              </footer>
             </article>
 
             <article class="project-card">
-              <div class="project-card__meta">
-                <span class="project-card__status">[STATUS: ONLINE]</span>
-                <span class="project-card__stack">Symfony · MySQL · Web</span>
+              <div class="project-card__visual">
+                <img
+                  src="images/project-3.jpg"
+                  alt="Tableau de bord de réservation pour une auto-école"
+                  loading="lazy"
+                />
+                <span class="project-card__badge">En ligne</span>
               </div>
-              <h3>🚗 AUTO-ÉCOLE EN LIGNE</h3>
-              <p>
-                Plateforme de réservation en ligne de cours de conduite avec interface web intuitive et gestion complète
-                des plannings.
-              </p>
-              <a class="project-card__link" href="https://github.com/Yohannkp/AUTO_ECOLE">[EXPLORER.EXE]</a>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__status">Ouvert aux élèves</span>
+                  <span class="project-card__stack">Symfony · MySQL · Web</span>
+                </div>
+                <h3>🚗 Auto-école en ligne</h3>
+                <p>
+                  Plateforme de réservation de cours de conduite avec gestion des disponibilités, paiements et suivi des
+                  progrès des élèves.
+                </p>
+                <ul class="project-card__highlights">
+                  <li>Planning instructeurs vs élèves avec notifications email</li>
+                  <li>Espace élève pour consulter bilans et heures restantes</li>
+                  <li>Back-office modulable pour administrer les offres</li>
+                </ul>
+              </div>
+              <footer class="project-card__footer">
+                <ul class="project-card__tags" aria-label="Technologies clés du projet">
+                  <li>Symfony</li>
+                  <li>Stripe-ready</li>
+                  <li>Dashboard</li>
+                </ul>
+                <a
+                  class="project-card__link"
+                  href="https://github.com/Yohannkp/AUTO_ECOLE"
+                  target="_blank"
+                  rel="noopener"
+                  >Voir le repo<span aria-hidden="true">↗</span></a
+                >
+              </footer>
             </article>
 
             <article class="project-card">
-              <div class="project-card__meta">
-                <span class="project-card__status">[STATUS: ACTIVE]</span>
-                <span class="project-card__stack">Flask · Python · SQLite</span>
+              <div class="project-card__visual">
+                <img src="images/project-4.jpg" alt="Interface minimaliste d'un site web développé avec Flask" loading="lazy" />
+                <span class="project-card__badge">En évolution</span>
               </div>
-              <h3>🐍 Site Flask Minimaliste</h3>
-              <p>
-                Backend léger et performant développé en Flask avec base de données SQLite intégrée pour des applications
-                web rapides.
-              </p>
-              <a class="project-card__link" href="https://github.com/Yohannkp/Site_Flask">[EXPLORER.EXE]</a>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__status">Architecture modulaire</span>
+                  <span class="project-card__stack">Flask · Python · SQLite</span>
+                </div>
+                <h3>🐍 Site Flask minimaliste</h3>
+                <p>
+                  Backend léger et extensible, pensé pour des MVP rapides avec authentification et gestion de contenu
+                  embarqués.
+                </p>
+                <ul class="project-card__highlights">
+                  <li>Blueprints réutilisables et configuration par environnement</li>
+                  <li>SQLite embarqué avec migrations automatisées</li>
+                  <li>Tests unitaires intégrés pour sécuriser les évolutions</li>
+                </ul>
+              </div>
+              <footer class="project-card__footer">
+                <ul class="project-card__tags" aria-label="Technologies clés du projet">
+                  <li>API REST</li>
+                  <li>Python</li>
+                  <li>Docker-ready</li>
+                </ul>
+                <a
+                  class="project-card__link"
+                  href="https://github.com/Yohannkp/Site_Flask"
+                  target="_blank"
+                  rel="noopener"
+                  >Voir le repo<span aria-hidden="true">↗</span></a
+                >
+              </footer>
             </article>
 
             <article class="project-card">
-              <div class="project-card__meta">
-                <span class="project-card__status">[STATUS: DEPLOYED]</span>
-                <span class="project-card__stack">Symfony · MySQL · CRUD</span>
+              <div class="project-card__visual">
+                <img src="images/project-5.jpg" alt="Interface de gestion de menus pour un fast-food" loading="lazy" />
+                <span class="project-card__badge">Live</span>
               </div>
-              <h3>🍔 Application FastFood</h3>
-              <p>
-                Application complète de gestion de plats en fast-food avec CRUD complet, gestion des commandes et
-                interface d'administration.
-              </p>
-              <a class="project-card__link" href="https://github.com/Yohannkp/Chililoco">[EXPLORER.EXE]</a>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__status">Déployé en production</span>
+                  <span class="project-card__stack">Symfony · MySQL · CRUD</span>
+                </div>
+                <h3>🍔 Application FastFood</h3>
+                <p>
+                  Suite de gestion pour restaurants rapides : suivi des commandes, gestion des stocks et création de
+                  menus en quelques clics.
+                </p>
+                <ul class="project-card__highlights">
+                  <li>Workflows CRUD optimisés pour le personnel en cuisine</li>
+                  <li>Tableau de bord des ventes en temps réel</li>
+                  <li>Gestion fine des rôles et autorisations</li>
+                </ul>
+              </div>
+              <footer class="project-card__footer">
+                <ul class="project-card__tags" aria-label="Technologies clés du projet">
+                  <li>Back-office</li>
+                  <li>MySQL</li>
+                  <li>Reporting</li>
+                </ul>
+                <a
+                  class="project-card__link"
+                  href="https://github.com/Yohannkp/Chililoco"
+                  target="_blank"
+                  rel="noopener"
+                  >Voir le repo<span aria-hidden="true">↗</span></a
+                >
+              </footer>
             </article>
 
             <article class="project-card">
-              <div class="project-card__meta">
-                <span class="project-card__status">[STATUS: SECURE]</span>
-                <span class="project-card__stack">Symfony · MySQL · API</span>
+              <div class="project-card__visual">
+                <img src="images/project-6.jpg" alt="Dashboard de gestion de fichiers et de stockage en ligne" loading="lazy" />
+                <span class="project-card__badge">Sécurisé</span>
               </div>
-              <h3>📁 API de Gestion de Fichiers</h3>
-              <p>
-                API sécurisée pour gérer les fichiers, l'espace disque et les utilisateurs avec authentification et
-                contrôle d'accès avancé.
-              </p>
-              <a class="project-card__link" href="https://github.com/Batyeste/CloudUs/tree/back">[EXPLORER.EXE]</a>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__status">Conformité RGPD</span>
+                  <span class="project-card__stack">Symfony · MySQL · API</span>
+                </div>
+                <h3>📁 API de gestion de fichiers</h3>
+                <p>
+                  API sécurisée pour gérer les fichiers, l'espace disque et les utilisateurs avec authentification forte
+                  et contrôle d'accès granularisé.
+                </p>
+                <ul class="project-card__highlights">
+                  <li>Gestion des quotas et alertes de dépassement</li>
+                  <li>Audit trail détaillé pour chaque ressource</li>
+                  <li>Chiffrement côté serveur et rotation des clés</li>
+                </ul>
+              </div>
+              <footer class="project-card__footer">
+                <ul class="project-card__tags" aria-label="Technologies clés du projet">
+                  <li>API Platform</li>
+                  <li>Sécurité</li>
+                  <li>DevOps</li>
+                </ul>
+                <a
+                  class="project-card__link"
+                  href="https://github.com/Batyeste/CloudUs/tree/back"
+                  target="_blank"
+                  rel="noopener"
+                  >Voir le repo<span aria-hidden="true">↗</span></a
+                >
+              </footer>
+            </article>
+          </div>
+        </div>
+      </section>
 
       <section id="services" class="section">
         <div class="container">

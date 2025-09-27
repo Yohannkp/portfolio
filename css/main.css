@@ -456,19 +456,90 @@ img {
 
 .projects-grid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .project-card {
-  padding: 2rem;
+  position: relative;
   border-radius: var(--radius-lg);
-  background: rgba(10, 14, 24, 0.85);
-  border: 1px solid var(--border);
+  background: rgba(10, 14, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  min-height: 100%;
   box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(138, 99, 255, 0.4), rgba(82, 210, 255, 0.2)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(6, 8, 15, 0.55);
+  border-color: rgba(138, 99, 255, 0.45);
+}
+
+.project-card:hover::before,
+.project-card:focus-within::before {
+  opacity: 1;
+}
+
+.project-card__visual {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 20%, rgba(138, 99, 255, 0.18), transparent 70%);
+}
+
+.project-card__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.project-card:hover .project-card__visual img,
+.project-card:focus-within .project-card__visual img {
+  transform: scale(1.08);
+  filter: saturate(1.25);
+}
+
+.project-card__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(6, 8, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.project-card__body {
+  padding: 1.8rem 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .project-card__meta {
@@ -476,9 +547,10 @@ img {
   flex-wrap: wrap;
   gap: 0.75rem;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   letter-spacing: 0.06em;
   color: var(--text-muted);
+  text-transform: uppercase;
 }
 
 .project-card__status {
@@ -486,26 +558,159 @@ img {
 }
 
 .project-card__stack {
-  color: var(--text-muted);
+  color: rgba(180, 189, 214, 0.8);
 }
 
-.project-card ul {
+.project-card__body h3 {
   margin: 0;
-  padding-left: 1.25rem;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+}
+
+.project-card__body p {
+  margin: 0;
   color: var(--text-muted);
 }
 
-.project-card ul li {
-  margin-bottom: 0.35rem;
+.project-card__highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--text-muted);
+  display: grid;
+  gap: 0.45rem;
+}
+
+.project-card__highlights li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.project-card__highlights li::before {
+  content: '';
+  position: absolute;
+  top: 0.6em;
+  left: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, rgba(138, 99, 255, 0.9), rgba(82, 210, 255, 0.8));
+  box-shadow: 0 0 8px rgba(138, 99, 255, 0.55);
+}
+
+.project-card__footer {
+  padding: 0 1.75rem 1.75rem;
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.project-card__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-card__tags li {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(138, 99, 255, 0.12);
+  color: var(--accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .project-card__link {
-  margin-top: auto;
   display: inline-flex;
   align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-sm);
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  color: var(--accent);
+  font-size: 0.85rem;
   letter-spacing: 0.06em;
+  color: var(--accent);
+  background: rgba(138, 99, 255, 0.14);
+  border: 1px solid rgba(138, 99, 255, 0.3);
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.project-card__link span {
+  display: inline-block;
+  transition: transform var(--transition);
+}
+
+.project-card__link:hover,
+.project-card__link:focus-visible {
+  background: rgba(138, 99, 255, 0.25);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.project-card__link:hover span,
+.project-card__link:focus-visible span {
+  transform: translateX(4px);
+}
+
+.project-card--featured {
+  background: linear-gradient(135deg, rgba(138, 99, 255, 0.16), rgba(6, 8, 15, 0.92));
+}
+
+.project-card--featured .project-card__badge {
+  background: rgba(138, 99, 255, 0.18);
+  color: #fff;
+  border-color: rgba(138, 99, 255, 0.4);
+}
+
+@media (max-width: 620px) {
+  .project-card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-card__link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 960px) {
+  .projects-grid {
+    gap: 2rem;
+  }
+
+  .project-card--featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    align-items: stretch;
+  }
+
+  .project-card--featured .project-card__visual {
+    grid-row: 1 / 3;
+    height: 100%;
+  }
+
+  .project-card--featured .project-card__body {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 2.25rem 2.25rem 1.5rem;
+  }
+
+  .project-card--featured .project-card__footer {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 0 2.25rem 2.25rem;
+  }
 }
 
 
