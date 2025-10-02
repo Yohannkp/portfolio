@@ -1,0 +1,13 @@
+{
+  "index": [
+    "section-section-2.njk",
+    "section-about.njk",
+    "section-timeline.njk",
+    "section-projects.njk",
+    "section-services.njk",
+    "section-skills.njk",
+    "section-projects-2.njk",
+    "section-experience.njk",
+    "section-contact.njk"
+  ]
+}

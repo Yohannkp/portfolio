@@ -1,0 +1,16 @@
+:root {
+  color-scheme: dark;
+  --bg: #06080f;
+  --bg-alt: #0e1424;
+  --accent: #8a63ff;
+  --accent-soft: rgba(138, 99, 255, 0.1);
+  --text-primary: #f5f7ff;
+  --text-muted: #b4bdd6;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 16px 40px rgba(6, 8, 15, 0.35);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --max-width: 1100px;
+  --transition: 180ms ease;
+}

@@ -1,0 +1,14 @@
+﻿{
+  "links": [
+    { "href": "#about", "label": "Â propos" },
+    { "href": "#expertise", "label": "Expertise" },
+    { "href": "#timeline", "label": "Parcours" },
+    { "href": "#projects", "label": "Projets" },
+    { "href": "#services", "label": "Services" },
+    { "href": "#skills", "label": "Compétences" },
+    { "href": "#projects", "label": "Projets" },
+    { "href": "#experience", "label": "Expérience" },
+    { "href": "#contact", "label": "Contact" }
+  ]
+}
+

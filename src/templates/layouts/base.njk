@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr">
+  {% include "partials/head.njk" %}
+  <body>
+    {% include "partials/header.njk" %}
+    <main id="top">
+{% for partial in sectionPartials %}
+      {% include "partials/" ~ partial %}
+{% endfor %}
+    </main>
+    {% include "partials/footer.njk" %}
+    {% include "partials/scripts.njk" %}
+  </body>
+</html>
